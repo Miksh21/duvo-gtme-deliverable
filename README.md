@@ -12,7 +12,7 @@ html_canonical_version: ./source/deliverable.html
 contains:
   - 3 shipped signal pipelines (Parts 1-3)
   - Duvo proposal mapped to 4 JD pillars in 4 weeks (Part 4)
-  - 2 signal pipelines designed for Duvo (Signal A: leadership change · Signal B: post-RPA)
+  - "2 signal pipelines designed for Duvo (Signal A: leadership change · Signal B: post-RPA)"
   - 6 worked campaign instances (2 signals × 3 tiers)
   - AI reply classifier with MEDDPICC auto-scoring + ghost-recovery agent
   - 10 internal-tooling micro-builds
