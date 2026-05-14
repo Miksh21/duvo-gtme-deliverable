@@ -7,7 +7,7 @@ company: Duvo
 company_url: https://duvo.ai
 date_submitted: 2026-05-14
 loom_url: https://www.loom.com/share/6229b7c2f5e44a72af3861ee1ce0af93
-loom_duration: 3 minutes
+loom_duration: 1 min 41 sec
 html_canonical_version: ./source/deliverable.html
 contains:
   - 3 shipped signal pipelines (Parts 1-3)
@@ -28,13 +28,13 @@ license: MIT
 
 Jan Mikeš · 14 May 2026 · For Tomáš + David
 
-## 3-minute walkthrough
+## 90-second walkthrough
 
-[![Jan Mikeš · Duvo GTME · 3-minute walkthrough](https://cdn.loom.com/sessions/thumbnails/6229b7c2f5e44a72af3861ee1ce0af93-5363a31496ed6b61-full-play.gif)](https://www.loom.com/share/6229b7c2f5e44a72af3861ee1ce0af93)
+[![Jan Mikeš · Duvo GTME · 90-second walkthrough](https://cdn.loom.com/sessions/thumbnails/6229b7c2f5e44a72af3861ee1ce0af93-5363a31496ed6b61-full-play.gif)](https://www.loom.com/share/6229b7c2f5e44a72af3861ee1ce0af93)
 
 [→ Open in Loom](https://www.loom.com/share/6229b7c2f5e44a72af3861ee1ce0af93)
 
-*3-minute face-cam walkthrough. The document below is the deep dive.*
+*90-second face-cam walkthrough. The document below is the deep dive.*
 
 ## What's in this document
 
