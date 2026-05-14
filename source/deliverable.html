@@ -1,0 +1,3847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jan Mikeš · GTM Engineer · For Duvo</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Mermaid -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+<style>
+  :root {
+    --bg: #F6F1E8;
+    --bg-card: #FDFAF3;
+    --paper-warm: #FDFAF3;
+    --ink: #1A1A1A;
+    --ink-muted: #5C5852;
+    --rule: #1A1A1A;
+    --accent: #B8412F;
+    --accent-soft: #E8D5CF;
+    --code-bg: #EFE9DC;
+    --max: 760px;
+    --gutter: 32px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 80px var(--gutter) 120px;
+  }
+
+  /* ─── Typography ─── */
+  h1, h2, h3, h4 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.05;
+    font-weight: 600;
+    margin: 0 0 24px;
+    letter-spacing: -0.025em;
+  }
+  h2 {
+    font-size: 32px;
+    line-height: 1.15;
+    margin: 80px 0 24px;
+    font-weight: 600;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 48px 0 16px;
+    font-weight: 600;
+  }
+  h4 {
+    font-size: 17px;
+    line-height: 1.4;
+    margin: 32px 0 12px;
+    font-weight: 600;
+    font-family: "IBM Plex Sans", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    font-size: 13px;
+  }
+  p { margin: 0 0 20px; }
+  p + p { margin-top: -4px; }
+
+  strong { font-weight: 600; color: var(--ink); }
+  em { font-style: italic; color: var(--ink-muted); }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    transition: border-color 0.15s ease;
+  }
+  a:hover { border-bottom-color: var(--accent); }
+
+  code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  pre {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    background: var(--code-bg);
+    padding: 20px 24px;
+    border-radius: 4px;
+    overflow-x: auto;
+    line-height: 1.5;
+    margin: 24px 0;
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+  }
+
+  ul, ol { padding-left: 24px; margin: 0 0 24px; }
+  li { margin-bottom: 8px; }
+
+  blockquote {
+    margin: 28px 0;
+    padding: 20px 28px;
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    font-style: italic;
+    color: var(--ink);
+  }
+  blockquote p { margin: 0; }
+  blockquote em { color: var(--accent); font-style: normal; font-weight: 500; }
+
+  /* ─── Hero ─── */
+  .hero {
+    padding-top: 20px;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 64px;
+    margin-bottom: 24px;
+  }
+  .hero .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+  }
+  .hero .meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin: 0 0 40px;
+    letter-spacing: 0.02em;
+  }
+  .hero .meta span {
+    display: inline-block;
+    margin-right: 24px;
+  }
+  .hero h1 .accent {
+    color: var(--accent);
+    font-style: italic;
+  }
+  .cold-open {
+    font-size: 19px;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    margin: 32px 0 0;
+    max-width: 600px;
+  }
+
+  /* ─── Loom caption (below the embed) ─── */
+  .loom-caption {
+    margin: 24px 0 32px 0;
+    font-family: "Fraunces", serif;
+    font-size: 19px;
+    line-height: 1.45;
+    color: var(--ink-muted);
+    font-style: italic;
+    max-width: 640px;
+  }
+
+  /* ─── Document map (explicit reading order) ─── */
+  .doc-map {
+    margin: 0 0 24px 0;
+    padding: 22px 26px 18px 26px;
+    background: var(--paper-warm);
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+  }
+  .doc-map-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    margin: 0 0 14px 0;
+  }
+  .doc-map-list {
+    margin: 0 0 18px 0;
+    padding-left: 20px;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .doc-map-list > li { margin-bottom: 10px; }
+  .doc-map-list > li:last-child { margin-bottom: 0; }
+  .doc-map-anchors {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--ink-muted);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+  }
+  .anchors-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    margin-right: 6px;
+  }
+  .doc-map-anchors a {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+    transition: background 0.12s ease, color 0.12s ease;
+  }
+  .doc-map-anchors a:hover {
+    background: var(--accent);
+    color: var(--paper-warm);
+    border-color: var(--accent);
+  }
+
+  /* ─── GitHub repo badge ─── */
+  .repo-badge {
+    margin: 0 0 32px 0;
+    padding: 16px 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--ink);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .repo-badge-glyph {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    background: var(--ink);
+    color: var(--paper-warm);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Geist Mono", "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .repo-badge-body { flex: 1; }
+  .repo-badge-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: "Geist Mono", "JetBrains Mono", monospace;
+    font-size: 13px;
+    border-bottom: 1px dashed var(--accent);
+  }
+  .repo-badge-link:hover { border-bottom-style: solid; }
+
+  /* ─── Loom embed ─── */
+  .loom-frame {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin: 48px 0 0;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    border-radius: 4px;
+  }
+  .loom-frame iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+  .loom-frame .loom-placeholder {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bg);
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+  }
+
+  /* ─── Section header ─── */
+  .section-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  /* ─── Pyramid TL;DR block (Part 4 governing thought + MECE arguments) ─── */
+  .part4-tldr {
+    background: var(--bg-card);
+    border: 1px solid var(--ink);
+    border-left: 6px solid var(--accent);
+    padding: 32px 36px;
+    margin: 28px 0 44px 0;
+    border-radius: 4px;
+  }
+  .part4-tldr .game-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin: 0 0 10px 0;
+    font-weight: 700;
+  }
+  .part4-tldr .game-label:not(:first-child) { margin-top: 26px; }
+  .part4-tldr .game-goal {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 22px;
+    line-height: 1.35;
+    font-weight: 500;
+    margin: 0;
+    color: var(--ink);
+  }
+  .part4-tldr ol.game-args {
+    margin: 0;
+    padding-left: 22px;
+    counter-reset: gameitem;
+    list-style: none;
+  }
+  .part4-tldr ol.game-args > li {
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    counter-increment: gameitem;
+    position: relative;
+    padding-left: 6px;
+  }
+  .part4-tldr ol.game-args > li::before {
+    content: counter(gameitem);
+    position: absolute;
+    left: -22px;
+    top: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    width: 18px;
+  }
+  .part4-tldr ol.game-args > li:last-child { margin-bottom: 0; }
+  .part4-tldr .game-anchor {
+    display: block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 6px;
+  }
+  .part4-tldr .game-anchor a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 14px;
+    border-bottom: 1px dashed var(--accent);
+  }
+  .part4-tldr .game-anchor a:hover { border-bottom-style: solid; }
+  .part4-tldr .game-mece {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .part4-tldr .game-headline {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    color: var(--ink);
+    margin: 14px 0 0 0;
+    padding: 12px 16px;
+    background: var(--code-bg);
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 640px) {
+    .part4-tldr { padding: 22px 20px; }
+    .part4-tldr .game-goal { font-size: 19px; }
+    .part4-tldr ol.game-args > li { font-size: 14.5px; }
+  }
+
+  /* ─── Tags / status pills ─── */
+  .pill {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .pill-shipped { background: #2D4A2D; color: #F6F1E8; }
+  .pill-wip { background: var(--accent); color: var(--bg); }
+  .pill-operating { background: var(--ink); color: var(--bg); }
+  .pill-proposed { background: var(--accent-soft); color: var(--ink); }
+
+  /* ─── Mermaid container ─── */
+  .diagram {
+    position: relative;
+    margin: 32px -120px;
+    padding: 28px 16px 48px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    overflow-x: auto;
+    cursor: zoom-in;
+    transition: box-shadow 0.15s ease;
+  }
+  .diagram:hover {
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  @media (max-width: 1080px) {
+    .diagram { margin-left: -40px; margin-right: -40px; }
+  }
+  @media (max-width: 800px) {
+    .diagram { margin-left: 0; margin-right: 0; }
+  }
+  .diagram .caption {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    text-align: center;
+    margin-top: 16px;
+  }
+  /* Persistent visible "click to zoom" hint at the bottom of every diagram */
+  .diagram::after {
+    content: "Click anywhere on the diagram to open it in full-screen zoom · scroll-wheel zoom · drag to pan · Esc to close";
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    pointer-events: none;
+  }
+  .mermaid { font-family: "IBM Plex Sans", sans-serif !important; }
+  /* Force SVG to fill the breakout container — Mermaid's default sizing left big empty margins around dense diagrams */
+  .mermaid svg {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* ─── Inline "Zoom" button overlay on each diagram ─── */
+  .diagram-zoom-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--paper-warm);
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .diagram-zoom-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  }
+
+  /* ─── Full-screen pan/zoom modal for diagrams ─── */
+  .diagram-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 26, 26, 0.92);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .diagram-modal.open { display: flex; }
+  .diagram-modal-content {
+    width: 100%;
+    max-width: 1700px;
+    height: 100%;
+    max-height: 94vh;
+    background: var(--paper-warm);
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .diagram-modal-toolbar {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    background: var(--paper-warm);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .diagram-modal-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .diagram-modal-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .diagram-modal-actions button {
+    background: var(--paper-warm);
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+    padding: 6px 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  }
+  .diagram-modal-actions button:hover {
+    background: var(--accent);
+    color: var(--paper-warm);
+    border-color: var(--accent);
+  }
+  .diagram-modal-canvas {
+    flex: 1;
+    background: var(--bg-card);
+    overflow: hidden;
+    cursor: grab;
+    position: relative;
+  }
+  .diagram-modal-canvas:active { cursor: grabbing; }
+  .diagram-modal-canvas svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
+  .diagram-modal-hint {
+    padding: 9px 18px;
+    border-top: 1px solid var(--ink);
+    background: var(--paper-warm);
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  /* ─── Key/value lines ─── */
+  .kv {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 8px 24px;
+    margin: 24px 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+  }
+  .kv dt {
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    padding-top: 3px;
+  }
+  .kv dd {
+    margin: 0;
+    color: var(--ink);
+  }
+
+  /* ─── Cost table ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--accent-soft);
+  }
+  th {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+  }
+  td { font-family: "IBM Plex Sans", sans-serif; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ─── Jump nav ─── */
+  .jumpnav {
+    margin: 32px 0 16px 0;
+    padding: 14px 20px;
+    background: var(--paper-warm);
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+  }
+  .jumpnav-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+  }
+  .jumpnav a {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+    transition: background 0.12s ease, color 0.12s ease;
+  }
+  .jumpnav a:hover {
+    background: var(--accent);
+    color: var(--paper-warm);
+    border-color: var(--accent);
+  }
+
+  /* ─── Slack alert (Block Kit style) ─── */
+  .slack-msg {
+    margin: 32px 0;
+    padding: 20px 24px;
+    background: #FFFFFF;
+    border: 1px solid #DDD7CE;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    color: #1D1C1D;
+    line-height: 1.55;
+  }
+  .slack-msg .ts {
+    font-size: 12px;
+    color: #616061;
+    margin-bottom: 10px;
+    font-family: "Inter", sans-serif;
+  }
+  .slack-msg .hdr {
+    font-size: 16px;
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+  .slack-msg .fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 40px;
+    margin-bottom: 18px;
+  }
+  .slack-msg .fields .lbl {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  .slack-msg .fields .val {
+    font-size: 14px;
+  }
+  .slack-msg code.tec-id {
+    background: #F8E5E5;
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: none;
+  }
+  .slack-msg .block {
+    margin-bottom: 14px;
+  }
+  .slack-msg blockquote.slack-q {
+    margin: 8px 0 0 0;
+    padding: 4px 0 4px 14px;
+    border-left: 3px solid #E0DCD3;
+    color: #1D1C1D;
+    font-style: normal;
+    font-size: 15px;
+    background: transparent;
+  }
+  .slack-msg .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+  .slack-msg .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #FFFFFF;
+    border: 1px solid #DDD7CE;
+    border-radius: 4px;
+    color: #1D1C1D;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.12s ease, transform 0.12s ease;
+    cursor: pointer;
+  }
+  .slack-msg .btn:hover {
+    background: #F4F2EE;
+    transform: translateY(-1px);
+  }
+  .slack-msg .btn.primary {
+    background: #007A5A;
+    border-color: #007A5A;
+    color: #FFFFFF;
+  }
+  .slack-msg .btn.primary:hover {
+    background: #006A50;
+    color: #FFFFFF;
+  }
+  .slack-msg .btn::after {
+    content: "↗";
+    font-size: 12px;
+    opacity: 0.6;
+    margin-left: 2px;
+  }
+  .slack-msg .sources-lbl {
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .clickable-hint {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin: 0 0 4px 0;
+  }
+
+  /* ─── Teams adaptive card (Microsoft visual) ─── */
+  .teams-card {
+    margin: 32px 0;
+    background: #FFFFFF;
+    border: 1px solid #E1DFDD;
+    border-radius: 4px;
+    box-shadow: 0 1.6px 3.6px rgba(0,0,0,0.08);
+    font-family: "Segoe UI", "Inter", -apple-system, sans-serif;
+    font-size: 14px;
+    color: #242424;
+    overflow: hidden;
+  }
+  .teams-card .card-header {
+    padding: 12px 16px;
+    background: #F3F2F1;
+    border-bottom: 1px solid #E1DFDD;
+    font-size: 12px;
+    color: #616161;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .teams-card .card-header strong { color: #242424; font-weight: 600; }
+  .teams-card .card-body { padding: 16px; }
+  .teams-card .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #242424;
+  }
+  .teams-card .fact-set {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 18px;
+    margin-bottom: 14px;
+  }
+  .teams-card .fact-set .fact-lbl {
+    font-weight: 600;
+    color: #242424;
+    font-size: 13px;
+  }
+  .teams-card .fact-set .fact-val {
+    color: #242424;
+    font-size: 13px;
+  }
+  .teams-card .text-block {
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .teams-card .action-set {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-top: 4px;
+    border-top: 1px solid #F0EFEE;
+    margin-top: 8px;
+    padding-top: 14px;
+  }
+  .teams-card .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.12s ease;
+    cursor: pointer;
+    border: 1px solid #5B5FC7;
+    background: #FFFFFF;
+    color: #5B5FC7;
+  }
+  .teams-card .action-btn:hover { background: #F5F4FB; }
+  .teams-card .action-btn.primary {
+    background: #5B5FC7;
+    color: #FFFFFF;
+  }
+  .teams-card .action-btn.primary:hover { background: #4F52B2; color: #FFFFFF; }
+  .teams-card .action-btn::after {
+    content: "↗";
+    font-size: 11px;
+    opacity: 0.7;
+    margin-left: 2px;
+  }
+
+  /* ─── Collapsible sections ─── */
+  details.collapsible {
+    margin: 60px 0;
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    overflow: hidden;
+    background: transparent;
+  }
+  details.collapsible > summary {
+    cursor: pointer;
+    padding: 24px 28px;
+    background: var(--paper-warm);
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    transition: background 0.15s ease;
+  }
+  details.collapsible > summary::-webkit-details-marker { display: none; }
+  details.collapsible > summary::marker { content: ""; }
+  details.collapsible > summary:hover { background: #F0E8DA; }
+  details.collapsible > summary::after {
+    content: "+";
+    font-family: "Inter", sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--accent);
+    flex-shrink: 0;
+    line-height: 0.8;
+    margin-top: 4px;
+    transition: transform 0.2s ease;
+  }
+  details.collapsible[open] > summary::after { content: "−"; }
+  details.collapsible > summary > .summary-inner { flex: 1; }
+  details.collapsible > summary .section-num {
+    margin-bottom: 8px;
+  }
+  details.collapsible > summary h2 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+  }
+  details.collapsible > summary .preview {
+    font-size: 14px;
+    color: var(--ink-muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  details.collapsible[open] > summary .preview { display: none; }
+  details.collapsible > .collapsible-body {
+    padding: 16px 28px 32px 28px;
+  }
+
+  /* ─── Per-tool toggle card (compact) ─── */
+  details.tool-toggle {
+    background: var(--bg-card);
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: background 120ms ease;
+  }
+  details.tool-toggle > summary {
+    padding: 14px 18px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--ink);
+    user-select: none;
+  }
+  details.tool-toggle > summary::-webkit-details-marker { display: none; }
+  details.tool-toggle > summary::marker { content: ""; }
+  details.tool-toggle > summary:hover { background: #F0E8DA; }
+  details.tool-toggle > summary::after {
+    content: "+";
+    font-size: 22px;
+    line-height: 1;
+    color: var(--ink-muted);
+    flex-shrink: 0;
+  }
+  details.tool-toggle[open] > summary::after { content: "−"; }
+  details.tool-toggle[open] > summary { border-bottom: 1px solid var(--ink); }
+  details.tool-toggle > .tool-body {
+    padding: 16px 18px 20px 18px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  details.tool-toggle > .tool-body code {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    background: rgba(0,0,0,0.04);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ─── Footer ─── */
+  footer {
+    margin-top: 100px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* ─── Mobile ─── */
+  @media (max-width: 640px) {
+    .page { padding: 48px 20px 80px; }
+    h1 { font-size: 38px; }
+    h2 { font-size: 26px; }
+    .kv { grid-template-columns: 1fr; gap: 4px; }
+    .kv dt { padding-top: 0; }
+  }
+
+  /* ─── Signal slider ─── */
+  .signal-slider {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 28px;
+    margin: 24px 0;
+  }
+  .signal-slides { position: relative; min-height: 300px; }
+  .signal-slide { display: none; }
+  .signal-slide.active { display: block; animation: signalFade 0.2s ease; }
+  @keyframes signalFade {
+    from { opacity: 0; transform: translateY(2px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .signal-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .signal-num {
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.5px;
+  }
+  .signal-month {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .signal-slide h3 {
+    margin: 0 0 4px 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .signal-analog {
+    color: var(--ink-muted);
+    font-style: italic;
+    margin: 0 0 22px 0;
+    font-size: 14px;
+  }
+  .signal-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .signal-col h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink-muted);
+    margin: 0 0 8px 0;
+    font-weight: 600;
+  }
+  .signal-col p {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 8px 0;
+    color: var(--ink);
+  }
+  .signal-col p:last-child { margin-bottom: 0; }
+  .signal-source {
+    font-size: 12px !important;
+    color: var(--ink-muted) !important;
+    border-top: 1px dashed var(--ink-muted);
+    padding-top: 8px;
+    margin-top: 12px !important;
+  }
+  .signal-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--code-bg);
+  }
+  .signal-prev, .signal-next {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .signal-prev:hover, .signal-next:hover { background: var(--code-bg); }
+  .signal-dots { display: flex; gap: 8px; }
+  .signal-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--ink-muted);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.15s;
+  }
+  .signal-dot.active {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  @media (max-width: 640px) {
+    .signal-cols { grid-template-columns: 1fr; gap: 20px; }
+    .signal-slider { padding: 20px; }
+    .signal-slide h3 { font-size: 19px; }
+  }
+
+  /* ─── Outlook email mockup ─── */
+  .outlook-email {
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    padding: 24px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    color: #1a1a1a;
+  }
+  .outlook-header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .outlook-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b8412f, #8e3022);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .outlook-avatar.ae { background: linear-gradient(135deg, #5b8def, #3b6cd1); }
+  .outlook-meta { flex: 1; min-width: 200px; }
+  .outlook-from {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 14px;
+  }
+  .outlook-from-email {
+    color: #707070;
+    font-weight: 400;
+    font-size: 13px;
+  }
+  .outlook-to {
+    color: #707070;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .outlook-date {
+    color: #707070;
+    font-size: 12px;
+    margin-left: auto;
+    text-align: right;
+  }
+  .outlook-subject {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 14px;
+    color: #1a1a1a;
+  }
+  .outlook-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #1a1a1a;
+  }
+  .outlook-body p { margin: 0 0 12px 0; }
+  .outlook-body p:last-child { margin-bottom: 0; }
+  .outlook-disclaimer {
+    font-size: 11px;
+    color: #999;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #ebebeb;
+    line-height: 1.4;
+  }
+
+  /* ─── LinkedIn DM mockup ─── */
+  .linkedin-dm {
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: -apple-system, system-ui, 'Segoe UI', sans-serif;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    color: #1a1a1a;
+  }
+  .linkedin-header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 14px;
+  }
+  .linkedin-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0a66c2, #004182);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .linkedin-name {
+    font-weight: 600;
+    color: #000;
+    font-size: 14px;
+  }
+  .linkedin-headline {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+  }
+  .linkedin-bubble {
+    background: #eef3f8;
+    padding: 12px 14px;
+    border-radius: 4px 12px 12px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1a1a1a;
+  }
+  .linkedin-bubble p { margin: 0 0 10px 0; }
+  .linkedin-bubble p:last-child { margin-bottom: 0; }
+  .linkedin-timestamp {
+    font-size: 11px;
+    color: #999;
+    margin-top: 6px;
+    padding-left: 4px;
+  }
+  .linkedin-conn-note {
+    display: inline-block;
+    font-size: 11px;
+    background: #f3f6f8;
+    color: #0a66c2;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  /* ─── Alert card (matches Jan's screenshot design) ─── */
+  .instance-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin: 0 0 14px 0;
+  }
+  .alert-card {
+    background: #fff;
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .alert-card-header {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-bottom: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .alert-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 22px;
+    line-height: 1.3;
+  }
+  .alert-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 36px;
+    margin-bottom: 22px;
+  }
+  .alert-meta-cell .alert-meta-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .alert-meta-cell .alert-meta-value {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .alert-score-pill {
+    display: inline-block;
+    background: #FFE5E0;
+    color: #B8412F;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-family: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    font-weight: 600;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+  .alert-hook-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .alert-hook-quote {
+    background: #FAF8F4;
+    border-left: 3px solid #d8d4cc;
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 22px;
+    color: var(--ink);
+  }
+  .alert-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .alert-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: inherit;
+    cursor: pointer;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink);
+    transition: background 0.15s;
+  }
+  .alert-btn:hover { background: var(--code-bg); }
+  .alert-btn-primary {
+    background: #1A6E51;
+    color: #fff;
+    border-color: #1A6E51;
+  }
+  .alert-btn-primary:hover { background: #155a42; }
+  .alert-btn-arrow {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-left: 2px;
+  }
+
+  /* ─── Channel toggle (Email | LinkedIn) ─── */
+  .channel-toggle {
+    display: inline-flex;
+    gap: 4px;
+    margin: 28px 0 0 0;
+    padding: 4px;
+    background: var(--code-bg);
+    border-radius: 8px;
+  }
+  .channel-tab {
+    background: transparent;
+    border: none;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+  }
+  .channel-tab.active {
+    background: var(--bg-card);
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+  .channel-panel { display: none; padding-top: 20px; }
+  .channel-panel.active { display: block; }
+  .channel-empty {
+    background: var(--bg-card);
+    border: 1px dashed var(--rule);
+    padding: 24px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+  .channel-empty strong { color: var(--ink); }
+
+  /* ─── Variant tabs (A | B | C) ─── */
+  .variant-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .variant-tab {
+    background: transparent;
+    border: none;
+    padding: 9px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .variant-tab:hover { color: var(--ink); }
+  .variant-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .variant-content { display: none; }
+  .variant-content.active { display: block; animation: signalFade 0.2s ease; }
+
+  @media (max-width: 640px) {
+    .alert-card { padding: 20px 18px; }
+    .alert-meta-grid { grid-template-columns: 1fr; gap: 14px; }
+    .alert-card-title { font-size: 18px; }
+    .alert-actions { flex-direction: column; align-items: stretch; }
+    .channel-toggle { width: 100%; }
+    .channel-tab { flex: 1; text-align: center; }
+  }
+
+  /* ─── Channel mockup slider variants ─── */
+  .channel-slider .signal-slides { min-height: 0; }
+  .channel-slide-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .channel-tier-pill {
+    background: var(--ink);
+    color: var(--bg-card);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .channel-tier-pill.tier-2 { background: #b8412f; color: #fff; }
+  .channel-tier-pill.tier-3 { background: #5C5852; color: #fff; }
+  .channel-step-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin: 20px 0 6px 0;
+  }
+  .variant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 14px 0;
+  }
+  .variant-card {
+    background: var(--bg-card);
+    border: 1px solid var(--code-bg);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .variant-card .variant-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .variant-card p { margin: 0 0 8px 0; font-size: 13px; }
+  .variant-card p:last-child { margin-bottom: 0; }
+  @media (max-width: 640px) {
+    .variant-grid { grid-template-columns: 1fr; gap: 12px; }
+    .outlook-header { gap: 8px; }
+    .outlook-date { margin-left: 52px; text-align: left; }
+  }
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+
+<header class="hero">
+  <div class="eyebrow">GTM Engineer Application · For Duvo</div>
+  <h1>What I shipped, and what I'd wire <span class="accent">first</span> at Duvo.</h1>
+  <div class="meta">
+    <span>Jan Mikeš</span>
+    <span>14 May 2026</span>
+    <span>For Tomáš + David</span>
+  </div>
+
+  <div class="loom-frame">
+    <iframe src="https://www.loom.com/embed/6229b7c2f5e44a72af3861ee1ce0af93"
+            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+            title="Jan Mikeš · Duvo GTME · 3-minute walkthrough"></iframe>
+  </div>
+
+  <p class="loom-caption">3-minute face-cam walkthrough. The document below is the deep dive.</p>
+
+  <div class="doc-map">
+    <p class="doc-map-title">What's in this document</p>
+    <ol class="doc-map-list">
+      <li><strong>Parts 1–3 · Three signal pipelines I've shipped.</strong> UK BESS for a Norwegian GTM agency · Dateio CEE retailer terminal-growth · B2B HR-tech LinkedIn hiring-post outreach. Collapsed by default – click any to expand.</li>
+      <li><strong>Part 4 · The Duvo proposal — the JD answer.</strong> Open by default. Includes the two signals I'd wire first, six worked campaign instances across both signals × three tiers, the AI reply classifier + ghost-recovery agent, tier routing, ten internal-tooling micro-builds, rollout, and cost.</li>
+    </ol>
+    <div class="doc-map-anchors">
+      <span class="anchors-label">Skip ahead:</span>
+      <a href="#part4">Proposal</a>
+      <a href="#signals-detail">Signals</a>
+      <a href="#tier-routing">Tier routing</a>
+      <a href="#internal-tools">Internal tooling</a>
+      <a href="#rollout">Rollout</a>
+      <a href="#cost">Cost</a>
+    </div>
+  </div>
+
+  <div class="repo-badge">
+    <div class="repo-badge-glyph" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="7" width="18" height="13" rx="2"/>
+        <circle cx="12" cy="3" r="1"/>
+        <line x1="12" y1="4" x2="12" y2="7"/>
+        <circle cx="8.5" cy="13" r="1.3" fill="currentColor"/>
+        <circle cx="15.5" cy="13" r="1.3" fill="currentColor"/>
+        <line x1="9" y1="17" x2="15" y2="17"/>
+        <line x1="2" y1="13" x2="3" y2="13"/>
+        <line x1="21" y1="13" x2="22" y2="13"/>
+      </svg>
+    </div>
+    <div class="repo-badge-body">
+      <strong>This deliverable is also on GitHub as markdown.</strong> Easier for Claude Code or any AI assistant on the Duvo side to parse than the styled HTML — same content, plain text, all diagrams as mermaid source. <a href="GITHUB_REPO_PLACEHOLDER" class="repo-badge-link">github.com/PLACEHOLDER/duvo-gtme</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════ PART 1 – BESS ═══════════════════════════════════════ -->
+
+<details class="collapsible">
+  <summary>
+    <div class="summary-inner">
+      <span class="section-num">Part 1 · Shipped</span>
+      <h2>UK BESS developer signal engine <span class="pill pill-shipped">Shipped</span></h2>
+      <span class="preview">Shipped for a Norwegian GTM &amp; ABM agency on behalf of their BESS-vendor client · solo build, &lt;2 days of focused work · live Slack alerts on UK Track 1 BESS developers · open-source · github.com/Miksh21/bess-signal-pipeline</span>
+    </div>
+  </summary>
+  <div class="collapsible-body">
+
+  <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 18px; padding: 12px 16px; background: var(--code-bg); border-radius: 4px;"><strong>Built for:</strong> a Norwegian GTM &amp; ABM agency running outbound on behalf of their BESS-vendor client – needed to surface UK developers in the pre-tender window when buying decisions are still open. Architecture is public; client-specific scoring and account list stay private.</p>
+
+  <p><strong>Problem.</strong> Battery Energy Storage System developers commit grid-connection capacity to the UK National Energy System Operator 2–5 years before they tender for vendor equipment. The TEC register (Transmission Entry Capacity) publishes every connection application – project, capacity, Commercial Operations Date, developer. Most vendors find these developers via news announcements, typically 6–12 months <em>after</em> the vendor decision has been made. Too late.</p>
+
+  <p><strong>Signal.</strong> The TEC register, polled weekly. Filter: BESS technology, COD between 2027–2035. Diff against the previous week's snapshot.</p>
+
+  <div class="diagram">
+    <div class="mermaid">
+flowchart TD
+  A["NESO TEC register<br/><span style='font-size:13px;color:#5C5852'>UK grid-connection queue</span>"]
+  B["n8n cron<br/><span style='font-size:13px;color:#5C5852'>Mon 06:00 UTC</span>"]
+  C[("Supabase<br/><span style='font-size:13px;color:#5C5852'>snapshot + diff</span>")]
+  D["Clay enrichment<br/><span style='font-size:13px;color:#5C5852'>domain · LinkedIn · Claygent news · TED tender</span>"]
+  E{"Deterministic<br/>tier scoring"}
+  F1["Tier 1 → Slack"]
+  F2["Tier 2 → Slack"]
+  F3["Tier 3 → Slack"]
+  G[("fired_signals<br/>audit log")]
+
+  A --> B --> C --> D --> E
+  E --> F1
+  E --> F2
+  E --> F3
+  F1 --> G
+  F2 --> G
+  F3 --> G
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef store fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+
+  class A src
+  class B,D proc
+  class C,G store
+  class F1,F2,F3 out
+  class E gate
+    </div>
+    <div class="caption">BESS pipeline · weekly cron · public data · MIT licensed</div>
+  </div>
+
+  <h4>Tier rules</h4>
+  <ul>
+    <li><strong>Tier 1</strong> – <code>news_count ≥ 2</code> OR (<code>ted_match ≥ 1</code> AND <code>news_count ≥ 1</code>). Developer is publicly active. Hot.</li>
+    <li><strong>Tier 2</strong> – any single positive enrichment hit. Warm.</li>
+    <li><strong>Tier 3</strong> – TEC-only, no enrichment hit. First-mover cold but defensible.</li>
+  </ul>
+
+  <h4>Real Slack output, last Monday's run</h4>
+  <p class="clickable-hint">Live Slack alert recreated in HTML – every button is a real link, click to open the underlying source.</p>
+  <div class="slack-msg">
+    <div class="ts">9:34</div>
+    <div class="hdr">🚨 TIER 1 – ABERTHAW ENERGY LIMITED</div>
+
+    <div class="fields">
+      <div>
+        <div class="lbl">Project capacity</div>
+        <div class="val">249 MW</div>
+      </div>
+      <div>
+        <div class="lbl">Connection date</div>
+        <div class="val">2028-10-30</div>
+      </div>
+      <div>
+        <div class="lbl">TEC project ID</div>
+        <div class="val"><code class="tec-id">a0l4L0000005ietQAA</code></div>
+      </div>
+      <div>
+        <div class="lbl">Confirmation score</div>
+        <div class="val">2 (2 sources)</div>
+      </div>
+    </div>
+
+    <div class="block"><strong>Why Tier 1:</strong> 2 news mentions confirm active BESS development.</div>
+
+    <div class="block">
+      ✏️ <strong>Cold pitch (BMS vendor → VP Project Development):</strong>
+      <blockquote class="slack-q">Saw Aberthaw Energy's 249 MW project cleared Ofgem's LDES eligibility last September – as you move into Project Assessment, BMS specs often lock in before EPC selection. Worth a 15-min benchmark from other UK Track 1 developers?</blockquote>
+    </div>
+
+    <div class="block">🚀 <strong>Action:</strong> get this in front of a contact in &lt;24h. Sequence + LinkedIn dual-channel.</div>
+
+    <div class="actions">
+      <a class="btn primary" href="https://www.neso.energy/data-portal/transmission-entry-capacity-tec-register" target="_blank" rel="noopener">🔍 NESO record</a>
+      <a class="btn" href="https://www.ofgem.gov.uk/sites/default/files/2025-09/LDES%20Eligibility%20Assessment%20Outcome.pdf" target="_blank" rel="noopener">📰 News</a>
+      <a class="btn" href="https://find-and-update.company-information.service.gov.uk/search?q=Aberthaw+Energy+Limited" target="_blank" rel="noopener">📂 Companies House</a>
+    </div>
+
+    <div class="block">
+      <span class="sources-lbl">Sources (2):</span>
+      <div class="actions">
+        <a class="btn" href="https://www.ofgem.gov.uk/sites/default/files/2025-09/LDES%20Eligibility%20Assessment%20Outcome.pdf" target="_blank" rel="noopener">📰 News 1 · Ofgem LDES Eligibility</a>
+        <a class="btn" href="https://modoenergy.com/research/en/gb-great-britain-long-duration-energy-electricity-storage-ldes-cap-floor-ofgem-eligibility-september-2025-assessment-bess" target="_blank" rel="noopener">📰 News 2 · Modo Energy</a>
+      </div>
+    </div>
+  </div>
+
+  <dl class="kv">
+    <dt>Cost per row</dt>
+    <dd>~10 Clay credits per developer enriched</dd>
+    <dt>Stack</dt>
+    <dd>n8n (self-hosted) · Supabase free · Clay Explorer · Slack</dd>
+    <dt>Built</dt>
+    <dd>Solo, &lt;2 days of focused work, Claude Code as daily driver</dd>
+    <dt>Repo</dt>
+    <dd><a href="https://github.com/Miksh21/bess-signal-pipeline">github.com/Miksh21/bess-signal-pipeline</a> · MIT · full README, workflow JSON, migrations, architecture doc</dd>
+  </dl>
+  </div>
+</details>
+
+
+<!-- ═══════════════════════════════════════ PART 2 – DATEIO ═══════════════════════════════════════ -->
+
+<details class="collapsible">
+  <summary>
+    <div class="summary-inner">
+      <span class="section-num">Part 2 · In progress (FMCG)</span>
+      <h2>Dateio CEE retailer terminal-growth engine <span class="pill pill-wip">In progress</span></h2>
+      <span class="preview">Proprietary CEE bank-transaction data moat · weekly terminal-count deltas detect merchant expansion before it hits the news · code + numbers under Dateio NDA, architecture transferable</span>
+    </div>
+  </summary>
+  <div class="collapsible-body">
+
+  <p><strong>Problem.</strong> Dateio sits on a unique data moat: bank transaction telemetry across the CEE retail merchant base. Most outbound vendors find merchant expansion via news (store openings, IPOs, press releases) – months after the vendor decision. We can see the expansion in transaction data <em>before</em> it goes public.</p>
+
+  <p><strong>Hypothesis.</strong> Weekly delta on terminal count per merchant per country:</p>
+  <ul>
+    <li><code>+3 to +10 terminals</code> → branch expansion (typically self-checkout rollout, very common pattern)</li>
+    <li><code>+10 or more</code> → new branch opening or terminal procurement for new sites</li>
+  </ul>
+
+  <div class="diagram">
+    <div class="mermaid">
+flowchart TD
+  A["Dateio DWH<br/><span style='font-size:13px;color:#5C5852'>CEE bank transaction telemetry · 8 markets · NDA</span>"]
+  B["Weekly SQL query<br/><span style='font-size:13px;color:#5C5852'>terminal count Δ per merchant per country</span>"]
+  MDM["Merchant MDM lookup<br/><span style='font-size:13px;color:#5C5852'>HQ Key vs Subsidiary resolution · attaches Pipedrive Org ID</span>"]
+  DEDUP["Dedup &amp; baseline<br/><span style='font-size:13px;color:#5C5852'>filters merchants with chronic volatility · 12-week rolling baseline</span>"]
+  C{"Δ classification"}
+  D1["+3 to +10:<br/>self-checkout expansion"]
+  D2["+10 or more:<br/>new branch / new procurement"]
+  E["AI hypothesis validation<br/><span style='font-size:13px;color:#5C5852'>Claude · scores hypothesis confidence + assigns merchant tier</span>"]
+  F1["Czech / Slovak registries<br/><span style='font-size:13px;color:#5C5852'>ARES · Justice.cz · Finstat · new branch filings</span>"]
+  F2["Job portals · country-specific<br/><span style='font-size:13px;color:#5C5852'>StartupJobs (CZ) · Profesia (SK) · LinkedIn (DE/AT/HU/RO) · store-manager / regional-ops roles</span>"]
+  F3["Retail trade press &amp; merchant social<br/><span style='font-size:13px;color:#5C5852'>retailnews.cz · Zboží&amp;Prodej · Trend.sk · merchant LinkedIn / Facebook</span>"]
+  F4["Brand / ad activity<br/><span style='font-size:13px;color:#5C5852'>Facebook Ad Library · Google Trends · merchant site change detection</span>"]
+  G{"Hypothesis<br/>confirmed?"}
+  H["AE alert in Teams<br/><span style='font-size:13px;color:#5C5852'>merchant context + suggested pitch · routed by HQ country</span>"]
+  PD["Pipedrive auto-activity<br/><span style='font-size:13px;color:#5C5852'>creates task on assigned owner · attaches enrichment + signal date</span>"]
+  FB["AE outcome feedback<br/><span style='font-size:13px;color:#5C5852'>contacted · meeting booked · won · lost · loops back to E for source-quality scoring</span>"]
+  I["Discard / archive<br/><span style='font-size:13px;color:#5C5852'>logged for false-positive analysis</span>"]
+
+  A --> B --> MDM --> DEDUP --> C
+  C --> D1
+  C --> D2
+  D1 --> E
+  D2 --> E
+  E --> F1
+  E --> F2
+  E --> F3
+  E --> F4
+  F1 --> G
+  F2 --> G
+  F3 --> G
+  F4 --> G
+  G -->|Yes| H
+  G -->|Yes| PD
+  H --> FB
+  PD --> FB
+  FB -.->|source-quality + scoring weights| E
+  G -->|No| I
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef hyp fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef nope fill:#EFE9DC,stroke:#5C5852,stroke-width:1px,color:#5C5852
+  classDef fb fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#FDFAF3
+
+  class A src
+  class B,MDM,DEDUP,E proc
+  class D1,D2,F1,F2,F3,F4 hyp
+  class H,PD out
+  class C,G gate
+  class I nope
+  class FB fb
+    </div>
+    <div class="caption">Dateio terminal-growth · proprietary data moat · FMCG vertical</div>
+  </div>
+
+  <h4>What's shipped vs designed</h4>
+  <ul>
+    <li><strong>Shipped:</strong> the weekly SQL query, terminal-delta classification logic, the merchant MDM lookup (HQ Key vs Subsidiary resolution feeding Pipedrive Org ID attachment). Running today.</li>
+    <li><strong>Designed, awaiting marketing-director onboarding (Aug 2026):</strong> the multi-source enrichment loop (registries, country-specific job portals, retail trade press, brand activity), the AI hypothesis validation, country-routed Teams alerts to AEs, Pipedrive auto-activity creation, and the AE-outcome feedback loop that re-weights source-quality scoring over time.</li>
+  </ul>
+
+  <h4>Teams adaptive card · sample format</h4>
+  <p>Dateio runs on Microsoft Teams. Sample card shape for the merchant-expansion alert – bracketed values are placeholders since merchant-level deltas are under NDA.</p>
+  <div class="teams-card">
+    <div class="card-header">📊 <strong>Dateio Signal Engine</strong> · posted 09:14 · Today</div>
+    <div class="card-body">
+      <div class="card-title">📈 MERCHANT EXPANSION – [Merchant name redacted]</div>
+
+      <div class="fact-set">
+        <div class="fact-lbl">Country:</div><div class="fact-val">Czech Republic</div>
+        <div class="fact-lbl">Weekly Δ:</div><div class="fact-val">+14 terminals (vs 0–3 baseline)</div>
+        <div class="fact-lbl">Pattern:</div><div class="fact-val">New branch opening (&gt; +10 terminals)</div>
+        <div class="fact-lbl">Merchant tier:</div><div class="fact-val">Tier 1 · top-50 CEE retail</div>
+        <div class="fact-lbl">Signal date:</div><div class="fact-val">2026-05-12</div>
+      </div>
+
+      <div class="text-block"><strong>Why it matters:</strong> Terminal procurement of +14 in 7 days indicates a new physical store opening. Press release typically follows in 4–8 weeks. We see the procurement decision <em>before</em> the public announcement – partnership outreach lands ahead of competitors.</div>
+
+      <div class="action-set">
+        <a class="action-btn primary" href="#crm-record" target="_blank" rel="noopener">📇 Open in CRM</a>
+        <a class="action-btn" href="#dwh-query" target="_blank" rel="noopener">🗄️ View source query</a>
+        <a class="action-btn" href="#mark-contacted" target="_blank" rel="noopener">✅ Mark contacted</a>
+      </div>
+    </div>
+  </div>
+
+  <h4>Why I can't show the data</h4>
+  <p>The transaction telemetry is under NDA – I can't reveal merchant-level deltas. What I <em>can</em> show is the workflow and the alert shape. The moat here isn't the workflow, it's the data access. Duvo's exact parallel: Rohlik's operational telemetry was the proving ground that turned Duvo's agents into a product. Proprietary domain data &gt; generic ICP lists, every time.</p>
+
+  <h4>Why I can't run it as outbound today</h4>
+  <p>Outbound at Dateio is top-down 1:1 per AE – not a campaign function. So this is infrastructure I'm building for the moment that policy shifts (planned for marketing-director onboarding, August 2026). It's the kind of patience-with-prep work that compounds inside an org over quarters.</p>
+
+  <dl class="kv">
+    <dt>Adjacent signals</dt>
+    <dd>CDP/CRM migration tracking · brand-awareness social listening · same architecture, future sprint</dd>
+  </dl>
+  </div>
+</details>
+
+
+<!-- ═══════════════════════════════════════ PART 3 – LINKEDIN ═══════════════════════════════════════ -->
+
+<details class="collapsible">
+  <summary>
+    <div class="summary-inner">
+      <span class="section-num">Part 3 · Operating (CZ/SK)</span>
+      <h2>LinkedIn hiring-post outreach pipeline <span class="pill pill-operating">Operating</span></h2>
+      <span class="preview">Designed by my client's previous LeadGen hire · I operate it now as fractional GTME at a B2B HR-tech client · running in production on the client's AWS infra · the architectural pattern Part 4 borrows from</span>
+    </div>
+  </summary>
+  <div class="collapsible-body">
+
+  <p><strong>Context and ownership.</strong> Pipeline designed and built by my client's previous LeadGen hire (now departed). I'm fractional GTME at the client – a B2B HR-tech company. After my predecessor left, I came in to complete deployment, run the forensic audit they couldn't deliver, and operate the system day-to-day. The pipeline runs on the client's AWS infrastructure (their IT/devops manages the deployment surface); I own the GTM logic, signal rules, message copy, AE routing, and ongoing improvements. IP belongs to the client. Including this here because the architecture is the multi-stage <em>signal → classify → personalise → review → push</em> shape Duvo's JD describes – and the proposed Duvo signals in Part 4 re-use this architectural pattern.</p>
+
+  <p><strong>Signal.</strong> 22 LinkedIn search queries (CZ/SK/EN hiring keywords), scraped daily via Apify. ~100 posts in, ~25–30 qualified leads out.</p>
+
+  <div class="diagram">
+    <div class="mermaid">
+flowchart TD
+  A["LinkedIn search URLs<br/><span style='font-size:13px;color:#5C5852'>22 queries · CZ/SK/EN</span>"]
+  B["Apify scraper<br/><span style='font-size:13px;color:#5C5852'>daily 07:00</span>"]
+  C["100+ regex filters<br/><span style='font-size:13px;color:#5C5852'>agencies · seekers · dupes</span>"]
+  D["Claude Haiku<br/><span style='font-size:13px;color:#5C5852'>classify: hiring vs not</span>"]
+  E["Apify profile enrichment<br/><span style='font-size:13px;color:#5C5852'>90-day cache</span>"]
+  F["Claude Opus<br/><span style='font-size:13px;color:#5C5852'>personalised CZ message</span>"]
+  G["Slack review<br/><span style='font-size:13px;color:#5C5852'>Approve · Edit · Reject</span>"]
+  H["Round-robin routing<br/><span style='font-size:13px;color:#5C5852'>5 sales · CZ/SK rules</span>"]
+  I["HeyReach campaign<br/><span style='font-size:13px;color:#5C5852'>auto-push on approve</span>"]
+  J[("SQLite<br/>dedup · cost tracking")]
+
+  A --> B --> C --> D --> E --> F --> G --> H --> I
+  I --> J
+  D -.-> J
+  F -.-> J
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef ai fill:#EFE9DC,stroke:#B8412F,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef store fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+
+  class A src
+  class B,C,E,H proc
+  class D,F ai
+  class G,I out
+  class J store
+    </div>
+    <div class="caption">LinkedIn hiring-post pipeline · CZ/SK market · 583 tests · 98% coverage · MIT</div>
+  </div>
+
+  <h4>Slack review gate · sample alert</h4>
+  <p>This is the human-in-the-loop step. Every personalised draft hits Slack for a sales-team member to approve/edit/reject before it's pushed to HeyReach. No message reaches a prospect without human eyes.</p>
+  <div class="slack-msg">
+    <div class="ts">10:42 · #leadgen-review</div>
+    <div class="hdr">💼 HIRING SIGNAL – [Company name]</div>
+
+    <div class="fields">
+      <div>
+        <div class="lbl">Role</div>
+        <div class="val">Senior Account Executive · DACH</div>
+      </div>
+      <div>
+        <div class="lbl">Posted</div>
+        <div class="val">2 hours ago · LinkedIn</div>
+      </div>
+      <div>
+        <div class="lbl">Country</div>
+        <div class="val">🇨🇿 Czech Republic · formal greeting (Vykání)</div>
+      </div>
+      <div>
+        <div class="lbl">Routed to AE</div>
+        <div class="val">[Round-robin: AE 3 of 5]</div>
+      </div>
+    </div>
+
+    <div class="block">
+      ✏️ <strong>Personalised draft (CZ, Claude Opus):</strong>
+      <blockquote class="slack-q">Dobrý den, [pane/paní Vokativ příjmení CZ/SK],<br><br>vidím, že pro [Společnost lidově (bez s.r.o atp.)] hledá seniorní obchodníky pro DACH. Klasická inzerce dnes oslovuje hlavně aktivní uchazeče – a&nbsp;ti seniornější se nehlásí, protože si práci aktivně nehledají.<br><br>U&nbsp;nás kombinujeme AI sourcing pasivních kandidátů s&nbsp;předvýběrem od seniorních recruiterů. AI voicebot odfiltruje až 90&nbsp;% nerelevantních profilů ještě před tím, než vám pošleme jakýkoliv životopis. První prověření kandidáti přicházejí typicky do 48 hodin od spuštění kampaně.<br><br>Měl(a) byste 15 minut tento týden na krátký call?</blockquote>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" href="#approve-push" target="_blank" rel="noopener">✅ Approve &amp; push to HeyReach</a>
+      <a class="btn" href="#edit-draft" target="_blank" rel="noopener">✏️ Edit draft</a>
+      <a class="btn" href="#reject" target="_blank" rel="noopener">❌ Reject</a>
+    </div>
+
+    <div class="block" style="font-size: 13px; color: #616061; margin-top: 12px;">
+      Cost this draft: $0.18 · Haiku classify $0.02 + Opus personalise $0.16
+    </div>
+  </div>
+
+  <h4>What stands out</h4>
+  <ul>
+    <li><strong>Multi-stage AI</strong> – Claude Haiku for cheap classification, Claude Opus only for the final personalised message. Cost-capped at $5/run.</li>
+    <li><strong>Human-in-the-loop</strong> – Slack review gate (above) before any message hits HeyReach. Approve / Edit / Reject buttons are real, not decorative.</li>
+    <li><strong>4-level dedup</strong> – cross-run author (30d), profile cache (90d), company-level, push-time. No prospect gets contacted twice.</li>
+    <li><strong>Country-aware routing</strong> – Slovak leads route to a specific AE first; formal vs informal greeting rules enforced.</li>
+    <li><strong>Production posture</strong> – 583 automated tests, 98% coverage, CI/CD on GitHub, per-run cost cap, pre-stage cost estimation.</li>
+  </ul>
+
+  <dl class="kv">
+    <dt>Total cost</dt>
+    <dd>~$100–160/month all-in (Apify, OpenRouter, hosting, HeyReach)</dd>
+    <dt>Output</dt>
+    <dd>~25–30 qualified leads/day across 5 AEs</dd>
+    <dt>Time saved</dt>
+    <dd>~2–3 hours/day of manual LinkedIn searching</dd>
+    <dt>Ownership</dt>
+    <dd>Design: previous LeadGen hire (departed) · IP + infra: B2B HR-tech client · GTM logic + operations + ongoing development: me</dd>
+  </dl>
+  </div>
+</details>
+
+
+<!-- ═══════════════════════════════════════ PART 4 – DUVO ═══════════════════════════════════════ -->
+
+<section>
+  <span class="section-num" id="part4">Part 4 · What I&#x2019;d wire first at Duvo</span>
+  <h2>Hire me as Duvo's first GTM Engineer to build the system that makes a 5-person GTM team look like 50.</h2>
+
+  <div class="part4-tldr">
+
+    <p class="game-goal">Hire me as the unsung 10x hire the JD asks for. I'll ship all four ownership pillars – <strong>agentic outbound stack, signal pipelines, account scoring &amp; CRM hygiene, internal tooling</strong> – live in 4 weeks, on ~$780–1,480/mo of new tool-stack spend (not headcount), with the AI classifier + copy agent running inside Duvo's existing Claude allocation. The next AE you hire lands on infrastructure, not a blank slate – pipeline for everyone, forever.</p>
+
+    <p class="game-headline">4 JD pillars shipped in 4 weeks · 2 signal pipelines + 4-signal roadmap · 10-tool internal stack · ~$780–1,480/mo tool-stack spend · 0 new AE seat (the hire before #2)</p>
+
+    <ol class="game-args">
+      <li>
+        <strong>What ships in 4 weeks — the four pillars verbatim from the JD.</strong>
+        <ul style="margin: 8px 0 0 0; padding-left: 18px; list-style: none;">
+          <li style="margin-bottom: 8px;"><strong>(i) Agentic outbound stack.</strong> Tier-routed multi-step sequences from Tomáš's name across all 3 tiers + his personal LinkedIn for Tier-1 manual. Sequences fire on real intent (Signal A / B trigger), not arbitrary cadences. AI classifier triages every reply with calendar-checked drafts + MEDDPICC fields auto-written to HubSpot.</li>
+          <li style="margin-bottom: 8px;"><strong>(ii) Signal pipelines.</strong> Two live at Week 4: retail leadership change (Apify · Companies House · Exa) and post-RPA disillusionment (LinkedIn jobs · PredictLeads · Exa semantic). Both ingest, score, route to the right rep with the right narrative. Four-signal roadmap behind them (market expansion · vendor stack displacement · ABM saturation · M&amp;A).</li>
+          <li style="margin-bottom: 8px;"><strong>(iii) Account scoring &amp; CRM hygiene.</strong> Clay-native HubSpot sync. ICP-40 + Signal-40 + Persona-20 scoring with recency multipliers. MEDDPICC properties auto-populated from positive replies. RB2B web visits stacking from Week 4 to bump tiered accounts. Tier-1 accounts get attention; HubSpot stays clean.</li>
+          <li style="margin-bottom: 0;"><strong>(iv) Internal tooling.</strong> Ten vibecoded micro-tools (Claude Code daily-driver). Flagship pair: AI reply classifier + self-learning copy agent (closed loop, retrains weekly). Supporting cast: pre-call research agent, HubSpot MCP server, Slack ROI calculator, Gong/Granola feedback loop, meeting action-item agent, ghost-recovery agent (catches the silent leak of ghosted meetings), weekly Tier-1 digest, Cowork dashboards. Turns 30-minute manual tasks into 30-second clicks.</li>
+        </ul>
+        <span class="game-anchor"><a href="#signals-detail">Signals + Campaigns</a><a href="#tier-routing">Tier routing</a><a href="#internal-tools">Internal tooling</a></span>
+      </li>
+      <li>
+        <strong>Why this configuration is right for Duvo specifically.</strong> Series A pre-AE founder-led GTM works <em>exactly</em> when Tomáš is a sitting CEO of a €1B+ CEE grocery group cold-mailing peer category managers, supply chain leads, and CFOs – his dual-CEO position across all 3 tiers compounds an asset no AE hire can ever replicate. Maildoso secondary domains protect duvo.ai reputation at any volume. Claude-native stack means classifier + copy agent run on existing Anthropic allocation, not new spend. The JD's pilots-into-annual-licences motion needs enterprise-grade qualification on every Tier-1 reply; the classifier writes MEDDPICC fields back to HubSpot before Tomáš walks into discovery. CEE retail + UK = both regions I've shipped against (Dateio B2C retail signals, BESS for a Norwegian agency, HR-tech client outbound forensics).
+        <span class="game-anchor"><a href="#tier-routing">Tier routing</a><a href="#part4">Proof-of-work in Parts 1–3 above</a></span>
+      </li>
+      <li>
+        <strong>What it costs and when it pays back.</strong> ~$780–1,480/mo of new tool-stack spend (HeyReach $0 at pilot, deferred to first AE hire · HG Insights not needed · Anthropic API within existing allocation). 4-week rollout: Week 1 access + Maildoso warmup, Week 2 Signal A live, Week 3 Signal B build + classifier wired, Week 4 copy agent + RB2B web visits stacked on. Pays back the first month it lands a Tier 1 pilot that converts.
+        <span class="game-anchor"><a href="#cost">Cost detail</a><a href="#rollout">Rollout plan</a></span>
+      </li>
+    </ol>
+
+  </div>
+
+
+  <h3 id="signals-detail">Two signals, one founder-led motion, AI-triaged replies</h3>
+
+  <p>The JD names hiring posts, leadership changes, and tech-stack changes as the signal universe. Of those, leadership changes have the highest reply-rate baseline (~3× cold; peak engagement at days 14–45 – the vendor-amnesty window when most new ops leaders are still rebuilding their stack). Tech-stack changes are second when the change <em>names a specific competitive position</em> – for Duvo, that's the post-RPA pivot.</p>
+
+  <p><strong>The leverage thesis, made operational.</strong> The JD frames the role as "hire before a second AE" because a GTM Engineer produces pipeline for everyone, forever. At Series A pre-AE-hire stage, the right motion is founder-led: Tomáš's name on every email, his personal LinkedIn for Tier 1 manual touches, and a Claude-based reply classifier as the operational layer that scales his calendar. The internal tooling layer (further down) compounds that: every dashboard, Slack bot, and Claude Code micro-tool turns 30-minute tasks into 30-second clicks. When Duvo hires the first AE, the system absorbs them as a new routing target without rewiring – the AE picks up most Tier 1 accounts using HeyReach on <em>their own</em> personal LinkedIn (high-touch channel for high-priority accounts, the place LinkedIn automation belongs); Tomáš retains a small peer-CEO subset of Tier 1 manually; Tier 2 + 3 stay email-only at every phase. Tomáš's personal LinkedIn is never automated.</p>
+
+  <p>Two signals, each picked to feed both territories Duvo plans to cover – CEE and UK:</p>
+
+  <!-- ─────────── 4A – RETAIL LEADERSHIP CHANGE ─────────── -->
+
+  <h3>Signal A · Retail/FMCG leadership-change tracker <span class="pill pill-proposed">Proposed</span></h3>
+
+  <p><strong>Why now.</strong> Duvo's named buyer is the operational leader at multi-billion-dollar retail and FMCG groups – Heads of Operations, Procurement, Category Management, Finance Ops. The 14–45 day window post-hire is the vendor-amnesty window: peak openness to net-new tools, before the calendar fills with maintenance work. Most outbound finds these leaders 6–12 months later when budgets are locked. This catches them at maximum receptivity.</p>
+
+  <p>Rohlik – Duvo's public customer – is a CEE retailer operating across Czech Republic, Germany, Hungary, Austria, Romania. The pattern is proven there. CEE + UK both need a feeder that respects HQ-country routing so Tier 1 manual outreach (and the future AE's territory) doesn't get tangled.</p>
+
+  <dl class="kv">
+    <dt>Lead time</dt><dd>14–45 day vendor-amnesty window post-hire</dd>
+    <dt>Geography</dt><dd>CEE · UK (one founder-led queue today, both AE territories tomorrow)</dd>
+    <dt>Sources, free</dt><dd>Apify LinkedIn jobs scrape (Director+ retail/FMCG ops/procurement/finance titles) · Apify LinkedIn job-change tracking · Companies House officer changes (UK) · <strong>Exa semantic search</strong> for leadership announcements and retail-trade press mentions (better than fixed RSS, picks up coverage Apify misses)</dd>
+    <dt>Sources, paid</dt><dd>Apollo for contact-data coverage (named in JD, complements Clay waterfalls) · PredictLeads for hiring-velocity layer</dd>
+    <dt>Scoring</dt><dd>ICP fit (40) + signal strength (40) + persona authority (20) = max 100. Recency multipliers applied to weight fresh signals.</dd>
+    <dt>Scraping spine</dt><dd>Same Apify + n8n + Supabase + Slack architecture as Part 3. Retarget existing actors via config change, not rebuild.</dd>
+  </dl>
+
+  <div class="diagram">
+    <div class="mermaid">
+flowchart TD
+  A1["Apify LinkedIn jobs<br/><span style='font-size:13px;color:#5C5852'>retail/FMCG ops · procurement · finance titles · daily</span>"]
+  A2["Apify job-change tracker<br/><span style='font-size:13px;color:#5C5852'>Director+ at retail/FMCG · daily</span>"]
+  A3["Companies House<br/><span style='font-size:13px;color:#5C5852'>UK officer changes · weekly</span>"]
+  A4["Exa semantic search<br/><span style='font-size:13px;color:#5C5852'>leadership announcements · retail trade press</span>"]
+  N["n8n cron<br/><span style='font-size:13px;color:#5C5852'>daily 06:00 · classify · dedup</span>"]
+  B[("Supabase<br/>account history")]
+  C1["Clay enrichment · Step 1<br/><span style='font-size:13px;color:#5C5852'>revenue · headcount · conditional run only if retail/FMCG</span>"]
+  C2["Clay enrichment · Step 2<br/><span style='font-size:13px;color:#5C5852'>SAP user check · multi-marketplace presence · conditional run only if €500M+</span>"]
+  D{"Multi-signal scoring<br/>ICP 40 + Signal 40 + Persona 20"}
+  E1["T1 Hot: change &lt;30d<br/>+ SAP + €500M+ → 80+<br/><b>Tomáš 1:1 manual</b>"]
+  E2["T2 Warm: change 30–90d<br/>OR €500M+ retail → 50–79<br/><b>Smartlead CEO sequence</b>"]
+  E3["T3 Cool: ICP-only → nurture<br/><b>Smartlead daily batch</b>"]
+  TM["Tomáš's outreach queue<br/><span style='font-size:13px;color:#5C5852'>Slack alert + paste-ready hook · email + LinkedIn manual</span>"]
+  SL["Smartlead campaign<br/><span style='font-size:13px;color:#5C5852'>from tomas.cupr@duvo-team.com · Maildoso secondary</span>"]
+  AIC{"Claude classifier<br/><span style='font-size:13px;color:#5C5852'>n8n + Anthropic API · 7-category JSON</span>"}
+  POS["positive_intent<br/>→ tier-aware Slack + calendar-checked draft"]
+  OUT["OOO / objection / unsub / wrong_person<br/>→ requeue · suppress · tag · forward"]
+  MEET["Meeting on calendar<br/><span style='font-size:13px;color:#5C5852'>HubSpot deal + Calendly invite</span>"]
+  HELDQ{"Held?<br/><span style='font-size:13px;color:#5C5852'>Gong/Granola transcript validation</span>"}
+  RECOV["Ghost-recovery agent<br/><span style='font-size:13px;color:#5C5852'>same email thread · 2–3 week chase cadence</span>"]
+  WIN["✅ Booked + held meeting"]
+  COPY["Copy intelligence agent<br/><span style='font-size:13px;color:#5C5852'>weekly batch · pattern library · variant drafts</span>"]
+  GTME["GTME Slack · weekly copy report<br/><span style='font-size:13px;color:#5C5852'>winning patterns + draft variants for next batch</span>"]
+  CRM["HubSpot · outcome SSOT<br/><span style='font-size:13px;color:#5C5852'>Clay native sync · MEDDPICC properties</span>"]
+
+  A1 --> N
+  A2 --> N
+  A3 --> N
+  A4 --> N
+  N --> B --> C1 --> C2 --> D
+  D --> E1 --> TM
+  D --> E2 --> SL
+  D --> E3 --> SL
+  TM --> AIC
+  SL --> AIC
+  AIC --> POS
+  AIC --> OUT
+  POS --> MEET --> HELDQ
+  HELDQ -->|held| WIN
+  HELDQ -->|ghosted| RECOV
+  RECOV --> AIC
+  C2 -.-> CRM
+  POS -.-> CRM
+  OUT -.-> CRM
+  WIN -.-> CRM
+  CRM -.->|aggregated outcomes| COPY
+  SL -.->|sent copy| COPY
+  AIC -.->|reply labels| COPY
+  COPY --> GTME
+  COPY -.->|variant drafts| SL
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef store fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef tier fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef tool fill:#E8D5CF,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef crm fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef win fill:#1A6E51,stroke:#1A6E51,stroke-width:2.5px,color:#FDFAF3
+
+  class A1,A2,A3,A4 src
+  class C1,C2,N proc
+  class B store
+  class D,AIC,HELDQ gate
+  class E1,E2,E3 tier
+  class TM,SL,COPY tool
+  class POS,OUT,MEET,RECOV,GTME out
+  class WIN win
+  class CRM crm
+    </div>
+    <div class="caption">Retail leadership-change tracker · two-territory routing · CRM auto-sync runs in parallel · CRM is the system of record, Slack is the trigger</div>
+  </div>
+
+  <h4>Slack alert · Tier 1 sample</h4>
+  <div class="slack-msg">
+    <div class="ts">07:14 · #signal-a-leadership-changes</div>
+    <div class="hdr">🔥 TIER 1 – [ACCOUNT NAME]</div>
+
+    <div class="fields">
+      <div>
+        <div class="lbl">Persona</div>
+        <div class="val">[First Last] · [Head of Procurement]</div>
+      </div>
+      <div>
+        <div class="lbl">Days in role</div>
+        <div class="val">12 · vendor-amnesty window open</div>
+      </div>
+      <div>
+        <div class="lbl">Account</div>
+        <div class="val">€[X.X]B · retail/FMCG · SAP S/4HANA</div>
+      </div>
+      <div>
+        <div class="lbl">Score</div>
+        <div class="val"><code class="tec-id">87 / 100</code></div>
+      </div>
+    </div>
+
+    <div class="block">
+      ✏️ <strong>Suggested hook (1:1 manual):</strong>
+      <blockquote class="slack-q">Saw you joined [Account] as [Head of Procurement] [12 days] ago. The first 90 days are usually when new ops leaders inherit the manual-process pile nobody had time to fix. Rohlik freed ~60 FTE on supplier negotiations alone with Duvo's agents. Worth 20 minutes?</blockquote>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" href="#hubspot-record" target="_blank" rel="noopener">📇 Open in HubSpot</a>
+      <a class="btn" href="#dream-list" target="_blank" rel="noopener">⭐ Add to dream list</a>
+      <a class="btn" href="#linkedin-profile" target="_blank" rel="noopener">💼 LinkedIn profile</a>
+    </div>
+  </div>
+
+
+  <!-- ─────────── 4B – POST-RPA DISILLUSIONMENT ─────────── -->
+
+  <h3>Signal B · Post-RPA disillusionment signal <span class="pill pill-proposed">Proposed</span></h3>
+
+  <p><strong>Why now.</strong> Duvo's CEO interviews and the SAP-Build-vs-Agentic-AI blog post position the company explicitly as the post-RPA layer – "agents for the messy middle that judgment-based work that breaks UiPath." Every retailer/FMCG with €500M+ revenue deployed UiPath, Blue Prism, or Automation Anywhere between 2018 and 2023. By 2026 those deployments are aging, restructuring, and quietly being modernised. The signal is Duvo's pitch made operational: find accounts where the RPA reckoning is happening, route them to the AE before the modernisation budget gets spent elsewhere.</p>
+
+  <p>Forward Deployed Engineers (US + EU, two open roles per the careers page) are positioned for the technical-replacement conversation. This signal feeds them pre-qualified accounts where the conversation is already ripe.</p>
+
+  <dl class="kv">
+    <dt>Lead time</dt><dd>Real-time + 90-day lookback on tech-stack events</dd>
+    <dt>Geography</dt><dd>Both regions (CEE + UK) · stacked-signal qualification</dd>
+    <dt>Sources, free</dt><dd>Apify LinkedIn jobs scrape (AI automation / agentic / intelligent automation titles) · Apify scrape for legacy RPA tool mentions (UiPath / Blue Prism / Automation Anywhere) in job descriptions · <strong>Exa semantic search</strong> for retail/FMCG content discussing RPA challenges, agentic automation, legacy modernisation</dd>
+    <dt>Sources, paid</dt><dd>PredictLeads for technographic dataset, RPA team restructure events, and hiring velocity – replaces HG Insights at pilot scale (HG only justified later if Fortune-500 displacement plays come into scope)</dd>
+    <dt>Multi-signal stack</dt><dd>3 stacked signals (RPA installed + AI hire + revenue match) trigger a 1.3× heat bonus → Hot tier</dd>
+    <dt>Operating principle</dt><dd>Don't lead with "your UiPath is broken" – lead with the workflow Duvo solves. The signal is internal targeting, not the email opener.</dd>
+  </dl>
+
+  <div class="diagram">
+    <div class="mermaid">
+flowchart TD
+  A1["Apify LinkedIn jobs<br/><span style='font-size:13px;color:#5C5852'>AI automation · agentic · intelligent automation titles</span>"]
+  A2["Apify RPA mentions<br/><span style='font-size:13px;color:#5C5852'>UiPath · Blue Prism · Automation Anywhere in job descriptions</span>"]
+  A3["PredictLeads<br/><span style='font-size:13px;color:#5C5852'>RPA team restructure · technographic dataset · hiring velocity</span>"]
+  A4["Exa semantic search<br/><span style='font-size:13px;color:#5C5852'>'RPA challenges' · 'agentic automation' content</span>"]
+  N["n8n cron<br/><span style='font-size:13px;color:#5C5852'>weekly · cross-reference 4 sources</span>"]
+  B[("Supabase<br/>account + signal history")]
+  C["Clay enrichment<br/><span style='font-size:13px;color:#5C5852'>revenue verify · SAP confirm · conditional run only if RPA confirmed</span>"]
+  D{"Multi-signal stack scoring<br/>1.3× bonus if 3+ signals"}
+  E1["T1 Hot: 3+ signals → 120+<br/><b>Tomáš 1:1 manual + FDE pre-brief</b>"]
+  E2["T2 Warm: 2 signals → 70–119<br/><b>Smartlead CEO sequence</b>"]
+  E3["T3 Cool: 1 signal → ICP fit<br/><b>Smartlead daily batch</b>"]
+  TM["Tomáš's outreach queue<br/><span style='font-size:13px;color:#5C5852'>Slack alert + paste-ready hook · email + LinkedIn manual</span>"]
+  SL["Smartlead campaign<br/><span style='font-size:13px;color:#5C5852'>from tomas.cupr@duvo-team.com · Maildoso secondary</span>"]
+  AIC{"Claude classifier<br/><span style='font-size:13px;color:#5C5852'>n8n + Anthropic API · 7-category JSON</span>"}
+  POS["positive_intent<br/>→ tier-aware Slack + calendar-checked draft"]
+  OUT["OOO / objection / unsub / wrong_person<br/>→ requeue · suppress · tag · forward"]
+  MEET["Meeting on calendar<br/><span style='font-size:13px;color:#5C5852'>HubSpot deal + Calendly invite</span>"]
+  HELDQ{"Held?<br/><span style='font-size:13px;color:#5C5852'>Gong/Granola transcript validation</span>"}
+  RECOV["Ghost-recovery agent<br/><span style='font-size:13px;color:#5C5852'>same email thread · 2–3 week chase cadence</span>"]
+  WIN["✅ Booked + held meeting"]
+  COPY["Copy intelligence agent<br/><span style='font-size:13px;color:#5C5852'>weekly batch · pattern library · variant drafts</span>"]
+  GTME["GTME Slack · weekly copy report<br/><span style='font-size:13px;color:#5C5852'>winning patterns + draft variants for next batch</span>"]
+  H["FDE pre-brief<br/><span style='font-size:13px;color:#5C5852'>auto-drafted RPA-replacement context</span>"]
+  CRM["HubSpot · outcome SSOT<br/><span style='font-size:13px;color:#5C5852'>Clay native sync · MEDDPICC properties</span>"]
+
+  A1 --> N
+  A2 --> N
+  A3 --> N
+  A4 --> N
+  N --> B --> C --> D
+  D --> E1
+  D --> E2
+  D --> E3
+  E1 --> TM
+  E1 --> H
+  E2 --> SL
+  E3 --> SL
+  TM --> AIC
+  SL --> AIC
+  AIC --> POS
+  AIC --> OUT
+  POS --> MEET --> HELDQ
+  HELDQ -->|held| WIN
+  HELDQ -->|ghosted| RECOV
+  RECOV --> AIC
+  C -.-> CRM
+  POS -.-> CRM
+  OUT -.-> CRM
+  WIN -.-> CRM
+  CRM -.->|aggregated outcomes| COPY
+  SL -.->|sent copy| COPY
+  AIC -.->|reply labels| COPY
+  COPY --> GTME
+  COPY -.->|variant drafts| SL
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef store fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef tier fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef tool fill:#E8D5CF,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef crm fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef win fill:#1A6E51,stroke:#1A6E51,stroke-width:2.5px,color:#FDFAF3
+
+  class A1,A2,A3,A4 src
+  class C,N proc
+  class B store
+  class D,AIC,HELDQ gate
+  class E1,E2,E3 tier
+  class TM,SL,COPY tool
+  class POS,OUT,MEET,RECOV,GTME,H out
+  class WIN win
+  class CRM crm
+    </div>
+    <div class="caption">Post-RPA disillusionment signal · stacked-source qualification · CRM auto-sync runs in parallel · FDE pre-brief on Hot accounts</div>
+  </div>
+
+  <h4>Slack alert · Hot tier sample (3-signal stack)</h4>
+  <div class="slack-msg">
+    <div class="ts">07:14 · #signal-b-post-rpa</div>
+    <div class="hdr">🔥 HOT – [ACCOUNT NAME]</div>
+
+    <div class="fields">
+      <div>
+        <div class="lbl">Account</div>
+        <div class="val">€[X.X]B · retail/FMCG</div>
+      </div>
+      <div>
+        <div class="lbl">RPA stack</div>
+        <div class="val">UiPath since [2020] · headcount −18% last 90d</div>
+      </div>
+      <div>
+        <div class="lbl">AI hire</div>
+        <div class="val">"AI Automation Lead" · posted [4 days] ago</div>
+      </div>
+      <div>
+        <div class="lbl">Score</div>
+        <div class="val"><code class="tec-id">124 / 130</code> · 3-signal stack × 1.3×</div>
+      </div>
+    </div>
+
+    <div class="block">
+      ✏️ <strong>Suggested hook (1:1 manual):</strong>
+      <blockquote class="slack-q">Teams in retail with a legacy UiPath deployment hit the same wall: bots break the moment the process needs judgment. Duvo's agents navigate supplier portals, SAP screens, and approval emails without rule-based logic. We don't replace UiPath; we handle what UiPath couldn't. Worth a quick conversation?</blockquote>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" href="#hubspot-record" target="_blank" rel="noopener">📇 Open in HubSpot</a>
+      <a class="btn" href="#fde-prebrief" target="_blank" rel="noopener">📄 FDE pre-brief</a>
+      <a class="btn" href="#predictleads" target="_blank" rel="noopener">🔍 PredictLeads tech stack</a>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 56px;">Roadmap – four more signal types behind the pilot</h3>
+
+  <p>Signals A + B prove the model in Duvo's domain. The four below come next, ported from the <em>Situation → Insight → Action</em> framework I work with at Dateio – same Apify + Clay + n8n + Slack spine, new configs and scoring logic, no new infrastructure. The system gets <em>denser</em>, not bigger.</p>
+
+  <div class="signal-slider" id="signalSlider">
+    <div class="signal-slides">
+
+      <div class="signal-slide active">
+        <div class="signal-meta">
+          <span class="signal-num">01 / 04</span>
+          <span class="signal-month">Month 2</span>
+        </div>
+        <h3>Market expansion event</h3>
+        <p class="signal-analog">Dateio analog: "New store opens"</p>
+        <div class="signal-cols">
+          <div class="signal-col">
+            <h4>Situation</h4>
+            <p>ICP retailer announces new market entry, subsidiary acquisition, or distribution-center launch.</p>
+            <p class="signal-source">Apify PR scrape · Companies House · PredictLeads financing events</p>
+          </div>
+          <div class="signal-col">
+            <h4>Insight</h4>
+            <p>Operational complexity spike = automation budget. Existing process playbooks don't scale to the new entity. Most reachable in the first 60 days post-announcement.</p>
+          </div>
+          <div class="signal-col">
+            <h4>Action</h4>
+            <p><strong>Tier 1 Hot.</strong> Tomáš (or future AE) 1:1 cold-open with the Rohlik CZ→DE→HU→AT→RO comparable. FDE pre-brief on transformation cost before the call.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="signal-slide">
+        <div class="signal-meta">
+          <span class="signal-num">02 / 04</span>
+          <span class="signal-month">Month 3</span>
+        </div>
+        <h3>Competitor evaluation window</h3>
+        <p class="signal-analog">Dateio analog: "Competitor opens nearby"</p>
+        <div class="signal-cols">
+          <div class="signal-col">
+            <h4>Situation</h4>
+            <p>UiPath / SAP Build / Workato product launches or major releases land in TAM accounts.</p>
+            <p class="signal-source">PredictLeads news · Exa semantic search · vendor press release scrape</p>
+          </div>
+          <div class="signal-col">
+            <h4>Insight</h4>
+            <p>Buyer is already in automation-evaluation mode. 30-day window before vendor decision locks. Most addressable when the first vendor disappoints in POC.</p>
+          </div>
+          <div class="signal-col">
+            <h4>Action</h4>
+            <p><strong>Tier 2 Warm.</strong> Smartlead CEO sequence from Tomáš in the 30-day window. "We handle what they couldn't" angle. Email-only at every phase – no LinkedIn layer at this tier (HeyReach is reserved for the AE's Tier 1 LinkedIn channel, post-AE-hire).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="signal-slide">
+        <div class="signal-meta">
+          <span class="signal-num">03 / 04</span>
+          <span class="signal-month">Month 3–4</span>
+        </div>
+        <h3>Automation team contraction</h3>
+        <p class="signal-analog">Dateio analog: "Footfall drops"</p>
+        <div class="signal-cols">
+          <div class="signal-col">
+            <h4>Situation</h4>
+            <p>RPA-adjacent hiring goes silent for 90+ days after a period of active job postings.</p>
+            <p class="signal-source">PredictLeads hiring velocity · Apify LinkedIn jobs diff · headcount tracking</p>
+          </div>
+          <div class="signal-col">
+            <h4>Insight</h4>
+            <p>Either understaffed (Duvo as augmentation) or quiet vendor swap underway (Duvo as replacement). Both reachable but require different framing.</p>
+          </div>
+          <div class="signal-col">
+            <h4>Action</h4>
+            <p><strong>Tier 2 Warm.</strong> HeyReach to remaining team members. "Augmentation, not replacement" framing primary; "vendor evaluation underway?" as secondary.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="signal-slide">
+        <div class="signal-meta">
+          <span class="signal-num">04 / 04</span>
+          <span class="signal-month">Month 4</span>
+        </div>
+        <h3>Precision stack-displacement</h3>
+        <p class="signal-analog">Dateio analog: "Market-share target"</p>
+        <div class="signal-cols">
+          <div class="signal-col">
+            <h4>Situation</h4>
+            <p>Tier 1 ICP × verified RPA installed base × AI-role hiring activity, qualified as Signal B Hot at full production cadence.</p>
+            <p class="signal-source">Signal B Hot tier · ABM ad audience overlay · CRM control-group flag</p>
+          </div>
+          <div class="signal-col">
+            <h4>Insight</h4>
+            <p>These accounts are simultaneously highest-fit and most defended. Single-channel outbound is insufficient – needs multi-touch ABM with a control group to measure incrementality vs blind outbound.</p>
+          </div>
+          <div class="signal-col">
+            <h4>Action</h4>
+            <p><strong>Tier 1 Hot.</strong> Tomáš (or future AE) 1:1 + ABM ad audience overlay. Control-group hold-out for true incrementality measurement.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="signal-nav">
+      <button class="signal-prev" aria-label="Previous signal">←</button>
+      <div class="signal-dots">
+        <button class="signal-dot active" data-target="0" aria-label="Signal 1"></button>
+        <button class="signal-dot" data-target="1" aria-label="Signal 2"></button>
+        <button class="signal-dot" data-target="2" aria-label="Signal 3"></button>
+        <button class="signal-dot" data-target="3" aria-label="Signal 4"></button>
+      </div>
+      <button class="signal-next" aria-label="Next signal">→</button>
+    </div>
+  </div>
+
+  <p style="margin-top: 20px;"><strong>The framework is portable.</strong> What I built at Dateio for B2C retail signals – the architecture that turns DWH events into tier-routed campaigns – is the same architecture above, retargeted. The two pilot signals prove the model; the four above are what compounds in months 2–4. Same spine, new configs.</p>
+</section>
+
+
+<!-- ═══════════════════════════════════════ CAMPAIGNS – COPY + CHANNEL MOCKUPS ═══════════════════════════════════════ -->
+
+<details class="collapsible">
+  <summary>
+    <div class="summary-inner">
+      <h2 style="margin: 0 0 8px 0; font-size: 28px;">Campaigns – signals, outreach, AI-triaged replies</h2>
+      <span class="preview">Six worked instances across both pilot signals × three tiers. Tomáš from-name on every email (Maildoso secondary domain). Tier 1 LinkedIn from his personal account (manual only). All replies triaged by a Claude-based classifier before they ever hit a human – positive intent surfaces to Slack within seconds with a paste-ready draft.</span>
+    </div>
+  </summary>
+  <div class="collapsible-body">
+
+  <p>The architecture above answers <em>which</em> accounts to engage and <em>when</em>. This section answers <em>how</em>. Three architectural choices drive the entire outreach surface:</p>
+
+  <ol style="margin: 16px 0 24px 0;">
+    <li style="margin-bottom: 10px;"><strong>All email from Tomáš Čupr.</strong> At Series A pre-AE-hire stage, founder-led sales is the dominant motion in CEE retail. <strong>Tomáš's dual role as sitting CEO of Rohlik Group and Founder/CEO of Duvo is the strongest single GTM asset Duvo has</strong> – a current CEO of a €1B+ CEE grocery group cold-mailing peer operators carries weight no AE pitch can ever replicate. Using his name across all three tiers compounds that value. Sent via warmed Maildoso secondary domains (<code>tomas.cupr@duvo-team.com</code>) so primary <code>@duvo.ai</code> inbox reputation stays clean regardless of volume.</li>
+    <li style="margin-bottom: 10px;"><strong>Tier 1 LinkedIn = Tomáš's personal account, manual only.</strong> ~5–15 DMs/week, sent by him. Reserved for Hot Tier 1 accounts. No HeyReach automation on his account – ever. LinkedIn is irreplaceable infrastructure and a single account ban erases the founder-channel advantage. Tier 2/3 run as email-only via the CEO from-name at every phase. Once Duvo hires the first AE, the AE's personal LinkedIn becomes the HeyReach engine for the AE's portion of Tier 1 accounts (LinkedIn automation belongs on the high-touch tier, not the high-volume tiers); Tomáš retains a peer-CEO subset of Tier 1 manually.</li>
+    <li style="margin-bottom: 10px;"><strong>All replies triaged by a Claude-based classifier.</strong> Every inbound – from any tier, any channel – hits an n8n workflow that calls the Anthropic API with structured JSON output. Classification into <code>positive_intent · question · objection · OOO · unsubscribe · wrong_person · irrelevant</code>. Each branch routes differently. <strong>Positive intent is routed by tier:</strong> Tier 1 surfaces to Tomáš's Slack within seconds with a paste-ready draft and an availability-checked meeting slot; Tier 2 + Tier 3 surface to the GTME's Slack (mine, during pilot) or to the AE's Slack once one is hired – each with their own Calendly link. The AI never replies <em>as</em> the rep – it triages, drafts, cross-checks calendars, and waits.</li>
+  </ol>
+
+  <p>The six instances below show the full surface: two signals × three tiers, with alert cards matching what Tomáš sees in Slack, then the email and LinkedIn copy that fires from each. Tier 1 instances have three parallel variant hooks (A / B / C – any can be picked); Tier 2 and 3 instances show the 3-step sequence (Step 1 A, Step 1 B, Step 2 bump or Step 4 value drop).</p>
+
+  <h3 style="margin-top: 40px;">Six worked instances · Signal A and Signal B × T1 / T2 / T3</h3>
+
+  <div class="signal-slider channel-slider">
+    <div class="signal-slides">
+
+      <div class="signal-slide active">
+        <div class="channel-slide-meta">
+          <span class="channel-tier-pill tier-1">Signal A · Tier 1 Hot · Bea Bach</span>
+          <span style="font-size: 12px; color: var(--ink-muted);">1 / 6</span>
+        </div>
+
+        <div class="tier-instance">
+      <!-- Slack alert card -->
+      <div class="alert-card">
+        <div class="alert-card-header">duvo-signals  ·  Today at 09:14</div>
+        <div class="alert-card-title">Bea Bach landed at Tesco HU as CCO · 14 days in role</div>
+
+        <div class="alert-meta-grid">
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Account</div>
+          <div class="alert-meta-value">Tesco Stores ČR a.s. (Tesco Hungary subsidiary)</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Revenue</div>
+          <div class="alert-meta-value">€8.2B group · grocery + non-food</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Stack</div>
+          <div class="alert-meta-value">SAP S/4HANA · 8 CEE markets</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Tier signals</div>
+          <div class="alert-meta-value">Leadership change (14d) + vendor amnesty window + ICP fit</div>
+        </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;">
+          <span class="alert-score-pill">92 / 100</span>
+          <span style="font-size: 13px; color: var(--ink-muted);">Routing: Tomáš's manual outreach queue. Email from tomas.cupr@duvo-team.com + DM from his personal LinkedIn. Replies → Claude classifier → instant Slack ping.</span>
+        </div>
+
+        <div class="alert-hook-label">Hook context:</div>
+        <div class="alert-hook-quote">Rohlik solved this exact SAP-to-supplier handoff pattern during the CZ→HU expansion. The 90-day playbook is Tomáš's strongest cold open at Tier 1.</div>
+
+        <div class="alert-actions">
+        <button class="alert-btn alert-btn-primary">Open in HubSpot <span class="alert-btn-arrow">→</span></button>
+        <button class="alert-btn">Add to dream list</button>
+        <button class="alert-btn">LinkedIn profile <span class="alert-btn-arrow">↗</span></button>
+        <button class="alert-btn">Paste-ready hook <span class="alert-btn-arrow">📋</span></button>
+        </div>
+      </div>
+
+          <div class="channel-toggle">
+            <button class="channel-tab active" data-channel="email">Email</button>
+            <button class="channel-tab" data-channel="linkedin">LinkedIn</button>
+          </div>
+
+      <div class="channel-panel active" data-channel="email">
+        <div class="variant-tabs">
+          <button class="variant-tab active" data-variant="a">Variant A · Pattern recognition</button>
+          <button class="variant-tab" data-variant="b">Variant B · Specific pain</button>
+          <button class="variant-tab" data-variant="c">Variant C · Quiet question</button>
+        </div>
+        <div class="variant-content active" data-variant="a">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Bea Bach</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 10:42</div>
+          </div>
+          <div class="outlook-subject">Tesco HU + the SAP-to-supplier gap</div>
+          <div class="outlook-body">
+            <p>Hi Bea,</p>
+            <p>Saw the news – congrats on the Tesco HU role. Most new CCOs at this scale inherit a supplier-portal automation backlog that was "good enough" for the previous footprint and breaks at the new one. Rohlik hit this exact wall in the CZ→HU expansion.</p>
+            <p>Happy to walk through what we fixed in 90 days. Worth 15 min next week?</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="b">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Bea Bach</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 10:42</div>
+          </div>
+          <div class="outlook-subject">SAP S/4HANA → supplier handoff across 8 markets</div>
+          <div class="outlook-body">
+            <p>Hi Bea,</p>
+            <p>Quick context – at Rohlik we ran into a specific failure mode during the CEE expansion: the supplier-portal logic that worked at single-market scale started silently dropping handoffs once SAP was orchestrating across 8 markets. Took 90 days and a parallel agent layer to fix.</p>
+            <p>If Tesco HU is at the early signs of this with the S/4HANA rollout, worth a 15-min comparison before the patterns lock in?</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="c">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Bea Bach</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 10:42</div>
+          </div>
+          <div class="outlook-subject">Quick one</div>
+          <div class="outlook-body">
+            <p>Bea,</p>
+            <p>Quick one, no pitch. How is the SAP rollout playing with the existing supplier portal? Curious where Tesco HU is on the curve.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="channel-panel" data-channel="linkedin">
+        <div class="variant-tabs">
+          <button class="variant-tab active" data-variant="a">Variant A · Direct peer-to-peer</button>
+          <button class="variant-tab" data-variant="b">Variant B · Pattern recognition</button>
+          <button class="variant-tab" data-variant="c">Variant C · Specific pain</button>
+        </div>
+        <div class="variant-content active" data-variant="a">
+        <div class="linkedin-dm">
+          <div class="linkedin-header">
+            <div class="linkedin-avatar">TČ</div>
+            <div>
+              <div class="linkedin-name">Tomáš Čupr</div>
+              <div class="linkedin-headline">Founder &amp; CEO at Duvo · CEO at Rohlik Group</div>
+            </div>
+          </div>
+          <span class="linkedin-conn-note">Connection request + first DM</span>
+          <div class="linkedin-bubble">
+            <p>Hi Bea, congrats on the Tesco HU role. I'm CEO at Rohlik and Duvo – we hit the same supplier-portal handoff break during Rohlik's CZ→HU expansion. Curious if you're seeing the same patterns yet, or if S/4HANA is masking them. Happy to share what we did – 15 min?</p>
+          </div>
+          <div class="linkedin-timestamp">Tue 09:18</div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="b">
+        <div class="linkedin-dm">
+          <div class="linkedin-header">
+            <div class="linkedin-avatar">TČ</div>
+            <div>
+              <div class="linkedin-name">Tomáš Čupr</div>
+              <div class="linkedin-headline">Founder &amp; CEO at Duvo · CEO at Rohlik Group</div>
+            </div>
+          </div>
+          <span class="linkedin-conn-note">Connection request + first DM</span>
+          <div class="linkedin-bubble">
+            <p>Bea – congrats on the new role. New CCOs at multi-market grocery scale usually inherit a supplier-portal automation backlog from the previous footprint that breaks at the new one. Rohlik hit this; we built an agent layer over it. If useful, happy to walk you through what worked.</p>
+          </div>
+          <div class="linkedin-timestamp">Tue 09:18</div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="c">
+        <div class="linkedin-dm">
+          <div class="linkedin-header">
+            <div class="linkedin-avatar">TČ</div>
+            <div>
+              <div class="linkedin-name">Tomáš Čupr</div>
+              <div class="linkedin-headline">Founder &amp; CEO at Duvo · CEO at Rohlik Group</div>
+            </div>
+          </div>
+          <span class="linkedin-conn-note">Connection request + first DM</span>
+          <div class="linkedin-bubble">
+            <p>Bea, hi – quick context: during Rohlik's CEE expansion the SAP-to-supplier handoff started dropping items silently once we crossed 4 markets. If Tesco HU is anywhere near that curve, worth a 15-min call before the patterns lock in.</p>
+          </div>
+          <div class="linkedin-timestamp">Tue 09:18</div>
+        </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+      <div class="signal-slide">
+        <div class="channel-slide-meta">
+          <span class="channel-tier-pill tier-2">Signal A · Tier 2 Warm · Andrei Bucur</span>
+          <span style="font-size: 12px; color: var(--ink-muted);">2 / 6</span>
+        </div>
+
+        <div class="tier-instance">
+      <!-- Slack alert card -->
+      <div class="alert-card">
+        <div class="alert-card-header">duvo-signals  ·  Today at 11:02</div>
+        <div class="alert-card-title">Andrei Bucur landed at Carrefour Romania as Country Manager · 42 days in role</div>
+
+        <div class="alert-meta-grid">
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Account</div>
+          <div class="alert-meta-value">Carrefour România SA (incl. Moldova)</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Revenue</div>
+          <div class="alert-meta-value">€1.8B local · grocery + non-food</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Stack</div>
+          <div class="alert-meta-value">Oracle EBS · 2 markets (RO + MD)</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Tier signals</div>
+          <div class="alert-meta-value">Leadership change (past amnesty) + €1B+ revenue + ICP fit</div>
+        </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;">
+          <span class="alert-score-pill">68 / 100</span>
+          <span style="font-size: 13px; color: var(--ink-muted);">Routing: Tier 2 sequence launching automatically. 3-step email from tomas.cupr@duvo-team.com via Maildoso. No LinkedIn layer (Tomáš's account reserved for Tier 1 manual). All replies → Claude classifier → routing.</span>
+        </div>
+
+        <div class="alert-hook-label">Hook context:</div>
+        <div class="alert-hook-quote">42 days in is past the primary amnesty window – this is a Tier 2 enrolment, not a Tomáš manual touch. Auto-enrolled in CEO email sequence.</div>
+
+        <div class="alert-actions">
+        <button class="alert-btn alert-btn-primary">View sequence in Smartlead <span class="alert-btn-arrow">→</span></button>
+        <button class="alert-btn">Pause enrolment</button>
+        <button class="alert-btn">Promote to Tier 1 <span class="alert-btn-arrow">↑</span></button>
+        <button class="alert-btn">Account in HubSpot <span class="alert-btn-arrow">↗</span></button>
+        </div>
+      </div>
+
+          <div class="channel-toggle">
+            <button class="channel-tab active" data-channel="email">Email</button>
+            <button class="channel-tab" data-channel="linkedin">LinkedIn</button>
+          </div>
+
+      <div class="channel-panel active" data-channel="email">
+        <div class="variant-tabs">
+          <button class="variant-tab active" data-variant="a">Step 1 · A · Austin-style direct</button>
+          <button class="variant-tab" data-variant="b">Step 1 · B · Peer-to-peer</button>
+          <button class="variant-tab" data-variant="c">Step 2 · Bump (Day 5)</button>
+        </div>
+        <div class="variant-content active" data-variant="a">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Andrei Bucur</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 09:14</div>
+          </div>
+          <div class="outlook-subject">Quick one for Carrefour RO</div>
+          <div class="outlook-body">
+            <p>Andrei,</p>
+            <p>We haven't met. I'm CEO at Rohlik and Duvo – Rohlik is a grocery competitor of yours across CEE (direct in CZ and HU), Duvo builds agent infrastructure for retailers at the Oracle-EBS-mature stage.</p>
+            <p>Most country managers at €1.5B+ grocery scale on legacy Oracle EBS hit a specific automation ceiling around 36 months in. If that's where Carrefour RO is, worth a comparison call. If not, just reply "no" and I'll close the loop.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="b">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Andrei Bucur</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 09:14</div>
+          </div>
+          <div class="outlook-subject">Oracle EBS at the 36-month mark</div>
+          <div class="outlook-body">
+            <p>Hi Andrei,</p>
+            <p>Tomáš here from Duvo (also CEO at Rohlik – we're a direct grocery competitor in CEE).</p>
+            <p>Carrefour RO + MD on Oracle EBS is right in the zone where most peers hit an automation ceiling – the modifications stack hits a complexity wall and IT can't ship faster. We've been quietly working with two grocery groups at the same stage. 15-min comparison call?</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="c">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Andrei Bucur</div>
+            </div>
+            <div class="outlook-date">Mon 18/05/2026 08:30</div>
+          </div>
+          <div class="outlook-subject">Re: Quick one for Carrefour RO</div>
+          <div class="outlook-body">
+            <p>Andrei – following up on the note below.</p>
+            <p>Even a "not now" is useful – if it's the wrong time, I won't reach back out.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="channel-panel" data-channel="linkedin">
+        <div class="channel-empty"><strong>No LinkedIn layer at this tier – at any phase.</strong> Tomáš's personal LinkedIn account is reserved exclusively for Tier 1 Hot manual outreach (~5–15 DMs/week, sent by him). Putting HeyReach automation on his account at any volume would burn the only founder-LinkedIn asset we have. Once Duvo hires the first AE, the AE's personal LinkedIn becomes the HeyReach engine for the AE's portion of <em>Tier 1</em> – not Tier 2/3. LinkedIn automation belongs on the high-touch tier where reply rates justify it; Tier 2 + 3 stay email-only via the CEO from-name at every phase.</div>
+      </div>
+        </div>
+      </div>
+
+      <div class="signal-slide">
+        <div class="channel-slide-meta">
+          <span class="channel-tier-pill tier-3">Signal A · Tier 3 Cool · Daily batch</span>
+          <span style="font-size: 12px; color: var(--ink-muted);">3 / 6</span>
+        </div>
+
+        <div class="tier-instance">
+      <!-- Slack alert card -->
+      <div class="alert-card">
+        <div class="alert-card-header">duvo-signals  ·  Today at 07:00</div>
+        <div class="alert-card-title">Tier 3 daily batch · 17 leadership changes (avg score 38 / 100)</div>
+
+        <div class="alert-meta-grid">
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Batch size</div>
+          <div class="alert-meta-value">17 accounts across CEE + UK retail</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Filter</div>
+          <div class="alert-meta-value">ICP-fit only · no recency or stack precision</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Stack</div>
+          <div class="alert-meta-value">Mixed · Oracle EBS, SAP ECC, NetSuite, JDA</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Tier signals</div>
+          <div class="alert-meta-value">Single trigger (leadership change) · no stacking</div>
+        </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;">
+          <span class="alert-score-pill">38 / 100</span>
+          <span style="font-size: 13px; color: var(--ink-muted);">Routing: Smartlead daily batch from tomas.cupr@duvo-team.com (warmed Maildoso secondary). All replies → Claude classifier → positive intent escalates to Tomáš's manual queue.</span>
+        </div>
+
+        <div class="alert-hook-label">Batch summary:</div>
+        <div class="alert-hook-quote">Logged to #tier-3-nurture-log. Smartlead picks up tomorrow's send window. No human touch required – the system handles enrolment, send, and reply triage.</div>
+
+        <div class="alert-actions">
+        <button class="alert-btn alert-btn-primary">Open batch in Smartlead <span class="alert-btn-arrow">→</span></button>
+        <button class="alert-btn">View account list</button>
+        <button class="alert-btn">Sequence config <span class="alert-btn-arrow">⚙</span></button>
+        </div>
+      </div>
+
+          <div class="channel-toggle">
+            <button class="channel-tab active" data-channel="email">Email</button>
+            <button class="channel-tab" data-channel="linkedin">LinkedIn</button>
+          </div>
+
+      <div class="channel-panel active" data-channel="email">
+        <div class="variant-tabs">
+          <button class="variant-tab active" data-variant="a">Step 1 · A · Direct question</button>
+          <button class="variant-tab" data-variant="b">Step 1 · B · Pattern share</button>
+          <button class="variant-tab" data-variant="c">Step 4 · Value drop (Day 14)</button>
+        </div>
+        <div class="variant-content active" data-variant="a">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: {first_name} {last_name}</div>
+            </div>
+            <div class="outlook-date">Wed 13/05/2026 09:00</div>
+          </div>
+          <div class="outlook-subject">How is Oracle EBS playing right now?</div>
+          <div class="outlook-body">
+            <p>Hi {first_name},</p>
+            <p>Tomáš here from Duvo. Quick question – at {company} on Oracle EBS, how is the automation backlog playing right now? Most retailers at your scale tell me the modifications stack hits a complexity ceiling around the 36-month mark.</p>
+            <p>15-min comparison call?</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="b">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: {first_name} {last_name}</div>
+            </div>
+            <div class="outlook-date">Wed 13/05/2026 09:00</div>
+          </div>
+          <div class="outlook-subject">A pattern across {country} retail ops</div>
+          <div class="outlook-body">
+            <p>Hi {first_name},</p>
+            <p>We've been comparing notes across grocery ops in {region}. A pattern keeps coming up: the SAP-to-supplier handoff starts dropping items silently around the 36-month mark.</p>
+            <p>If that's where {company} is, worth a quick call to compare what we're seeing.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="c">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: {first_name} {last_name}</div>
+            </div>
+            <div class="outlook-date">Wed 27/05/2026 09:00</div>
+          </div>
+          <div class="outlook-subject">One last share</div>
+          <div class="outlook-body">
+            <p>Hi {first_name},</p>
+            <p>One last share – we published a short piece on the agent-augmentation pattern we used at Rohlik to keep the Oracle stack alive while shipping faster (link in my LinkedIn profile).</p>
+            <p>If it's useful, take it. If not, no worries – I won't reach back out.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="channel-panel" data-channel="linkedin">
+        <div class="channel-empty"><strong>No LinkedIn layer at this tier – at any phase.</strong> Tomáš's personal LinkedIn account is reserved exclusively for Tier 1 Hot manual outreach (~5–15 DMs/week, sent by him). Putting HeyReach automation on his account at any volume would burn the only founder-LinkedIn asset we have. Once Duvo hires the first AE, the AE's personal LinkedIn becomes the HeyReach engine for the AE's portion of <em>Tier 1</em> – not Tier 2/3. LinkedIn automation belongs on the high-touch tier where reply rates justify it; Tier 2 + 3 stay email-only via the CEO from-name at every phase.</div>
+      </div>
+        </div>
+      </div>
+
+      <div class="signal-slide">
+        <div class="channel-slide-meta">
+          <span class="channel-tier-pill tier-1">Signal B · Tier 1 Hot · James Quincey</span>
+          <span style="font-size: 12px; color: var(--ink-muted);">4 / 6</span>
+        </div>
+
+        <div class="tier-instance">
+      <!-- Slack alert card -->
+      <div class="alert-card">
+        <div class="alert-card-header">duvo-signals  ·  Today at 14:38</div>
+        <div class="alert-card-title">Tesco PLC · 3-stacked signals · CDO James Quincey publicly committed to AI rollout</div>
+
+        <div class="alert-meta-grid">
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Account</div>
+          <div class="alert-meta-value">Tesco PLC (UK + Ireland)</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Revenue</div>
+          <div class="alert-meta-value">£61B group · grocery + general merchandise</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Stack</div>
+          <div class="alert-meta-value">UiPath + Blue Prism (verified) · M365</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Tier signals</div>
+          <div class="alert-meta-value">Public AI commitment + RPA installed + 8 AI hires last 90d</div>
+        </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;">
+          <span class="alert-score-pill">94 / 100</span>
+          <span style="font-size: 13px; color: var(--ink-muted);">Routing: Tomáš's manual outreach queue. Email from tomas.cupr@duvo-team.com + LinkedIn DM from his personal account. FDE pre-brief auto-attached. Replies → Claude classifier → instant Slack ping.</span>
+        </div>
+
+        <div class="alert-hook-label">Hook context:</div>
+        <div class="alert-hook-quote">3 signals stacked = 1.3× score bonus pushes past 90. Post-RPA augmentation pattern. FDE pre-brief auto-drafts in Google Doc once Tomáš accepts the alert.</div>
+
+        <div class="alert-actions">
+        <button class="alert-btn alert-btn-primary">Open in HubSpot <span class="alert-btn-arrow">→</span></button>
+        <button class="alert-btn">FDE pre-brief doc <span class="alert-btn-arrow">📄</span></button>
+        <button class="alert-btn">LinkedIn profile <span class="alert-btn-arrow">↗</span></button>
+        <button class="alert-btn">Paste-ready hook <span class="alert-btn-arrow">📋</span></button>
+        </div>
+      </div>
+
+          <div class="channel-toggle">
+            <button class="channel-tab active" data-channel="email">Email</button>
+            <button class="channel-tab" data-channel="linkedin">LinkedIn</button>
+          </div>
+
+      <div class="channel-panel active" data-channel="email">
+        <div class="variant-tabs">
+          <button class="variant-tab active" data-variant="a">Variant A · Post-RPA precision</button>
+          <button class="variant-tab" data-variant="b">Variant B · FDE pre-brief offer</button>
+          <button class="variant-tab" data-variant="c">Variant C · Direct question</button>
+        </div>
+        <div class="variant-content active" data-variant="a">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: James Quincey</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 15:08</div>
+          </div>
+          <div class="outlook-subject">Tesco's UiPath + Blue Prism stack – the augmentation path</div>
+          <div class="outlook-body">
+            <p>Hi James,</p>
+            <p>Noticed Tesco is hiring 8 AI engineers while still running UiPath + Blue Prism at scale. Most retailers that hit that combination are 18–24 months past the point where the original RPA scope made sense – looking for the augmentation-not-replacement path.</p>
+            <p>One of our FDEs has walked Tesco-comparable retailers through this exact transition. 30 min worth your time?</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="b">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: James Quincey</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 15:08</div>
+          </div>
+          <div class="outlook-subject">Pre-brief on the post-RPA pattern</div>
+          <div class="outlook-body">
+            <p>Hi James,</p>
+            <p>Heard Tesco has 8 open AI engineering roles. We've seen this combination of public commitment + RPA-installed-base before, and the augmentation path is non-obvious.</p>
+            <p>Happy to send our FDE in for a 30-min pre-brief on what worked at peer retailers. No deck, no pitch – just the pattern. If useful, we go from there.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="c">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: James Quincey</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 15:08</div>
+          </div>
+          <div class="outlook-subject">Question</div>
+          <div class="outlook-body">
+            <p>James – quick one.</p>
+            <p>With the AI hiring spree, is the plan to augment the existing UiPath + Blue Prism stack with agents, or rebuild from scratch? Curious which path Tesco is on.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="channel-panel" data-channel="linkedin">
+        <div class="variant-tabs">
+          <button class="variant-tab active" data-variant="a">Variant A · Direct DM</button>
+          <button class="variant-tab" data-variant="b">Variant B · FDE pre-brief</button>
+          <button class="variant-tab" data-variant="c">Variant C · Tactical question</button>
+        </div>
+        <div class="variant-content active" data-variant="a">
+        <div class="linkedin-dm">
+          <div class="linkedin-header">
+            <div class="linkedin-avatar">TČ</div>
+            <div>
+              <div class="linkedin-name">Tomáš Čupr</div>
+              <div class="linkedin-headline">Founder &amp; CEO at Duvo · CEO at Rohlik Group</div>
+            </div>
+          </div>
+          <span class="linkedin-conn-note">Connection request + first DM</span>
+          <div class="linkedin-bubble">
+            <p>James – noticed Tesco is hiring 8 AI engineers while still running UiPath + Blue Prism at scale. The augmentation path here is non-obvious. One of our FDEs has walked peer retailers through this transition. 30 min?</p>
+          </div>
+          <div class="linkedin-timestamp">Tue 09:18</div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="b">
+        <div class="linkedin-dm">
+          <div class="linkedin-header">
+            <div class="linkedin-avatar">TČ</div>
+            <div>
+              <div class="linkedin-name">Tomáš Čupr</div>
+              <div class="linkedin-headline">Founder &amp; CEO at Duvo · CEO at Rohlik Group</div>
+            </div>
+          </div>
+          <span class="linkedin-conn-note">Connection request + first DM</span>
+          <div class="linkedin-bubble">
+            <p>James, hi – we've seen the public AI commitment + RPA-installed-base combination at three other retailers. Happy to send our FDE for a 30-min pre-brief on what worked. No pitch, just the pattern.</p>
+          </div>
+          <div class="linkedin-timestamp">Tue 09:18</div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="c">
+        <div class="linkedin-dm">
+          <div class="linkedin-header">
+            <div class="linkedin-avatar">TČ</div>
+            <div>
+              <div class="linkedin-name">Tomáš Čupr</div>
+              <div class="linkedin-headline">Founder &amp; CEO at Duvo · CEO at Rohlik Group</div>
+            </div>
+          </div>
+          <span class="linkedin-conn-note">Connection request + first DM</span>
+          <div class="linkedin-bubble">
+            <p>James – quick tactical one. With the 8 AI engineer roles open, is Tesco planning to augment the existing UiPath + Blue Prism stack with agents, or rebuild from scratch?</p>
+          </div>
+          <div class="linkedin-timestamp">Tue 09:18</div>
+        </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+      <div class="signal-slide">
+        <div class="channel-slide-meta">
+          <span class="channel-tier-pill tier-2">Signal B · Tier 2 Warm · Sainsbury's UK</span>
+          <span style="font-size: 12px; color: var(--ink-muted);">5 / 6</span>
+        </div>
+
+        <div class="tier-instance">
+      <!-- Slack alert card -->
+      <div class="alert-card">
+        <div class="alert-card-header">duvo-signals  ·  Today at 13:22</div>
+        <div class="alert-card-title">Sainsbury's PLC · Simon Roberts CEO + 12 automation roles open</div>
+
+        <div class="alert-meta-grid">
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Account</div>
+          <div class="alert-meta-value">J Sainsbury PLC (UK)</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Revenue</div>
+          <div class="alert-meta-value">£32.7B group · grocery + Argos</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Stack</div>
+          <div class="alert-meta-value">UiPath (verified) · multi-cloud</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Tier signals</div>
+          <div class="alert-meta-value">Public AI commitment + 12 open automation roles · no RPA-age precision</div>
+        </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;">
+          <span class="alert-score-pill">71 / 100</span>
+          <span style="font-size: 13px; color: var(--ink-muted);">Routing: Tier 2 sequence launching. 3-step email from tomas.cupr@duvo-team.com via Maildoso. No LinkedIn layer (Tomáš's account reserved for Tier 1). All replies → Claude classifier → routing.</span>
+        </div>
+
+        <div class="alert-hook-label">Hook context:</div>
+        <div class="alert-hook-quote">2 signals stacked, no RPA-age precision filter. Tier 2 enrolment, not Tier 1 manual. Auto-enrolled in CEO email sequence.</div>
+
+        <div class="alert-actions">
+        <button class="alert-btn alert-btn-primary">View sequence in Smartlead <span class="alert-btn-arrow">→</span></button>
+        <button class="alert-btn">Pause enrolment</button>
+        <button class="alert-btn">Promote to Tier 1 <span class="alert-btn-arrow">↑</span></button>
+        <button class="alert-btn">Account in HubSpot <span class="alert-btn-arrow">↗</span></button>
+        </div>
+      </div>
+
+          <div class="channel-toggle">
+            <button class="channel-tab active" data-channel="email">Email</button>
+            <button class="channel-tab" data-channel="linkedin">LinkedIn</button>
+          </div>
+
+      <div class="channel-panel active" data-channel="email">
+        <div class="variant-tabs">
+          <button class="variant-tab active" data-variant="a">Step 1 · A · Austin-style direct</button>
+          <button class="variant-tab" data-variant="b">Step 1 · B · Peer-to-peer</button>
+          <button class="variant-tab" data-variant="c">Step 2 · Bump (Day 5)</button>
+        </div>
+        <div class="variant-content active" data-variant="a">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Simon Roberts</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 09:14</div>
+          </div>
+          <div class="outlook-subject">Sainsbury's automation – the 12-role question</div>
+          <div class="outlook-body">
+            <p>Simon,</p>
+            <p>We haven't met. Tomáš here from Duvo (I'm also CEO at Rohlik Group) – Duvo builds agent infrastructure for grocery ops at the UiPath-mature stage.</p>
+            <p>Saw Sainsbury's has 12 automation roles open alongside the public AI commitment. The augmentation path at this stage is non-obvious – worth a 30-min compare? If not, just reply "no" and I'll close it.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="b">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Simon Roberts</div>
+            </div>
+            <div class="outlook-date">Tue 12/05/2026 09:14</div>
+          </div>
+          <div class="outlook-subject">Sainsbury's + the augmentation question</div>
+          <div class="outlook-body">
+            <p>Hi Simon,</p>
+            <p>Tomáš here from Duvo (also CEO at Rohlik Group). Sainsbury's automation hiring spree caught our attention – this is the same configuration where peer retailers have ended up rebuilding from scratch unnecessarily.</p>
+            <p>30 min on what worked at others?</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="c">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: Simon Roberts</div>
+            </div>
+            <div class="outlook-date">Mon 18/05/2026 08:30</div>
+          </div>
+          <div class="outlook-subject">Re: Sainsbury's automation</div>
+          <div class="outlook-body">
+            <p>Simon – nudge on the below.</p>
+            <p>If now's the wrong time, just say – I won't reach back out.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="channel-panel" data-channel="linkedin">
+        <div class="channel-empty"><strong>No LinkedIn layer at this tier – at any phase.</strong> Tomáš's personal LinkedIn account is reserved exclusively for Tier 1 Hot manual outreach (~5–15 DMs/week, sent by him). Putting HeyReach automation on his account at any volume would burn the only founder-LinkedIn asset we have. Once Duvo hires the first AE, the AE's personal LinkedIn becomes the HeyReach engine for the AE's portion of <em>Tier 1</em> – not Tier 2/3. LinkedIn automation belongs on the high-touch tier where reply rates justify it; Tier 2 + 3 stay email-only via the CEO from-name at every phase.</div>
+      </div>
+        </div>
+      </div>
+
+      <div class="signal-slide">
+        <div class="channel-slide-meta">
+          <span class="channel-tier-pill tier-3">Signal B · Tier 3 Cool · Daily batch</span>
+          <span style="font-size: 12px; color: var(--ink-muted);">6 / 6</span>
+        </div>
+
+        <div class="tier-instance">
+      <!-- Slack alert card -->
+      <div class="alert-card">
+        <div class="alert-card-header">duvo-signals  ·  Today at 07:00</div>
+        <div class="alert-card-title">Tier 3 daily batch · 23 public AI commitments (avg score 44 / 100)</div>
+
+        <div class="alert-meta-grid">
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Batch size</div>
+          <div class="alert-meta-value">23 accounts across UK + DACH + FR retail</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Filter</div>
+          <div class="alert-meta-value">ICP fit + public AI commitment · no stack confirmation</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Stack</div>
+          <div class="alert-meta-value">Mixed · UiPath, Automation Anywhere, Power Automate</div>
+        </div>
+        <div class="alert-meta-cell">
+          <div class="alert-meta-label">Tier signals</div>
+          <div class="alert-meta-value">Single trigger (public commitment) · no stacking</div>
+        </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;">
+          <span class="alert-score-pill">44 / 100</span>
+          <span style="font-size: 13px; color: var(--ink-muted);">Routing: Smartlead daily batch from tomas.cupr@duvo-team.com (warmed Maildoso secondary). Replies → Claude classifier → positive intent escalates to Tomáš's manual queue.</span>
+        </div>
+
+        <div class="alert-hook-label">Batch summary:</div>
+        <div class="alert-hook-quote">Logged to #tier-3-nurture-log. Smartlead picks up the send tomorrow. No human touch required.</div>
+
+        <div class="alert-actions">
+        <button class="alert-btn alert-btn-primary">Open batch in Smartlead <span class="alert-btn-arrow">→</span></button>
+        <button class="alert-btn">View account list</button>
+        <button class="alert-btn">Sequence config <span class="alert-btn-arrow">⚙</span></button>
+        </div>
+      </div>
+
+          <div class="channel-toggle">
+            <button class="channel-tab active" data-channel="email">Email</button>
+            <button class="channel-tab" data-channel="linkedin">LinkedIn</button>
+          </div>
+
+      <div class="channel-panel active" data-channel="email">
+        <div class="variant-tabs">
+          <button class="variant-tab active" data-variant="a">Step 1 · A · Direct question</button>
+          <button class="variant-tab" data-variant="b">Step 1 · B · Pattern share</button>
+          <button class="variant-tab" data-variant="c">Step 4 · Value drop (Day 14)</button>
+        </div>
+        <div class="variant-content active" data-variant="a">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: {first_name} {last_name}</div>
+            </div>
+            <div class="outlook-date">Wed 13/05/2026 09:00</div>
+          </div>
+          <div class="outlook-subject">The post-RPA augmentation question</div>
+          <div class="outlook-body">
+            <p>Hi {first_name},</p>
+            <p>Tomáš here from Duvo. Quick one – {company}'s public AI commitment caught our attention. The augmentation path at this stage is non-obvious.</p>
+            <p>30-min comparison call?</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="b">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: {first_name} {last_name}</div>
+            </div>
+            <div class="outlook-date">Wed 13/05/2026 09:00</div>
+          </div>
+          <div class="outlook-subject">A pattern across {country} retail ops</div>
+          <div class="outlook-body">
+            <p>Hi {first_name},</p>
+            <p>A pattern keeps coming up across {country} retail – public AI commitment + UiPath-installed-base + active hiring. Most peers end up rebuilding when augmentation would have worked.</p>
+            <p>Worth a quick compare?</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+        <div class="variant-content" data-variant="c">
+        <div class="outlook-email">
+          <div class="outlook-header">
+            <div class="outlook-avatar">TČ</div>
+            <div class="outlook-meta">
+              <div><span class="outlook-from">Tomáš Čupr</span> <span class="outlook-from-email">&lt;tomas.cupr@duvo-team.com&gt;</span></div>
+              <div class="outlook-to">To: {first_name} {last_name}</div>
+            </div>
+            <div class="outlook-date">Wed 27/05/2026 09:00</div>
+          </div>
+          <div class="outlook-subject">One last share</div>
+          <div class="outlook-body">
+            <p>{first_name},</p>
+            <p>One last share – we published a short piece on the agent-augmentation pattern that worked at peer retailers (link in my LinkedIn profile).</p>
+            <p>If useful, take it. If not, no worries, I won't reach back out.</p>
+            <p>Tomáš</p>
+          </div>
+          <div class="outlook-disclaimer">
+            Tomáš Čupr · Founder &amp; CEO, Duvo · Sent via Maildoso secondary domain to protect duvo.ai inbox reputation. Reply STOP to opt out.
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="channel-panel" data-channel="linkedin">
+        <div class="channel-empty"><strong>No LinkedIn layer at this tier – at any phase.</strong> Tomáš's personal LinkedIn account is reserved exclusively for Tier 1 Hot manual outreach (~5–15 DMs/week, sent by him). Putting HeyReach automation on his account at any volume would burn the only founder-LinkedIn asset we have. Once Duvo hires the first AE, the AE's personal LinkedIn becomes the HeyReach engine for the AE's portion of <em>Tier 1</em> – not Tier 2/3. LinkedIn automation belongs on the high-touch tier where reply rates justify it; Tier 2 + 3 stay email-only via the CEO from-name at every phase.</div>
+      </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="signal-nav">
+      <button class="signal-prev" aria-label="Previous instance">←</button>
+      <div class="signal-dots">
+        <button class="signal-dot active" data-target="0" aria-label="Instance 1"></button>
+        <button class="signal-dot" data-target="1" aria-label="Instance 2"></button>
+        <button class="signal-dot" data-target="2" aria-label="Instance 3"></button>
+        <button class="signal-dot" data-target="3" aria-label="Instance 4"></button>
+        <button class="signal-dot" data-target="4" aria-label="Instance 5"></button>
+        <button class="signal-dot" data-target="5" aria-label="Instance 6"></button>
+      </div>
+      <button class="signal-next" aria-label="Next instance">→</button>
+    </div>
+  </div>
+
+  <!-- ─────── AI Reply Classifier mini-section ─────── -->
+
+  <h3 style="margin-top: 56px;">The AI reply classifier – every inbound triaged before a human sees it</h3>
+
+  <p>The classifier is the GTM Engineer's most valuable build at Duvo, and the part of the architecture that makes the founder-led motion scale past Tomáš's calendar. It's a single n8n workflow with ~6 nodes: webhook listener on the Maildoso / Smartlead inbox → Anthropic API call (Claude Sonnet, structured JSON output enforcing the classification schema) → branching router → action per category.</p>
+
+  <p><strong>Critical framing:</strong> the agent classifies and routes; it never replies <em>as</em> the rep. The trust the founder-led motion depends on is the human at the other end of the reply, not an autoresponder. The system buys speed (Slack ping in under 60 seconds), consistency (every reply categorized the same way), and calendar-awareness (when the prospect proposes a time, the classifier cross-checks the rep's Google/Outlook calendar before drafting). The human spends their time on the 1-in-5 replies that actually deserve them.</p>
+
+  <p><strong>Routing rule for positive_intent</strong> – the only category where rep identity matters. Tier 1 routes to <strong>Tomáš's Slack queue</strong> (he keeps first look on Hot accounts). Tier 2 + Tier 3 route to the <strong>GTME's Slack</strong> during pilot (Jan), then to the <strong>AE's Slack</strong> once Duvo hires the first one – with the option for Tomáš to take any Tier 1 personally regardless of how he wants the day-to-day to run. Each rep's Calendly link is parameterised per route; the classifier picks the right link based on who got the ping.</p>
+
+  <div class="diagram">
+    <div class="mermaid">
+flowchart LR
+  IN["Reply lands in Maildoso /<br/>Smartlead inbox"]
+  WH["n8n webhook<br/>fires on new email"]
+  AI["Anthropic API<br/><span style='font-size:13px;color:#5C5852'>Claude Sonnet · structured JSON</span>"]
+  CLS{"Classification"}
+  POS["positive_intent<br/><b>→ tier-based routing</b>"]
+  CAL["Calendar check<br/><span style='font-size:13px;color:#5C5852'>Google/Outlook · availability vs proposed slot</span>"]
+  T1["Tier 1 → Tomáš's Slack<br/><span style='font-size:13px;color:#5C5852'>draft + book-slot button</span>"]
+  T2["Tier 2 + 3 → GTME / AE Slack<br/><span style='font-size:13px;color:#5C5852'>draft + book-slot button · rep's Calendly link</span>"]
+  Q["question<br/><b>→ FAQ draft or Slack route</b>"]
+  OBJ["objection<br/><b>→ Slack tagged + pause sequence</b>"]
+  OOO["OOO<br/><b>→ extract date + requeue</b>"]
+  UNS["unsubscribe<br/><b>→ suppress globally</b>"]
+  WRONG["wrong_person<br/><b>→ extract forward-to + new outreach</b>"]
+  IRR["irrelevant<br/><b>→ log + drop</b>"]
+  HUB["HubSpot<br/><span style='font-size:13px;color:#5C5852'>activity + deal updates</span>"]
+
+  IN --> WH --> AI --> CLS
+  CLS --> POS
+  CLS --> Q
+  CLS --> OBJ
+  CLS --> OOO
+  CLS --> UNS
+  CLS --> WRONG
+  CLS --> IRR
+  POS --> CAL
+  CAL --> T1
+  CAL --> T2
+  T1 --> HUB
+  T2 --> HUB
+  Q --> HUB
+  OBJ --> HUB
+  OOO --> HUB
+  UNS --> HUB
+  WRONG --> HUB
+
+  classDef in fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef ai fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#FDFAF3
+  classDef ext fill:#fff,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  class IN in
+  class WH,CLS,CAL proc
+  class AI ai
+  class POS,T1,T2,Q,OBJ,OOO,UNS,WRONG,IRR out
+  class HUB ext
+    </div>
+  </div>
+
+  <p style="margin-top: 24px;">Here is what a positive-intent classification looks like when it surfaces in Slack:</p>
+
+  <div class="alert-card" style="border-left-color: #1A6E51;">
+    <div class="alert-card-header">duvo-ai-classifier  ·  Reply detected · 22s ago · #tomas-replies</div>
+    <div class="alert-card-title">Bea Bach replied positively to "Tesco HU + the SAP-to-supplier gap"</div>
+
+    <div class="alert-meta-grid">
+      <div class="alert-meta-cell">
+        <div class="alert-meta-label">Classification</div>
+        <div class="alert-meta-value"><span style="background: #D4EDDA; color: #155724; padding: 2px 10px; border-radius: 3px; font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600;">positive_intent</span> · confidence 0.94</div>
+      </div>
+      <div class="alert-meta-cell">
+        <div class="alert-meta-label">Signal · routing</div>
+        <div class="alert-meta-value">Signal A · Tier 1 Hot · day 2 after first touch → <strong>Tomáš's queue</strong></div>
+      </div>
+      <div class="alert-meta-cell">
+        <div class="alert-meta-label">What she said</div>
+        <div class="alert-meta-value" style="font-style: italic;">"Tomáš – yes, this is exactly the gap we're working through right now. Wednesday or Thursday next week, ideally 30 min."</div>
+      </div>
+      <div class="alert-meta-cell">
+        <div class="alert-meta-label">Availability match · Tomáš's calendar</div>
+        <div class="alert-meta-value">
+          <span style="background: #D4EDDA; color: #155724; padding: 2px 8px; border-radius: 3px; font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 600;">match</span>
+          Thu 21 May · 14:00–14:30 CET (her stated preference) · also free: Wed 09:00, Thu 11:30, Thu 16:00
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-hook-label">Paste-ready draft reply:</div>
+    <div class="alert-hook-quote">
+      <p style="margin: 0 0 10px 0;">Bea – great. Thursday 21st at 14:00 CET works on my side. Sending a calendar invite now: <a href="#" style="color: var(--accent);">calendly.com/tomas-cupr/30min</a>.</p>
+      <p style="margin: 0 0 10px 0;">Attaching the 90-day playbook from the Rohlik HU launch as pre-read – the supplier-portal section starts on page 4.</p>
+      <p style="margin: 0;">Talk Thursday,<br/>Tomáš</p>
+    </div>
+
+    <div class="alert-actions">
+      <button class="alert-btn alert-btn-primary">Book Thu 14:00 CET <span class="alert-btn-arrow">📅</span></button>
+      <button class="alert-btn">Edit reply &amp; send</button>
+      <button class="alert-btn">Open thread in Gmail</button>
+      <button class="alert-btn">Wrong classification</button>
+    </div>
+
+    <p style="margin: 16px 0 0 0; font-size: 12px; color: var(--ink-muted); line-height: 1.5;"><strong>Book and send are separate actions.</strong> The slot books on Tomáš's calendar (+ sends the invite to Bea) the instant he hits the primary button, even if the draft reply still needs editing – avoids losing the slot while the email gets cleaned up. If Tomáš wants to propose a different time, the secondary button opens the draft for edit before send.</p>
+  </div>
+
+  <p style="margin-top: 24px;">Build cost: ~$5–20/month in Anthropic API spend at pilot volumes (50–200 inbound replies/month at Sonnet pricing). At Duvo's existing Claude API allocation this is functionally zero incremental cost. Build time: 2–3 days inside n8n, including the FAQ knowledge base for question-classification routing. This is the system that future-proofs the sales motion: when Duvo hires the first AE and they start sending from their own from-name, the classifier already exists and just adds them as a new routing target.</p>
+
+  <p style="margin-top: 20px; padding: 18px 22px; background: var(--bg-card); border-left: 3px solid #1A6E51; border-radius: 0 4px 4px 0;"><strong>Closes the loop with a self-learning copy agent.</strong> Every label the classifier writes – <code>positive_intent</code>, <code>objection</code>, <code>irrelevant</code> – is a row in a Supabase performance table linked back to the exact subject line, hook, framework, and CTA that fired it. A second weekly-cadence agent (see Internal Tooling below) reads that table, asks Claude which patterns correlate with booked meetings, and writes the next batch's variant copy. <strong>Reply triage and copy generation are the same system viewed from two ends</strong> – the classifier labels what works, the copy agent writes more of what works. The longer it runs, the better it gets at writing cold email, with no manual prompt engineering after Day 1.</p>
+
+  <p style="margin-top: 20px;"><strong>One inside-reference note for context:</strong> David Cervinka surfaces in this architecture as the AE Duvo hires once Tomáš's calendar fills and the pilot proves out – at that point, the classifier routes Tier 2 + Tier 3 positive intent to him by default, with Tomáš retaining first-look on Tier 1. The system is built to absorb that transition without rewiring anything.</p>
+
+  </div>
+</details>
+
+<section>
+
+  <h2 id="tier-routing">Tier → campaign routing</h2>
+
+  <p>One feed, three motions, one reply handler. Tier doesn't just set alert priority – it picks which tool the account flows into and which channels Tomáš's name appears across. The classifier handles every reply uniformly, regardless of which tier or channel it came from.</p>
+
+  <table>
+    <thead>
+      <tr><th>Tier</th><th>Heat</th><th>Treatment</th><th>Tools</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tier 1 + dream list</strong></td>
+        <td>Hot / Red Hot</td>
+        <td>1:1 manual by Tomáš · email + LinkedIn DM from his personal account · custom drafts · FDE pre-brief auto-attached</td>
+        <td>HubSpot task + Slack alert with paste-ready hook · LinkedIn manual</td>
+      </tr>
+      <tr>
+        <td><strong>Tier 2</strong></td>
+        <td>Warm</td>
+        <td>3-step email sequence from Tomáš via Maildoso · no LinkedIn layer (Tomáš's account reserved for Tier 1)</td>
+        <td>Smartlead campaign · Clay webhook auto-enrols account on tier assignment</td>
+      </tr>
+      <tr>
+        <td><strong>Tier 3</strong></td>
+        <td>Cool</td>
+        <td>4-step email sequence from Tomáš via Maildoso · daily batch enrolment · low-touch nurture</td>
+        <td>Smartlead campaign · Clay webhook auto-enrols account on tier assignment</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Each tier-to-tool route is a Clay action wired to the scoring output. <strong>Tier 1 is the only tier with a human in the send loop:</strong> the Slack alert lands in Tomáš's queue with a paste-ready hook (3 variants ranked by signal stack), a one-click HubSpot task, and – when the signal stack qualifies – a Google Doc FDE pre-brief auto-drafted in the background. Tomáš picks email or LinkedIn (or both), edits the hook, sends from his real accounts. <strong>Tier 2 + Tier 3 are fully automated outbound:</strong> the Clay webhook pushes the account into a Smartlead sequence the moment the tier is assigned. Both tiers send from <code>tomas.cupr@duvo-team.com</code> on warmed Maildoso secondary domains – the founder name carries CEE retail recognition while the secondary domain protects <code>@duvo.ai</code> inbox reputation regardless of volume.</p>
+
+  <p><strong>Every reply – from any tier, any channel – passes through the Claude-based classifier before a human sees it.</strong> The n8n workflow detailed in the Campaigns section above receives the inbound webhook from Maildoso/Smartlead, calls the Anthropic API with structured JSON output (Claude Sonnet enforcing the 7-category schema), and routes accordingly. <code>positive_intent</code> is the only category where rep identity matters – <strong>Tier 1 routes to Tomáš's Slack</strong>, <strong>Tier 2 + 3 route to the GTME's Slack during pilot (Jan) and to the AE's once hired.</strong> Whichever rep gets the ping, the classifier also cross-checks their Google or Outlook calendar against any time the prospect proposed, then surfaces an availability match and a one-click book-slot button alongside the editable draft. <code>OOO</code> extracts the return date and requeues the contact; <code>objection</code> tags the conversation and pauses the sequence; <code>unsubscribe</code> propagates globally across Smartlead, HeyReach (when added), and HubSpot; <code>wrong_person</code> extracts the forward-to contact and queues new outreach. The classifier <em>never</em> replies as the rep – it triages, drafts, books, and hands off. <strong>After the meeting hits the calendar, the ghost-recovery agent (Internal Tooling below) takes over the held-check via Gong/Granola</strong>; ghosted meetings re-enter the original email thread on a 2–3 week recovery cadence, held meetings register as the <code>booked + held meeting</code> terminal that the Signal A/B diagrams end on. One canonical funnel, end-to-end.</p>
+
+  <p><strong>Attribution lives in HubSpot Marketing Events by default.</strong> Every action – Slack alert clicked, Tomáš's LinkedIn DM sent, Smartlead reply received, meeting booked, classifier categorization – emits an event to HubSpot for unified multi-touch attribution across all three tiers. The Supabase signal store (already in the pilot stack at $0) doubles as the fallback for custom attribution analytics when HubSpot's model isn't enough – control-group hold-out measurement for the precision stack-displacement signal in the roadmap is the cleanest example.</p>
+
+  <p><strong>Identified web visits stack on top, not as a primary signal.</strong> Duvo's TAM at multi-billion-dollar retailer scale yields a slow trickle of visits (5–10 weekly, most anonymous) – too thin to drive its own pipeline. RB2B free tier (company-level, 150 credits/mo, $0) wires in Week 4 once Signals A and B have a few weeks of CRM tier history to amplify against. Visits on Signal A/B accounts bump tier up one (Tier 2 → Tier 1, Tier 3 → Tier 2); unflagged visits go to a watch-list for retroactive qualification. Pro+ at $199/mo only if person-level resolution justifies it later.</p>
+
+  <p><strong>What happens when Duvo hires the first AE.</strong> The architecture absorbs them without rewiring. The classifier adds the AE as a new routing target on <code>positive_intent</code>: Tier 2 + Tier 3 route to the AE's Slack queue by default; Tier 1 splits between Tomáš's queue (a small peer-CEO subset he keeps manually) and the AE's queue (the bulk of Tier 1). The AE's personal LinkedIn becomes the HeyReach engine for the AE's portion of <strong>Tier 1</strong> – LinkedIn automation belongs on the high-touch tier, not high-volume tiers. Tomáš's personal LinkedIn stays manual forever. Tomáš keeps the from-name on Tier 1 email during pilot; once the AE has warmed Maildoso boxes of their own, they take over the from-name on the AE's Tier 1 + all of Tier 2/3. Same spine, one new node.</p>
+
+</section>
+
+
+
+<!-- ═══════════════════════════════════════ INTERNAL TOOLING ═══════════════════════════════════════ -->
+
+<details class="collapsible">
+  <summary>
+    <div class="summary-inner">
+      <h2 id="internal-tools" style="margin: 0 0 8px 0; font-size: 28px;">Internal tooling – the leverage compound</h2>
+      <span class="preview">Ten vibecoded micro-tools in scope for the first 90 days: AI reply classifier + MEDDPICC scoring, self-learning copy intelligence agent, HubSpot MCP server, pre-call research agent, Slack ROI calculator, Gong + Granola feedback loop, meeting action-item agent, ghost-recovery agent, Tier-1 weekly digest for Tomáš, on-demand Cowork dashboards. Each turns a 30-minute task into a 30-second click.</span>
+    </div>
+  </summary>
+  <div class="collapsible-body">
+
+  <p>Signals plus campaigns plus CRM hygiene cover the outbound surface. The compounding leverage – the thing that turns a 5-person GTM team into a 50-person team's output – is the internal-tooling layer. Vibecode in Claude Code, ship in days, retire after the rep workflow it serves is faster than before. The first two items pair: the classifier triages every inbound reply, and its labels become structured training data for the copy agent, which writes the next batch's variants. Together they form a self-improving cold-outreach engine. Ten examples in scope for the first 90 days:</p>
+
+    <details class="tool-toggle" open>
+    <summary>AI reply classifier <span class="pill pill-proposed" style="margin-left: 6px;">Highest leverage</span></summary>
+    <div class="tool-body">The n8n + Anthropic API workflow detailed in the Campaigns section. Every inbound reply triaged into 7 categories before a human sees it. Tier-aware routing on positive intent, calendar cross-check against the rep's Google/Outlook, paste-ready drafts and one-click slot booking. <strong>Plus conversation-readiness scoring on every <code>positive_intent</code> reply</strong> – pain language, timeline cues, authority signals, budget mentions extracted from the prospect's own words and written back to HubSpot as MEDDPICC-aligned deal properties. The rep walks into discovery with the qualification frame already half-filled. <strong>2–3 days to ship, ~$5–20/mo in Claude tokens, replaces 30+ minutes per day of inbox triage per rep.</strong> The system that future-proofs the whole sales motion when Duvo hires its first AE.</div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Self-learning copy intelligence agent <span class="pill pill-proposed" style="margin-left: 6px;">Closes the loop</span></summary>
+    <div class="tool-body">The classifier's labels are structured training data – every reply tagged <code>positive_intent</code>, <code>objection</code>, or <code>irrelevant</code> is a row in a Supabase performance table linked back to the exact subject line, hook, framework, and CTA that fired it. A second n8n + Anthropic API agent runs weekly: pulls every campaign's sent copy from Smartlead, the classifier's reply categorizations, and HubSpot meeting-booked + opportunity-created outcomes; asks Claude <em>which subject lines, hooks, frameworks, and CTAs correlate with positive intent and booked meetings, controlled for tier and signal type.</em> Output: a winning-pattern report in Supabase plus auto-generated variant copy dropped into Smartlead as drafts for review before the next batch sends. <strong>Seeded at Day 1 with my existing GTM copy framework library</strong> (Austin-style direct, Hugo Sellert pattern, post-RPA precision, breakup variants, leadership-amnesty archetypes) so it produces useful output before Duvo has accumulated its own data. <strong>The system gets better at writing cold copy every week without anyone writing prompts by hand.</strong> Build: ~3 days, same stack as the classifier, near-zero incremental API cost (weekly batch, not per-event).</div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Custom MCP server for HubSpot</summary>
+    <div class="tool-body">Natural-language CRM queries from Slack and Claude. "Show me all Tier 1 accounts with no touch in 14 days" returns a card in Slack with one-click action. I have a Pipedrive MCP shipped from Dateio – HubSpot port is a 2-day rebuild.</div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Pre-call research agent</summary>
+    <div class="tool-body">One workflow, three audiences. Before every sales-side call – Tomáš's Tier-1 manual outreach, future AE discovery, FDE technical deep-dive – the agent ingests the company domain and outputs a 1-page brief in Google Docs: firmographics (revenue, headcount, recent funding via PredictLeads), stack confirmation (SAP / Oracle / UiPath / Blue Prism), 90-day news scan via Exa semantic search, key stakeholders pulled from Apollo, and signal context if the account was Tier-routed by Signals A/B. Hot Signal B accounts get the FDE-specific overlay (RPA stack history + AI hire JD + agent-augmentation talking points). <strong>15 minutes of manual SDR research compressed into a 90-second auto-drafted brief.</strong> Same agent, different audience configs.</div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Slack ROI calculator</summary>
+    <div class="tool-body">Slash command in Slack: <code>/duvo-roi [account] [process]</code> returns a back-of-napkin annual savings estimate based on Duvo's pre-built agent benchmarks (Rohlik metrics as the anchor). Tomáš or future AEs paste it into discovery emails inside 30 seconds.</div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Gong + Granola feedback loop</summary>
+    <div class="tool-body">Post-meeting transcripts mined for objections, competitor mentions, and persona language. Loops back into Signal A and B scoring (which signal sources actually produce conversions) and into hook copy iteration (which framings get traction with which personas).</div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Meeting action item agent</summary>
+    <div class="tool-body">Pairs with the Gong + Granola loop above – same input source, operational output. After every Tomáš (or future AE) call, the transcript triggers an n8n + Anthropic API workflow: extracts action items by speaker, classifies each as deal-blocking vs nice-to-have, creates HubSpot tasks with assignee + due date inferred from the transcript, and posts a structured summary to the relevant <code>#account-{name}</code> Slack channel. Inbound: Fireflies/Gong webhook. Outbound: HubSpot tasks + Slack notification. <strong>Closes the most common Series A pipeline leak – action items decided in calls that nobody writes down.</strong> Build: ~1 day on top of the classifier scaffolding (same n8n + Claude pattern, different input source).</div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Ghost-recovery agent <span class="pill pill-proposed" style="margin-left: 6px;">Catches the silent leak</span></summary>
+    <div class="tool-body">The most painful Series A leak isn't lost deals – it's prospects who said yes, then ghosted the meeting. This agent catches them. <strong>The pre-meeting state object:</strong> from the moment a <code>positive_intent</code> reply books a meeting, a Supabase <code>meetings</code> row tracks everything before the call takes place – original signal trigger, positive-reply text, booking timestamp, calendar invite metadata, any rep notes, plus the HubSpot deal ID. This object is the recovery agent's memory. <strong>The fire trigger:</strong> the moment the meeting slot ends (or earlier – e.g. AE/Tomáš leaves at 5 minutes deciding "I'm cancelling this"), Gong/Granola fires a webhook with summary + transcript (or absence-of-transcript signal) into an n8n + Anthropic API workflow. <strong>The held-check:</strong> Claude cross-references three sources – (a) transcript content (≥2 speakers, substantive duration, not just intro), (b) rep's Google/Outlook calendar (event marked completed vs cancelled vs declined), (c) HubSpot meeting outcome property if the rep filled it. Outputs a structured verdict: <code>held</code> · <code>ghosted</code> · <code>cancelled-by-prospect</code> · <code>cancelled-by-us</code> · <code>cut-short-before-discovery</code>. <strong>The recovery push:</strong> if verdict is <code>ghosted</code> or <code>cut-short-before-discovery</code>, the agent pushes a recovery sequence from <em>the same email thread</em>, <em>the same from-address</em> as the original positive reply was sent to – not a fresh cold sequence. Cadence: ~3 emails over 2–3 weeks, each one referencing the original commitment naturally (the Supabase object supplies the context). Reply handling re-enters the AI classifier loop, so a recovered yes flows through the same triage as the original yes. <strong>Build: ~2 days on top of the classifier + Gong loop. Closes the most expensive silent leak in the funnel – agreed-meetings that vanish.</strong></div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Tier-1 weekly digest</summary>
+    <div class="tool-body">Monday 07:00 Slack digest summarising all Hot/Tier-1 accounts that hit in the last 7 days, what Tomáš touched, what's still untouched, what's in the GTME's queue. One scroll, full account-coverage visibility for Tomáš.</div>
+  </details>
+  <details class="tool-toggle">
+    <summary>Cowork live artifacts for shared dashboards</summary>
+    <div class="tool-body">Tomáš, David, or any future AE asks Claude "show me the current Signal A pipeline state" and gets a live dashboard rendered in chat – tier counts, coverage gaps, conversion deltas – refreshed on demand. No BI tool license, no SQL skill. Same flow for FDE pre-call briefs, weekly signal-tier conversion reports, anything where someone non-technical needs visibility without a Looker seat.</div>
+  </details>
+
+  <p>Each of these turns a recurring 30-minute manual task into a 30-second click. None of them are novel category-level builds – they're vibecoded glue between systems that already exist. The cumulative effect across a 5-person GTM team is the leverage the JD describes.</p>
+  </div>
+</details>
+
+
+<!-- ═══════════════════════════════════════ BUILD PLAN ═══════════════════════════════════════ -->
+
+<section>
+
+<details class="collapsible">
+  <summary>
+    <div class="summary-inner">
+      <h2 id="rollout" style="margin: 0 0 8px 0; font-size: 28px;">Rollout plan – Week 1 access &amp; warmup → Week 4 both signals live</h2>
+      <span class="preview">Four-week sequencing assuming onboarding access provisioned Day 1. Week 1: Apify/Clay/HubSpot/Slack/calendar access + Maildoso secondary-domain warmup begins. Week 2: Signal A build. Week 3: Signal A pilots while Signal B builds. Week 4: both signals in production, CRM auto-sync configured, first pipeline metrics review. Two days of focused work per signal once access is in place – elapsed time is week-scale, not day-scale.</span>
+    </div>
+  </summary>
+  <div class="collapsible-body">
+
+  <p>I'm reframing this from "48 hours" because I don't know your stack access posture, CRM, AE Slack channel structure, or data-warehouse policy yet. What I <em>can</em> commit to is sequencing – what gets built when, and what unblocks what.</p>
+
+  <dl class="kv">
+    <dt>Week 1 · Access + TAM + email infra warmup</dt><dd>Onboarding into Duvo's Apify / Clay / HubSpot / Slack / data-warehouse + Tomáš's calendar (Google or Outlook) for the classifier integration. <strong>TAM enumeration: cross-reference Ocean.io (via Clay credits) + LinkedIn Sales Nav to lock the ~500–1,000 account universe.</strong> ZeroBounce wired into Clay enrichment chain for email validation. <strong>Spin up Maildoso – purchase secondary domains, create the tomas.cupr@duvo-team.com mailbox(es), start the 3-week warmup cycle now so Tier 2 + Tier 3 sends have warm infra ready when signals start firing in Week 3.</strong> Confirm Duvo's existing calendar tool (Calendly, Chili Piper, or other) so Tomáš's slot-booking link is parameterised in the classifier.</dd>
+    <dt>Week 2 · Signal A build</dt><dd>Apify actors retargeted to retail/FMCG ops/procurement/finance titles · Companies House officer-change feed (UK) · Exa semantic search for leadership announcements + retail trade press · Clay enrichment chain with conditional runs · n8n orchestration · Supabase dedup · 2-channel Slack routing (CEE / UK).</dd>
+    <dt>Week 3 · Signal A pilot, Signal B build</dt><dd>Signal A runs in dev mode with Tomáš reviewing alerts daily, iterating hook copy alongside the GTME. Signal B build starts: Apify actors for AI/agentic/intelligent automation titles · Apify actors for legacy RPA mentions in job posts · PredictLeads technographic + RPA-restructure wire-up · 3-signal stack scoring.</dd>
+    <dt>Week 4 · Signal B pilot, both into production</dt><dd>Signal B alerts to AEs with FDE pre-brief auto-drafted on Hot tier · Signal A promoted to production cadence · CRM auto-sync configured · first pipeline metrics review.</dd>
+  </dl>
+
+  <p><em>Two days of focused work per signal is the right order-of-magnitude estimate once access is in place – but elapsed time is week-scale, not day-scale, and I'd rather be honest about that than pitch a 48-hour fantasy.</em></p>
+
+  </div>
+</details>
+
+<details class="collapsible">
+  <summary>
+    <div class="summary-inner">
+      <h2 id="cost" style="margin: 0 0 8px 0; font-size: 28px;">Stack cost – ~$780–1,480/mo at pilot scale, ~500–1,000 accounts monitored</h2>
+      <span class="preview">API-first by default · pricing verified May 2026. Core pilot stack: n8n self-hosted ($0), Clay Growth ($446–495 with PredictLeads + Ocean.io + ZeroBounce native through credits), Supabase ($0), Apify ($50), Maildoso secondary domains ($89), Smartlead ($59). Signal layer: Exa ($40–80), Apollo ($98–147), RB2B free tier ($0 through pilot, person-level at $199 only if justified later). Inside Anthropic existing allocation: classifier, copy agent, all internal tooling agents. HeyReach $0 at pilot, activates with first AE hire on the AE's LinkedIn for Tier 1.</span>
+    </div>
+  </summary>
+  <div class="collapsible-body">
+
+  <p style="margin-bottom: 16px; font-size: 14px; color: var(--ink-muted); line-height: 1.55;"><strong>API-first by default · pricing verified May 2026.</strong> I work from Claude Code 90 % of the day, so every tool below was chosen for programmable access first, UI second – which is why the list reads Smartlead (not Instantly), Clay (not ZoomInfo Engage), Maildoso (not generic SMTP), Exa (an API by definition). Each line item was checked against the vendor's current pricing page – the numbers reflect what a pilot at Duvo's scale (~500–1,000 accounts, Tomáš + GTME, no AE hired yet) actually consumes, not enterprise tiers the org doesn't need yet.</p>
+  <table>
+    <thead>
+      <tr><th>Component</th><th>Cost/month</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="3" style="background:#EFE9DC; font-weight:600; padding-top:10px;">Pilot core (required Day 1)</td></tr>
+      <tr><td>n8n (self-hosted)</td><td>$0</td><td>Existing droplet, transferable to Duvo infra on request</td></tr>
+      <tr><td>Clay (Growth tier)</td><td>$446–495</td><td>6K data credits + 40K actions/mo at base · <strong>credits cover PredictLeads, Ocean.io, and ZeroBounce natively</strong> (no standalone subscriptions for these three) · Apollo + Exa API keys feed Clay workflows from their separate subscriptions · add-on bundles à la carte if monthly credit burn exceeds 6K · HTTP API, CRM auto-sync, webhooks</td></tr>
+      <tr><td>Supabase</td><td>$0</td><td>Free tier sufficient at this volume</td></tr>
+      <tr><td>Apify</td><td>~$50</td><td>LinkedIn jobs + job-change actors (Signal A) · RPA-mention scraping in job posts (Signal B free signal layer) · same actor pool as Part 3</td></tr>
+
+      <tr><td colspan="3" style="background:#EFE9DC; font-weight:600; padding-top:10px;">Signal source layer</td></tr>
+      <tr><td>Exa</td><td>~$40–80</td><td>Named in JD · Pro tier from $40/mo (8K credits) · semantic search for leadership announcements (Signal A) and RPA-modernisation content (Signal B) · in Clay via HTTP API template (paste API key, no Clay-managed option) so the Exa subscription is required</td></tr>
+      <tr><td>PredictLeads</td><td>$0 standalone</td><td><strong>Consumed through Clay credits</strong> – Clay has a native PredictLeads integration with a Clay-provided API key (no separate subscription required at pilot scale). Covers hiring velocity for Signal A + technographic dataset + RPA-restructure events for Signal B. ~2–5 Clay credits per data point.</td></tr>
+
+      <tr><td colspan="3" style="background:#EFE9DC; font-weight:600; padding-top:10px;">TAM + data hygiene</td></tr>
+      <tr><td>Ocean.io</td><td>$0 standalone</td><td><strong>Consumed through Clay credits</strong> – Clay has a native Ocean.io integration with Clay-managed account only (no BYO option). 1 credit per result (company lookalikes, lookalike people). Covers TAM enumeration + adjacent-company expansion.</td></tr>
+      <tr><td>ZeroBounce</td><td>$0 standalone</td><td><strong>Consumed through Clay credits</strong> – dual mode in Clay (Clay-managed or BYO), 1 credit/row for email validation. Replaces MillionVerifier (which is HTTP API template only in Clay, less ergonomic). Protects Maildoso domain reputation.</td></tr>
+
+      <tr><td colspan="3" style="background:#EFE9DC; font-weight:600; padding-top:10px;">Outbound execution (tier routing + email infra)</td></tr>
+      <tr><td>Maildoso</td><td>~$50–115</td><td><strong>Basic SMTP infra with proper warming – the deliverability moat.</strong> Microsoft tightened cross-domain filtering in 2024–2025: M365→M365 and Workspace→M365 cold sends increasingly auto-junked. Sending from Duvo's primary @duvo.ai is a non-starter for cold volume. Maildoso fixes this: 20–50 dedicated secondary domains, 3–4 week warmup minimum, mailbox rotation. <strong>Carries the entire outbound email surface – all three tiers send from "Tomáš Čupr" &lt;tomas.cupr@duvo-team.com&gt; via warmed secondary domains.</strong> Founder name carries the CEE retail signal; secondary infra protects primary @duvo.ai inbox reputation regardless of volume. Goal: land in primary inbox, every time.</td></tr>
+      <tr><td>HeyReach</td><td>~$0–79</td><td><strong>Deferred to first AE hire.</strong> Pilot phase has no LinkedIn automation – Tomáš's personal LinkedIn account is reserved for Tier 1 manual outreach only, and putting HeyReach automation on it would burn the founder-channel asset forever. Once Duvo hires the first AE, the AE's personal LinkedIn becomes the HeyReach engine for the AE's portion of <strong>Tier 1</strong> (~$79/mo per sender, 1 seat) – LinkedIn automation belongs on the high-touch tier, not the high-volume tiers. Tier 2 + 3 stay email-only at every phase. Until the AE hire, $0 line item with the integration mapped and ready to switch on.</td></tr>
+      <tr><td>Smartlead (Pro)</td><td>~$94</td><td>$94/mo Pro tier · 30K contacts, 150K emails, <strong>API access + webhooks + CRM integration</strong> (this tier is the API entry point) · Tier 3 email sequences via Maildoso domains</td></tr>
+
+      <tr><td colspan="3" style="background:#EFE9DC; font-weight:600; padding-top:10px;">Contact data</td></tr>
+      <tr><td>Apollo (Basic)</td><td>~$98–147</td><td>$49/user/mo annual · 2–3 seats (BYO API key is mandatory – Clay has no Apollo-managed option, so the subscription is required regardless). Seats serve double duty: UI access for Tomáš + GTME (and future AE) for ad-hoc searches + API key feeding Clay workflows. Named in JD.</td></tr>
+
+      <tr><td colspan="3" style="background:#EFE9DC; font-weight:600; padding-top:10px;">Week 4 add-on (web visits)</td></tr>
+      <tr><td>RB2B</td><td>$0–199</td><td>Free tier (company-level, 150 credits/mo) sufficient at Duvo's TAM size · Pro+ ($199) only if international person-level resolution needed – person-level is US-only</td></tr>
+
+      <tr><td colspan="3" style="background:#EFE9DC; font-weight:600; padding-top:10px;">Assumed existing Duvo stack (no new spend)</td></tr>
+      <tr><td>HubSpot</td><td>–</td><td>CRM = SSOT throughout · Clay auto-syncs · routing destination for Tier 1 manual outreach</td></tr>
+      <tr><td>Anthropic API</td><td>~$5–20 (within existing allocation)</td><td>Duvo is Claude-native · <strong>signal classification, Claygent enrichment, paste-ready hook generation, FDE pre-brief drafting, the n8n reply-triage classifier, and the weekly self-learning copy agent all consume Duvo's existing API allocation.</strong> The classifier + copy agent pair is the highest-leverage usage – at pilot volumes (50–200 inbound replies/month at Sonnet pricing plus weekly batch analysis), incremental cost is functionally zero against Duvo's existing Claude spend.</td></tr>
+      <tr><td>Gong + Granola</td><td>–</td><td>Internal tooling feedback loop · post-meeting transcripts mine objections + persona language → loops back into signal scoring</td></tr>
+      <tr><td>Claude Code</td><td>–</td><td>Vibecoding internal tooling (MCP servers, Slack bots, ROI calculator) · part of the GTME's daily-driver toolchain, not a procured line item</td></tr>
+      <tr><td>Slack</td><td>–</td><td>Alert delivery layer · trigger only · CRM is the SSOT</td></tr>
+
+      <tr><td colspan="3" style="background:#EFE9DC; font-weight:600; padding-top:10px;">Optional advanced upgrades (not pilot)</td></tr>
+      <tr><td>HG Insights</td><td>$2,000–7,500</td><td>Enterprise IT-spend intelligence ($24–90K/yr) · only justified if Duvo expands to Fortune-500-only displacement plays · Apify scraping for UiPath/Blue Prism mentions in job posts + PredictLeads technographics cover the RPA detection signal at pilot scale without it</td></tr>
+
+      <tr><td><strong>Pilot total (new spend)</strong></td><td><strong>~$780–1,480/mo</strong></td><td>Base range $780–981/mo with all subscriptions at upper bound. High end of $1,480/mo adds ~$500/mo Clay credit add-on bundle headroom for spike months when combined PredictLeads + Ocean.io + ZeroBounce credit burn exceeds Growth tier's 6K. HeyReach not included – deferred to first AE hire. HG Insights not included – not justified at pilot scale. RB2B free tier holds at $0 throughout pilot.</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 24px; font-size: 14px; color: var(--ink-muted); line-height: 1.55;"><strong>Clay credit sizing.</strong> Growth tier's 6K data credits cover the three credit-consumed integrations at pilot volume: PredictLeads (~1–4 credits per data point – tech stack, jobs, news, financing), Ocean.io (1 credit per lookalike result), ZeroBounce (1 credit per email validation). Apollo + Exa run via separate keys, no Clay credits consumed on those lookups. Honest math: at ~500–1,000 accounts/month with full enrichment waterfalls plus periodic Ocean.io lookalike expansion, monthly credit burn lands at 4K–9K – occasional add-on bundles cover the spike months. Pro tier ($720/mo annual) is the step-up if combined burn consistently exceeds 8K credits, but Growth + add-ons is more capital-efficient for the pilot.</p>
+
+  </div>
+</details>
+
+  <p style="margin-top: 48px; font-family: 'Fraunces', serif; font-size: 19px; font-style: italic; color: var(--ink-muted); line-height: 1.5;">Architecture is pre-built. Build follows kickoff.</p>
+</section>
+
+
+<!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+
+<footer>
+  <div>
+    Jan Mikeš · GTM Engineer<br>
+    Prague · CZ/EN C1
+  </div>
+  <div style="text-align: right;">
+    <a href="https://www.linkedin.com/in/jan-mikes21/">LinkedIn</a> ·
+    <a href="https://github.com/Miksh21">GitHub</a> ·
+    <a href="mailto:me@mikesjan.cz">me@mikesjan.cz</a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: 'loose',
+    theme: 'base',
+    themeVariables: {
+      background: '#FDFAF3',
+      primaryColor: '#FDFAF3',
+      primaryTextColor: '#1A1A1A',
+      primaryBorderColor: '#1A1A1A',
+      lineColor: '#5C5852',
+      secondaryColor: '#E8D5CF',
+      tertiaryColor: '#EFE9DC',
+      fontFamily: 'IBM Plex Sans, sans-serif',
+      fontSize: '15px'
+    },
+    flowchart: {
+      htmlLabels: true,
+      curve: 'basis',
+      padding: 16,
+      nodeSpacing: 40,
+      rankSpacing: 50
+    }
+  });
+
+  // Signal sliders – supports any number of .signal-slider blocks on the page
+  document.querySelectorAll('.signal-slider').forEach((slider) => {
+    const slides = slider.querySelectorAll('.signal-slide');
+    const dots = slider.querySelectorAll('.signal-dot');
+    const prev = slider.querySelector('.signal-prev');
+    const next = slider.querySelector('.signal-next');
+    if (!slides.length || !prev || !next) return;
+    let current = 0;
+    function show(idx) {
+      current = (idx + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+    prev.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => show(i)));
+  });
+
+  // Channel toggle (Email | LinkedIn) and variant tabs (A | B | C) inside each instance
+  document.querySelectorAll('.tier-instance').forEach((instance) => {
+    // Channel toggle
+    const channelTabs = instance.querySelectorAll(':scope > .channel-toggle .channel-tab');
+    const channelPanels = instance.querySelectorAll(':scope > .channel-panel');
+    channelTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.channel;
+        channelTabs.forEach((t) => t.classList.toggle('active', t === tab));
+        channelPanels.forEach((p) => p.classList.toggle('active', p.dataset.channel === target));
+      });
+    });
+    // Variant tabs (scoped to each panel)
+    instance.querySelectorAll(':scope > .channel-panel').forEach((panel) => {
+      const variantTabs = panel.querySelectorAll(':scope > .variant-tabs .variant-tab');
+      const variantContents = panel.querySelectorAll(':scope > .variant-content');
+      variantTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.variant;
+          variantTabs.forEach((t) => t.classList.toggle('active', t === tab));
+          variantContents.forEach((c) => c.classList.toggle('active', c.dataset.variant === target));
+        });
+      });
+    });
+  });
+</script>
+
+<!-- ═══════════════════════════════════════ DIAGRAM ZOOM MODAL ═══════════════════════════════════════ -->
+
+<div class="diagram-modal" id="diagramModal" role="dialog" aria-modal="true" aria-labelledby="diagramModalTitle">
+  <div class="diagram-modal-content">
+    <div class="diagram-modal-toolbar">
+      <span class="diagram-modal-title" id="diagramModalTitle">Diagram</span>
+      <div class="diagram-modal-actions">
+        <button type="button" onclick="diagramZoomOut()" title="Zoom out">−</button>
+        <button type="button" onclick="diagramZoomIn()" title="Zoom in">+</button>
+        <button type="button" onclick="diagramZoomReset()" title="Reset to fit">⌂ Fit</button>
+        <button type="button" onclick="closeDiagramModal()" title="Close (Esc)">✕ Close</button>
+      </div>
+    </div>
+    <div class="diagram-modal-canvas" id="diagramModalCanvas"></div>
+    <div class="diagram-modal-hint">Scroll wheel to zoom · drag to pan · double-click to zoom in · Esc to close</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js"></script>
+<script>
+  // ─── Diagram zoom modal ───
+  let diagramPanZoom = null;
+
+  function openDiagramModal(diagramEl, title) {
+    const svg = diagramEl.querySelector('svg');
+    if (!svg) return;
+    const clone = svg.cloneNode(true);
+    // Strip explicit size so svg-pan-zoom can manage it
+    clone.removeAttribute('width');
+    clone.removeAttribute('height');
+    clone.style.width = '100%';
+    clone.style.height = '100%';
+    clone.style.maxWidth = 'none';
+    clone.style.maxHeight = 'none';
+    const canvas = document.getElementById('diagramModalCanvas');
+    canvas.innerHTML = '';
+    canvas.appendChild(clone);
+    document.getElementById('diagramModalTitle').textContent = title;
+    document.getElementById('diagramModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Defer one tick so SVG has dimensions in the DOM before svg-pan-zoom attaches
+    setTimeout(() => {
+      if (typeof svgPanZoom === 'function') {
+        try {
+          diagramPanZoom = svgPanZoom(clone, {
+            zoomEnabled: true,
+            panEnabled: true,
+            controlIconsEnabled: false,
+            fit: true,
+            center: true,
+            minZoom: 0.3,
+            maxZoom: 10,
+            zoomScaleSensitivity: 0.3,
+            dblClickZoomEnabled: true,
+            mouseWheelZoomEnabled: true,
+            preventMouseEventsDefault: true,
+            contain: false,
+          });
+        } catch (err) {
+          console.warn('svg-pan-zoom init failed', err);
+        }
+      }
+    }, 80);
+  }
+
+  function closeDiagramModal() {
+    document.getElementById('diagramModal').classList.remove('open');
+    document.body.style.overflow = '';
+    if (diagramPanZoom) {
+      try { diagramPanZoom.destroy(); } catch (e) {}
+      diagramPanZoom = null;
+    }
+  }
+  function diagramZoomIn()    { if (diagramPanZoom) diagramPanZoom.zoomIn(); }
+  function diagramZoomOut()   { if (diagramPanZoom) diagramPanZoom.zoomOut(); }
+  function diagramZoomReset() {
+    if (diagramPanZoom) {
+      diagramPanZoom.resetZoom();
+      diagramPanZoom.fit();
+      diagramPanZoom.center();
+    }
+  }
+
+  // Esc + backdrop click closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDiagramModal();
+  });
+  document.getElementById('diagramModal').addEventListener('click', (e) => {
+    if (e.target.id === 'diagramModal') closeDiagramModal();
+  });
+
+  // Wire a zoom button onto each .diagram once its SVG is rendered by Mermaid
+  function wireDiagramZoom() {
+    document.querySelectorAll('.diagram').forEach((d) => {
+      if (d.dataset.zoomWired === '1') return;
+      const svg = d.querySelector('svg');
+      if (!svg) return;
+      d.dataset.zoomWired = '1';
+      // Make inline SVG fill the container (Mermaid sets explicit pixel sizing)
+      svg.removeAttribute('width');
+      svg.removeAttribute('height');
+      svg.style.width = '100%';
+      svg.style.height = 'auto';
+      svg.style.maxWidth = '100%';
+
+      // Helper that opens the modal for this diagram
+      const openThis = (e) => {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        const caption = d.querySelector('.caption');
+        const title = caption ? caption.textContent.trim() : 'Diagram';
+        openDiagramModal(d, title);
+      };
+
+      // Click ANYWHERE on the diagram container opens the modal
+      d.addEventListener('click', openThis);
+
+      // Visible zoom button (also clickable, but the whole container works too)
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'diagram-zoom-btn';
+      btn.textContent = '⤢  Zoom diagram';
+      btn.title = 'Open in full-screen pan / zoom view';
+      btn.addEventListener('click', openThis);
+      d.appendChild(btn);
+    });
+  }
+
+  // Poll briefly until Mermaid has finished rendering all SVGs
+  let zoomAttempts = 0;
+  const zoomInterval = setInterval(() => {
+    const svgs = document.querySelectorAll('.diagram svg');
+    const diagrams = document.querySelectorAll('.diagram');
+    if (svgs.length >= diagrams.length && diagrams.length > 0) {
+      wireDiagramZoom();
+      clearInterval(zoomInterval);
+    }
+    if (++zoomAttempts > 40) {
+      // Fallback: wire whatever's ready
+      wireDiagramZoom();
+      clearInterval(zoomInterval);
+    }
+  }, 200);
+</script>
+
+</body>
+</html>

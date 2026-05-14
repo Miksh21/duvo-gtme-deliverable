@@ -1,0 +1,46 @@
+flowchart LR
+  IN["Reply lands in Maildoso /<br/>Smartlead inbox"]
+  WH["n8n webhook<br/>fires on new email"]
+  AI["Anthropic API<br/><span style='font-size:13px;color:#5C5852'>Claude Sonnet · structured JSON</span>"]
+  CLS{"Classification"}
+  POS["positive_intent<br/><b>→ tier-based routing</b>"]
+  CAL["Calendar check<br/><span style='font-size:13px;color:#5C5852'>Google/Outlook · availability vs proposed slot</span>"]
+  T1["Tier 1 → Tomáš's Slack<br/><span style='font-size:13px;color:#5C5852'>draft + book-slot button</span>"]
+  T2["Tier 2 + 3 → GTME / AE Slack<br/><span style='font-size:13px;color:#5C5852'>draft + book-slot button · rep's Calendly link</span>"]
+  Q["question<br/><b>→ FAQ draft or Slack route</b>"]
+  OBJ["objection<br/><b>→ Slack tagged + pause sequence</b>"]
+  OOO["OOO<br/><b>→ extract date + requeue</b>"]
+  UNS["unsubscribe<br/><b>→ suppress globally</b>"]
+  WRONG["wrong_person<br/><b>→ extract forward-to + new outreach</b>"]
+  IRR["irrelevant<br/><b>→ log + drop</b>"]
+  HUB["HubSpot<br/><span style='font-size:13px;color:#5C5852'>activity + deal updates</span>"]
+
+  IN --> WH --> AI --> CLS
+  CLS --> POS
+  CLS --> Q
+  CLS --> OBJ
+  CLS --> OOO
+  CLS --> UNS
+  CLS --> WRONG
+  CLS --> IRR
+  POS --> CAL
+  CAL --> T1
+  CAL --> T2
+  T1 --> HUB
+  T2 --> HUB
+  Q --> HUB
+  OBJ --> HUB
+  OOO --> HUB
+  UNS --> HUB
+  WRONG --> HUB
+
+  classDef in fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef ai fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#FDFAF3
+  classDef ext fill:#fff,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  class IN in
+  class WH,CLS,CAL proc
+  class AI ai
+  class POS,T1,T2,Q,OBJ,OOO,UNS,WRONG,IRR out
+  class HUB ext

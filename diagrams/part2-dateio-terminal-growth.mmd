@@ -1,0 +1,54 @@
+flowchart TD
+  A["Dateio DWH<br/><span style='font-size:13px;color:#5C5852'>CEE bank transaction telemetry · 8 markets · NDA</span>"]
+  B["Weekly SQL query<br/><span style='font-size:13px;color:#5C5852'>terminal count Δ per merchant per country</span>"]
+  MDM["Merchant MDM lookup<br/><span style='font-size:13px;color:#5C5852'>HQ Key vs Subsidiary resolution · attaches Pipedrive Org ID</span>"]
+  DEDUP["Dedup &amp; baseline<br/><span style='font-size:13px;color:#5C5852'>filters merchants with chronic volatility · 12-week rolling baseline</span>"]
+  C{"Δ classification"}
+  D1["+3 to +10:<br/>self-checkout expansion"]
+  D2["+10 or more:<br/>new branch / new procurement"]
+  E["AI hypothesis validation<br/><span style='font-size:13px;color:#5C5852'>Claude · scores hypothesis confidence + assigns merchant tier</span>"]
+  F1["Czech / Slovak registries<br/><span style='font-size:13px;color:#5C5852'>ARES · Justice.cz · Finstat · new branch filings</span>"]
+  F2["Job portals · country-specific<br/><span style='font-size:13px;color:#5C5852'>StartupJobs (CZ) · Profesia (SK) · LinkedIn (DE/AT/HU/RO) · store-manager / regional-ops roles</span>"]
+  F3["Retail trade press &amp; merchant social<br/><span style='font-size:13px;color:#5C5852'>retailnews.cz · Zboží&amp;Prodej · Trend.sk · merchant LinkedIn / Facebook</span>"]
+  F4["Brand / ad activity<br/><span style='font-size:13px;color:#5C5852'>Facebook Ad Library · Google Trends · merchant site change detection</span>"]
+  G{"Hypothesis<br/>confirmed?"}
+  H["AE alert in Teams<br/><span style='font-size:13px;color:#5C5852'>merchant context + suggested pitch · routed by HQ country</span>"]
+  PD["Pipedrive auto-activity<br/><span style='font-size:13px;color:#5C5852'>creates task on assigned owner · attaches enrichment + signal date</span>"]
+  FB["AE outcome feedback<br/><span style='font-size:13px;color:#5C5852'>contacted · meeting booked · won · lost · loops back to E for source-quality scoring</span>"]
+  I["Discard / archive<br/><span style='font-size:13px;color:#5C5852'>logged for false-positive analysis</span>"]
+
+  A --> B --> MDM --> DEDUP --> C
+  C --> D1
+  C --> D2
+  D1 --> E
+  D2 --> E
+  E --> F1
+  E --> F2
+  E --> F3
+  E --> F4
+  F1 --> G
+  F2 --> G
+  F3 --> G
+  F4 --> G
+  G -->|Yes| H
+  G -->|Yes| PD
+  H --> FB
+  PD --> FB
+  FB -.->|source-quality + scoring weights| E
+  G -->|No| I
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef hyp fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef nope fill:#EFE9DC,stroke:#5C5852,stroke-width:1px,color:#5C5852
+  classDef fb fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#FDFAF3
+
+  class A src
+  class B,MDM,DEDUP,E proc
+  class D1,D2,F1,F2,F3,F4 hyp
+  class H,PD out
+  class C,G gate
+  class I nope
+  class FB fb

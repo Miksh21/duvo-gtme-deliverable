@@ -1,0 +1,30 @@
+flowchart TD
+  A["NESO TEC register<br/><span style='font-size:13px;color:#5C5852'>UK grid-connection queue</span>"]
+  B["n8n cron<br/><span style='font-size:13px;color:#5C5852'>Mon 06:00 UTC</span>"]
+  C[("Supabase<br/><span style='font-size:13px;color:#5C5852'>snapshot + diff</span>")]
+  D["Clay enrichment<br/><span style='font-size:13px;color:#5C5852'>domain · LinkedIn · Claygent news · TED tender</span>"]
+  E{"Deterministic<br/>tier scoring"}
+  F1["Tier 1 → Slack"]
+  F2["Tier 2 → Slack"]
+  F3["Tier 3 → Slack"]
+  G[("fired_signals<br/>audit log")]
+
+  A --> B --> C --> D --> E
+  E --> F1
+  E --> F2
+  E --> F3
+  F1 --> G
+  F2 --> G
+  F3 --> G
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef store fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+
+  class A src
+  class B,D proc
+  class C,G store
+  class F1,F2,F3 out
+  class E gate

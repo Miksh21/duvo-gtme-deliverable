@@ -1,0 +1,28 @@
+flowchart TD
+  A["LinkedIn search URLs<br/><span style='font-size:13px;color:#5C5852'>22 queries · CZ/SK/EN</span>"]
+  B["Apify scraper<br/><span style='font-size:13px;color:#5C5852'>daily 07:00</span>"]
+  C["100+ regex filters<br/><span style='font-size:13px;color:#5C5852'>agencies · seekers · dupes</span>"]
+  D["Claude Haiku<br/><span style='font-size:13px;color:#5C5852'>classify: hiring vs not</span>"]
+  E["Apify profile enrichment<br/><span style='font-size:13px;color:#5C5852'>90-day cache</span>"]
+  F["Claude Opus<br/><span style='font-size:13px;color:#5C5852'>personalised CZ message</span>"]
+  G["Slack review<br/><span style='font-size:13px;color:#5C5852'>Approve · Edit · Reject</span>"]
+  H["Round-robin routing<br/><span style='font-size:13px;color:#5C5852'>5 sales · CZ/SK rules</span>"]
+  I["HeyReach campaign<br/><span style='font-size:13px;color:#5C5852'>auto-push on approve</span>"]
+  J[("SQLite<br/>dedup · cost tracking")]
+
+  A --> B --> C --> D --> E --> F --> G --> H --> I
+  I --> J
+  D -.-> J
+  F -.-> J
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef ai fill:#EFE9DC,stroke:#B8412F,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef store fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+
+  class A src
+  class B,C,E,H proc
+  class D,F ai
+  class G,I out
+  class J store

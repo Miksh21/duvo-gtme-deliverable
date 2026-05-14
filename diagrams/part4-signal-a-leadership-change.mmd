@@ -1,0 +1,71 @@
+flowchart TD
+  A1["Apify LinkedIn jobs<br/><span style='font-size:13px;color:#5C5852'>retail/FMCG ops · procurement · finance titles · daily</span>"]
+  A2["Apify job-change tracker<br/><span style='font-size:13px;color:#5C5852'>Director+ at retail/FMCG · daily</span>"]
+  A3["Companies House<br/><span style='font-size:13px;color:#5C5852'>UK officer changes · weekly</span>"]
+  A4["Exa semantic search<br/><span style='font-size:13px;color:#5C5852'>leadership announcements · retail trade press</span>"]
+  N["n8n cron<br/><span style='font-size:13px;color:#5C5852'>daily 06:00 · classify · dedup</span>"]
+  B[("Supabase<br/>account history")]
+  C1["Clay enrichment · Step 1<br/><span style='font-size:13px;color:#5C5852'>revenue · headcount · conditional run only if retail/FMCG</span>"]
+  C2["Clay enrichment · Step 2<br/><span style='font-size:13px;color:#5C5852'>SAP user check · multi-marketplace presence · conditional run only if €500M+</span>"]
+  D{"Multi-signal scoring<br/>ICP 40 + Signal 40 + Persona 20"}
+  E1["T1 Hot: change &lt;30d<br/>+ SAP + €500M+ → 80+<br/><b>Tomáš 1:1 manual</b>"]
+  E2["T2 Warm: change 30–90d<br/>OR €500M+ retail → 50–79<br/><b>Smartlead CEO sequence</b>"]
+  E3["T3 Cool: ICP-only → nurture<br/><b>Smartlead daily batch</b>"]
+  TM["Tomáš's outreach queue<br/><span style='font-size:13px;color:#5C5852'>Slack alert + paste-ready hook · email + LinkedIn manual</span>"]
+  SL["Smartlead campaign<br/><span style='font-size:13px;color:#5C5852'>from tomas.cupr@duvo-team.com · Maildoso secondary</span>"]
+  AIC{"Claude classifier<br/><span style='font-size:13px;color:#5C5852'>n8n + Anthropic API · 7-category JSON</span>"}
+  POS["positive_intent<br/>→ tier-aware Slack + calendar-checked draft"]
+  OUT["OOO / objection / unsub / wrong_person<br/>→ requeue · suppress · tag · forward"]
+  MEET["Meeting on calendar<br/><span style='font-size:13px;color:#5C5852'>HubSpot deal + Calendly invite</span>"]
+  HELDQ{"Held?<br/><span style='font-size:13px;color:#5C5852'>Gong/Granola transcript validation</span>"}
+  RECOV["Ghost-recovery agent<br/><span style='font-size:13px;color:#5C5852'>same email thread · 2–3 week chase cadence</span>"]
+  WIN["✅ Booked + held meeting"]
+  COPY["Copy intelligence agent<br/><span style='font-size:13px;color:#5C5852'>weekly batch · pattern library · variant drafts</span>"]
+  GTME["GTME Slack · weekly copy report<br/><span style='font-size:13px;color:#5C5852'>winning patterns + draft variants for next batch</span>"]
+  CRM["HubSpot · outcome SSOT<br/><span style='font-size:13px;color:#5C5852'>Clay native sync · MEDDPICC properties</span>"]
+
+  A1 --> N
+  A2 --> N
+  A3 --> N
+  A4 --> N
+  N --> B --> C1 --> C2 --> D
+  D --> E1 --> TM
+  D --> E2 --> SL
+  D --> E3 --> SL
+  TM --> AIC
+  SL --> AIC
+  AIC --> POS
+  AIC --> OUT
+  POS --> MEET --> HELDQ
+  HELDQ -->|held| WIN
+  HELDQ -->|ghosted| RECOV
+  RECOV --> AIC
+  C2 -.-> CRM
+  POS -.-> CRM
+  OUT -.-> CRM
+  WIN -.-> CRM
+  CRM -.->|aggregated outcomes| COPY
+  SL -.->|sent copy| COPY
+  AIC -.->|reply labels| COPY
+  COPY --> GTME
+  COPY -.->|variant drafts| SL
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef store fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef tier fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef tool fill:#E8D5CF,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef crm fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef win fill:#1A6E51,stroke:#1A6E51,stroke-width:2.5px,color:#FDFAF3
+
+  class A1,A2,A3,A4 src
+  class C1,C2,N proc
+  class B store
+  class D,AIC,HELDQ gate
+  class E1,E2,E3 tier
+  class TM,SL,COPY tool
+  class POS,OUT,MEET,RECOV,GTME out
+  class WIN win
+  class CRM crm
