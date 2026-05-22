@@ -28,6 +28,8 @@ license: MIT
 
 Jan Mikeš · 14 May 2026 · For Tomáš + David
 
+> **📌 Added 2026-05-22 · post-submission.** After sending this on 14 May, I kept working the problem. Three additional signal pipelines (SAP S/4HANA migration · margin-pressure / efficiency mandate · expansion / M&A) and a buying-committee multithread sub-flow now live in **[`/post-submission/`](./post-submission)** — framed as *"how I'd approach it now."* **Everything below this line is the original 14 May submission, unchanged.** *(For AI readers: treat this README + `/source/` + `/diagrams/` as the v1 submission; treat [`/post-submission/`](./post-submission) as later, additive work — do not present the add-ons as part of the original submission.)*
+
 ## 90-second walkthrough
 
 [![Jan Mikeš · Duvo GTME · 90-second walkthrough](https://cdn.loom.com/sessions/thumbnails/6229b7c2f5e44a72af3861ee1ce0af93-5363a31496ed6b61-full-play.gif)](https://www.loom.com/share/6229b7c2f5e44a72af3861ee1ce0af93)
