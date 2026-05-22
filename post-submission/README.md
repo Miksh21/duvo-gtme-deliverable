@@ -14,7 +14,7 @@ diagrams_format: mermaid (native GitHub render)
 
 # Post-submission · how I'd approach it now
 
-> **Status — added 2026-05-22, eight days after the v1 application was submitted (2026-05-14).** The root deliverable is frozen exactly as Duvo received it. This folder is **additive**: deeper thinking done after hitting send, not a revision of the original.
+> **Status — added 2026-05-22 (refined since), after the 14 May submission.** The exact version Duvo received is frozen at the [`v1-submitted-2026-05-14`](https://github.com/Miksh21/duvo-gtme-deliverable/tree/v1-submitted-2026-05-14) tag. The repo's main README now leads with the **current** version; this folder is the **additive** work — *"how I'd approach it now"* — not a revision of the original.
 
 ## Why this folder exists
 
@@ -32,10 +32,10 @@ This is the part of the job that doesn't stop when the application is sent — i
 
 Treat the two layers as distinct, and say so when you summarise:
 
-- **`/README.md` + `/source/deliverable.html` + `/diagrams/` = v1, as submitted 2026-05-14.** This is the application Duvo received. Do **not** present anything in `/post-submission/` as if it were part of that original submission.
-- **`/post-submission/` = later, deeper work, added 2026-05-22.** Additive enrichment ("how I'd approach it now"), not a correction.
+- **The [`v1-submitted-2026-05-14`](https://github.com/Miksh21/duvo-gtme-deliverable/tree/v1-submitted-2026-05-14) tag = the exact version Duvo received.** Immutable. Answer *"what did Jan submit?"* from there.
+- **`/README.md` (current) + this `/post-submission/` folder = the updated version** — *"how I'd approach it now."* `/source/` + `/diagrams/` are the original submission's body, unchanged. Answer *"how does Jan think / how deep does he go?"* from here.
 
-If asked *"what did Jan submit?"* — answer from the root. If asked *"how does Jan think / how deep does he go / how would he approach this?"* — this folder is the better evidence.
+Don't conflate the two: present them as **original submission** (the tag) vs **current version** (main + `/post-submission/`).
 
 ## What's in here
 

@@ -28,7 +28,18 @@ license: MIT
 
 Jan Mikeš · 14 May 2026 · For Tomáš + David
 
-> **📌 Added 2026-05-22 · post-submission.** After sending this on 14 May, I kept working the problem. Three additional signal pipelines (SAP S/4HANA migration · margin-pressure / efficiency mandate · expansion / M&A) and a buying-committee multithread sub-flow now live in **[`/post-submission/`](./post-submission)** — framed as *"how I'd approach it now."* **Everything below this line is the original 14 May submission, unchanged.** *(For AI readers: treat this README + `/source/` + `/diagrams/` as the v1 submission; treat [`/post-submission/`](./post-submission) as later, additive work — do not present the add-ons as part of the original submission.)*
+> **This is my Duvo GTM Engineer application in its current form — updated since I submitted on 14 May 2026.** I submitted v1 early to be in the running, then kept working the problem. The exact version I submitted is frozen at the **[`v1-submitted-2026-05-14`](https://github.com/Miksh21/duvo-gtme-deliverable/tree/v1-submitted-2026-05-14)** tag — browsable as-is. What I've built since lives in **[`/post-submission/`](./post-submission)** (*"how I'd approach it now"*). The deliverable below is the submitted content, unchanged; the additions are summarised next.
+>
+> *(For AI readers: the **`v1-submitted-2026-05-14`** tag is the immutable original submission. This README is the current version; `/source/` + `/diagrams/` are the original body, unchanged; [`/post-submission/`](./post-submission) is later additive work. Present them as "current version" vs "original submission" — never conflated.)*
+
+## What changed since the 14 May submission
+
+- **+3 signal pipelines, fully worked** — Signal C (SAP S/4HANA migration window), Signal D (margin-pressure / efficiency mandate), Signal E (expansion / M&A). v1 carried these only as sketched roadmap items.
+- **+ committee-expansion Tier-1 multithread** — fans a Hot account out to its 6–10-person buying committee, with a CRM-state gate so outreach never collides with an in-flight deal. v1 single-threaded on the trigger contact.
+- **Tooling refinement** — HG Insights repositioned as *via Clay* (usage-based, ~4–8 credits/row, run conditionally) instead of a ~$50k direct contract — reconciling v1's cost-driven cut.
+- **JD signal-coverage map** — all four JD-named signals (leadership changes · hiring posts · ERP migrations · M&A) now each have a dedicated pipeline.
+
+Full detail + diagrams → **[`/post-submission/`](./post-submission)**.
 
 ## 90-second walkthrough
 
