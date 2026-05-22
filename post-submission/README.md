@@ -24,7 +24,7 @@ A few calls I'd make differently with more time — now built out properly:
 
 - **Promoted three roadmap signals to full pipelines** — SAP S/4HANA migration window, margin-pressure / efficiency mandate, and expansion / M&A — each on the same `source → score → tier → route → classify → recover` architecture as the v1 pilots.
 - **Added the committee-expansion sub-flow** v1 was missing. A €500M+ SAP retailer is a 6–10-person buying decision; v1 single-threaded on the trigger contact. This fans a Hot account out to the CFO / Supply-Chain / SAP-IT committee.
-- **Brought HG Insights back in** as the install-base + migration-stage spine. v1 cut it ("PredictLeads replaces at pilot scale"); on reflection, *"is actively changing SAP"* is the highest-fidelity technographic signal Duvo has, and HG is the only source that reads it across the universe. PredictLeads stays for the dynamic events.
+- **Brought HG Insights back in — but *via Clay*, not a direct contract.** v1 cut HG ("PredictLeads replaces at pilot scale"), and rightly so on cost: HG direct is a ~$50k annual contract. But *"is actively changing SAP"* is the highest-fidelity qualifier Duvo has, and Clay's HG Insights integration exposes the same enterprise data usage-based at a few credits/row. So HG is back as the install-base spine — run conditionally, pilot-affordable. PredictLeads stays for the dynamic events.
 
 This is the part of the job that doesn't stop when the application is sent — it's how I'd actually keep working the problem in week one.
 
@@ -74,14 +74,14 @@ This is the tech-stack signal the JD names, made precise: not *"uses SAP"* (ever
 | **Lead time** | Build/realize phase — typically 6–18 months before go-live, the target-state design window |
 | **Geography** | CEE · UK · stage-weighted, not geo-gated |
 | **Sources, free** | Apify LinkedIn jobs scrape (S/4HANA / RISE program roles · SAP transformation PMs · S/4 functional consultants) · **Exa semantic search** for "S/4HANA migration" / "RISE with SAP" + retailer in press, SI case studies, SAP customer stories · SI / consultancy press scrape (Accenture · Deloitte · Capgemini named retail S/4 programs) |
-| **Sources, paid** | **HG Insights** for ECC→S/4HANA install-base + migration-stage data — where HG earns its seat: the only source that reads *install base + transition stage* across the universe, the core qualifier here. PredictLeads for the hiring-velocity confirm. |
+| **Sources, paid** | **HG Insights *via Clay*** for ECC→S/4HANA install-base + migration-stage data. HG reads *install base + transition stage* across the universe through document analysis (filings, RFPs, job posts, earnings) — so it sees back-office SAP that website scanners like BuiltWith can't. Accessed through Clay's usage-based HG integration (~4–8 credits/row, run **conditionally** only on accounts the free signals already flagged) instead of HG's ~$50k direct annual contract — same data, pilot-affordable. PredictLeads for the hiring-velocity confirm. |
 | **Scoring** | ICP fit (40) + signal strength (40, weighted by migration stage) + persona authority (20) = max 100. Stage is the multiplier: build/realize > announced > post-go-live hypercare > ECC-still. |
 | **Operating principle** | Don't sell migration help — Duvo isn't an SI. Lead with the *after*: "S/4 standardises the core; the judgment-heavy edges still fall to people, and that's where the business case leaks." The migration is internal targeting, not the opener. |
 
 ```mermaid
 flowchart TD
   A1["Apify LinkedIn jobs<br/><span style='font-size:13px;color:#5C5852'>SAP S/4HANA · RISE program · transformation-PM titles · weekly</span>"]
-  A2["HG Insights<br/><span style='font-size:13px;color:#5C5852'>ECC→S/4HANA install base · migration stage · technographic</span>"]
+  A2["HG Insights via Clay<br/><span style='font-size:13px;color:#5C5852'>ECC→S/4HANA install base · migration stage · usage-based credits, not a $50k contract</span>"]
   A3["SI / consultancy press<br/><span style='font-size:13px;color:#5C5852'>Accenture · Deloitte · Capgemini named retail S/4 programs</span>"]
   A4["Exa semantic search<br/><span style='font-size:13px;color:#5C5852'>'S/4HANA migration' · 'RISE with SAP' · SAP customer stories</span>"]
   N["n8n cron<br/><span style='font-size:13px;color:#5C5852'>weekly · classify migration stage · dedup</span>"]
@@ -156,7 +156,7 @@ flowchart TD
   class CRM crm
 ```
 
-*SAP S/4HANA migration window · stage-weighted scoring · HG Insights install-base spine · FDE pre-brief on Hot accounts · CRM auto-sync runs in parallel*
+*SAP S/4HANA migration window · stage-weighted scoring · HG-via-Clay install-base spine · FDE pre-brief on Hot accounts · CRM auto-sync runs in parallel*
 
 #### Slack alert · Tier 1 sample
 
