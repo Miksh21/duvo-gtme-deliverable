@@ -63,6 +63,62 @@ Signal D (margin-pressure / efficiency mandate) isn't a named signal type but ta
 
 ---
 
+## One system, not campaigns
+
+The JD draws the line at *"a campaign is a one-time send, not a system."* So here's the system — and why the five signals above are *parts* of it, not five campaigns to run.
+
+**One engine. Pluggable signals. Campaigns are its outputs.** A signal is just a detector. The engine is what turns any detected account into a booked, qualified meeting and a clean CRM record — the same way every time. Add a sixth signal and you change a config, not launch a new campaign. That's the whole difference.
+
+```mermaid
+flowchart LR
+  S["① DETECT<br/><span style='font-size:13px;color:#5C5852'>5 pluggable signals A–E · 1st / 2nd / 3rd party</span>"]
+  Q{"② QUALIFY<br/><span style='font-size:13px;color:#5C5852'>one 0–100 score → tier + SLA</span>"}
+  R["③ ROUTE &amp; ENGAGE<br/><span style='font-size:13px;color:#5C5852'>tier × persona → channel mix</span>"]
+  CV{"④ CONVERT<br/><span style='font-size:13px;color:#5C5852'>classifier · MEDDPICC · ghost-recovery</span>"}
+  WIN["✅ booked + held meeting"]
+  L["⑤ LEARN<br/><span style='font-size:13px;color:#5C5852'>copy intel · outbound attribution · stress-test + scale-gates</span>"]
+  WARM["warm before you touch<br/><span style='font-size:13px;color:#5C5852'>founder-network intros + ABM ads</span>"]
+  CRM[("HubSpot · account-level SSOT")]
+
+  S --> Q --> R --> CV --> WIN
+  WARM -.primes.-> R
+  CV -.-> CRM
+  WIN -.-> CRM
+  CRM -.outcomes.-> L
+  L -.tunes score + weights.-> Q
+  L -.winning copy.-> R
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef tool fill:#E8D5CF,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef crm fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef win fill:#1A6E51,stroke:#1A6E51,stroke-width:2.5px,color:#FDFAF3
+
+  class S,WARM src
+  class R proc
+  class Q,CV gate
+  class L tool
+  class WIN win
+  class CRM crm
+```
+
+*The operating system · signals plug in on the left, the loop on the right compounds · every part maps to a gtm-master principle.*
+
+**What makes it a system (not a set of sends):**
+
+| Part | What it does | Why it's a system, not a campaign |
+|---|---|---|
+| **① Detect** | 5 pluggable signals (A–E) across 1st / 2nd / 3rd party | A new signal is a config change, not a new build |
+| **② Qualify** | one 0–100 score (ICP 40 + Signal 40 + Persona 20) → tier + SLA (T1 <1h · T2 <24h · T3 weekly) | "Tier 1" means the same thing across every signal — consistent prioritisation, not per-campaign guesswork |
+| **③ Route & engage** | tier × persona → channel mix; **warm before you touch** (Tomáš's network intros + ABM ads) → founder 1:1 → committee multithread → automated nurture | Effort scales by tier automatically (human → smart-auto → reach); cold is never the first impression at T1 |
+| **④ Convert** | Claude classifier (7-cat) → MEDDPICC auto-fill → ghost-recovery → held meeting | Every reply handled the same way; nothing falls through an inbox |
+| **⑤ Learn** | copy-intelligence loop + outbound-influence attribution (not reply rate) + 8.1/10 stress-test gate + 3 scale-gates before ramping volume | The system improves itself and only scales what's proven |
+
+Each part is backed by a gtm-master principle — *warm-before-you-touch · effort-by-tier · score-then-SLA · attribution-beyond-reply-rate · don't-scale-until-3-gates-pass.* The five signal pipelines below are what flows *through* this engine: interchangeable inputs, one machine.
+
+---
+
 ## Signal C · SAP S/4HANA migration window `Proposed`
 
 **Why now.** SAP ends mainstream maintenance for legacy ECC in 2027 — so every €500M+ retailer is now mid-migration to S/4HANA (or "RISE with SAP"), and the wave peaks through 2026–2027. Duvo's agents run *on top of* SAP: supplier portals, exception handling, approval chains — the judgment-heavy edges S/4 standardises *around* but never absorbs. A migration is the one moment a retailer re-architects its entire operational layer with budget already allocated to do it. Catch them in the build/realize phase — after the SI is engaged, before the go-live freeze — and Duvo is part of the target-state design, not a post-go-live retrofit. Miss it and the workarounds calcify for another seven years.

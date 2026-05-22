@@ -1,0 +1,31 @@
+flowchart LR
+  S["① DETECT<br/><span style='font-size:13px;color:#5C5852'>5 pluggable signals A–E · 1st / 2nd / 3rd party</span>"]
+  Q{"② QUALIFY<br/><span style='font-size:13px;color:#5C5852'>one 0–100 score → tier + SLA</span>"}
+  R["③ ROUTE &amp; ENGAGE<br/><span style='font-size:13px;color:#5C5852'>tier × persona → channel mix</span>"]
+  CV{"④ CONVERT<br/><span style='font-size:13px;color:#5C5852'>classifier · MEDDPICC · ghost-recovery</span>"}
+  WIN["✅ booked + held meeting"]
+  L["⑤ LEARN<br/><span style='font-size:13px;color:#5C5852'>copy intel · outbound attribution · stress-test + scale-gates</span>"]
+  WARM["warm before you touch<br/><span style='font-size:13px;color:#5C5852'>founder-network intros + ABM ads</span>"]
+  CRM[("HubSpot · account-level SSOT")]
+
+  S --> Q --> R --> CV --> WIN
+  WARM -.primes.-> R
+  CV -.-> CRM
+  WIN -.-> CRM
+  CRM -.outcomes.-> L
+  L -.tunes score + weights.-> Q
+  L -.winning copy.-> R
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef tool fill:#E8D5CF,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef crm fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef win fill:#1A6E51,stroke:#1A6E51,stroke-width:2.5px,color:#FDFAF3
+
+  class S,WARM src
+  class R proc
+  class Q,CV gate
+  class L tool
+  class WIN win
+  class CRM crm
