@@ -44,6 +44,7 @@ Don't conflate the two: present them as **original submission** (the tag) vs **c
 | **Signal C** · SAP S/4HANA migration window | Full pipeline | The "uses SAP" qualifier made dynamic — *is actively changing* SAP |
 | **Signal D** · margin-pressure / efficiency mandate | Full pipeline | The CFO / board-level entry the v1 personas under-served |
 | **Signal E** · expansion / M&A / new-market | Full pipeline | Promotes v1 roadmap item 01 to a worked pipeline |
+| **Signal F** · Duvo events + 1st-party content engagement | Full pipeline | The missing 1st-party signal class — gtm-master Surfaces 5 + 6 (own content + cross-team LinkedIn), the highest-conviction class |
 | **Committee-expansion** · Tier-1 multithread | Sub-flow | v1 single-threading on enterprise buying committees |
 
 Diagrams are standalone `.mmd` files in [`post-submission/diagrams/`](./diagrams), mirrored inline below — same convention and house palette as the v1 `/diagrams/`.
@@ -61,6 +62,8 @@ The JD names its signal universe explicitly — *"hiring posts, ERP migrations, 
 
 Signal D (margin-pressure / efficiency mandate) isn't a named signal type but targets the JD's named *CFO* buyer. v1 covered two of the four named signals; the addendum completes the set.
 
+**Beyond the JD-named signals:** **Signal F · Duvo events + 1st-party content engagement** is a *meta-class* — gtm-master's highest-conviction signal class (Surfaces 5 + 6 of 6) — capturing the buyers already engaging with Duvo's own content motion. Duvo's 21 May process-mapping webinar is its first activation surface.
+
 ---
 
 ## One system, not campaigns
@@ -71,13 +74,13 @@ The JD draws the line at *"a campaign is a one-time send, not a system."* So her
 
 ```mermaid
 flowchart LR
-  S["① DETECT<br/><span style='font-size:13px;color:#5C5852'>5 pluggable signals A–E · 1st / 2nd / 3rd party</span>"]
+  S["① DETECT<br/><span style='font-size:13px;color:#5C5852'>6 pluggable signals A–F · 1st / 2nd / 3rd party</span>"]
   Q{"② QUALIFY<br/><span style='font-size:13px;color:#5C5852'>one 0–100 score → tier + SLA</span>"}
   R["③ ROUTE &amp; ENGAGE<br/><span style='font-size:13px;color:#5C5852'>tier × persona → channel mix</span>"]
   CV{"④ CONVERT<br/><span style='font-size:13px;color:#5C5852'>classifier · MEDDPICC · ghost-recovery</span>"}
   WIN["✅ booked + held meeting"]
   L["⑤ LEARN<br/><span style='font-size:13px;color:#5C5852'>copy intel · outbound attribution · stress-test + scale-gates</span>"]
-  WARM["warm before you touch<br/><span style='font-size:13px;color:#5C5852'>founder-network intros + ABM ads</span>"]
+  WARM["warm before you touch<br/><span style='font-size:13px;color:#5C5852'>founder-network intros + ABM ads + events / own content</span>"]
   CRM[("HubSpot · account-level SSOT")]
 
   S --> Q --> R --> CV --> WIN
@@ -109,13 +112,13 @@ flowchart LR
 
 | Part | What it does | Why it's a system, not a campaign |
 |---|---|---|
-| **① Detect** | 5 pluggable signals (A–E) across 1st / 2nd / 3rd party | A new signal is a config change, not a new build |
+| **① Detect** | 6 pluggable signals (A–F) across 1st / 2nd / 3rd party | A new signal is a config change, not a new build |
 | **② Qualify** | one 0–100 score (ICP 40 + Signal 40 + Persona 20) → tier + SLA (T1 <1h · T2 <24h · T3 weekly) | "Tier 1" means the same thing across every signal — consistent prioritisation, not per-campaign guesswork |
-| **③ Route & engage** | tier × persona → channel mix; **warm before you touch** (Tomáš's network intros + ABM ads) → founder 1:1 → committee multithread → automated nurture | Effort scales by tier automatically (human → smart-auto → reach); cold is never the first impression at T1 |
+| **③ Route & engage** | tier × persona → channel mix; **warm before you touch** (Tomáš's network intros + ABM ads + events/own content) → founder 1:1 → committee multithread → automated nurture | Effort scales by tier automatically (human → smart-auto → reach); cold is never the first impression at T1 |
 | **④ Convert** | Claude classifier (7-cat) → MEDDPICC auto-fill → ghost-recovery → held meeting | Every reply handled the same way; nothing falls through an inbox |
 | **⑤ Learn** | copy-intelligence loop + outbound-influence attribution (not reply rate) + 8.1/10 stress-test gate + 3 scale-gates before ramping volume | The system improves itself and only scales what's proven |
 
-Each part is backed by a gtm-master principle — *warm-before-you-touch · effort-by-tier · score-then-SLA · attribution-beyond-reply-rate · don't-scale-until-3-gates-pass.* The five signal pipelines below are what flows *through* this engine: interchangeable inputs, one machine.
+Each part is backed by a gtm-master principle — *warm-before-you-touch · effort-by-tier · score-then-SLA · attribution-beyond-reply-rate · don't-scale-until-3-gates-pass.* The six signal pipelines below are what flows *through* this engine: interchangeable inputs, one machine.
 
 ---
 
@@ -453,6 +456,121 @@ flowchart TD
 
 ---
 
+## Signal F · Duvo events + 1st-party content engagement `Proposed`
+
+**Why now.** Duvo runs LinkedIn webinars and live events as part of GTM — most recently a 45-min **process-mapping** session on **21 May 2026** (Omar · David · a US FDE). Per gtm-master's signal-class hierarchy, *"engagement on YOUR OWN content"* is **Surface 5 of 6** — the highest-conviction signal in this class, because the engager already consumed *your* specific content (not just category-adjacent). Webinar attendance is Surface 5; cross-team LinkedIn activity across Tomáš · Omar · David · the US FDE is **Surface 6** — *"10× signal volume vs founder-only"*. The 21 May attendees are warm *right now* — gtm-master's recency window for engagement signals is 14 days; the system captures them or burns them.
+
+This signal also unlocks what the v1 framing missed: **the motion isn't founder-only-now-AE-later; it's already multi-voice senior team** — Tomáš (peer-CEO), Omar (peer-of-CCO / Head of Commercial), David (GTM voice), the US FDE (technical demo). Per Surface 6 that's four active LinkedIn surfaces today, no AE-hire dependency. Each voice maps to a committee role.
+
+| | |
+|---|---|
+| **Lead time** | 14-day recency window (gtm-master standard); composite scoring extends with frequency |
+| **Geography** | Global · attendees self-select |
+| **Sources, free** | **Apify** LinkedIn event / webinar attendance scrape + competitor page followers · **brand-mention monitoring** for "Duvo" / "Rohlik" engagers · LinkedIn buyer-language keyword search ("process mapping" · "supplier-portal automation" · "agentic automation in retail") |
+| **Sources, paid** | **Trigify** for post-engagement monitoring on Tomáš / Omar / David / FDE LinkedIn content (Surfaces 5 + 6) · **Teamfluence** for profile-visit tracking · **RB2B** for Duvo-site visits · **BetterContact** phone waterfall for Tier-1 cold-calling · **Clay** orchestration |
+| **Scoring** | ICP fit (40) + signal strength (40, engagement-weighted **comment > repost > like**) + persona authority (20). **Composite stack:** if a Signal F engager also fires on Signal A/B/C/D/E → jump heat tier (multi-signal compounding). |
+| **Tier-1 routing — the variation** | gtm-master prescribes **cold call at T1** for own-content engagers, *not* email-first — "the engager already recognises you; the call interrupts in a warm way." So T1 = **cold call (BetterContact / Nooks AI dialer) + email + LinkedIn from the matched senior voice** — Tomáš to CEOs, Omar to Heads of Commercial, FDE to technical buyers. v1 doesn't use cold-call anywhere; Signal F brings the right channel for the right signal. |
+| **Filter discipline** | Commenters > likers; last 14 days; strip existing customers + closed-lost (HubSpot lookup); dedupe against signals A–E (stack-on, don't re-route). |
+| **Immediate pilot** | Activate the **21 May** process-mapping webinar attendee list now — concrete proof the system runs end-to-end, two days fresh. |
+
+```mermaid
+flowchart TD
+  A1["Apify LinkedIn events<br/><span style='font-size:13px;color:#5C5852'>webinar / live-event attendance · daily</span>"]
+  A2["Trigify post engagement<br/><span style='font-size:13px;color:#5C5852'>Tomáš / Omar / David / FDE LinkedIn · Surfaces 5 + 6</span>"]
+  A3["Brand + keyword listening<br/><span style='font-size:13px;color:#5C5852'>Apify 'Duvo' / 'Rohlik' mentions · 'process mapping' · 'supplier portal' · 'SAP migration'</span>"]
+  A4["Teamfluence + RB2B<br/><span style='font-size:13px;color:#5C5852'>profile visits across team · Duvo-site visits</span>"]
+  N["n8n cron<br/><span style='font-size:13px;color:#5C5852'>daily · dedupe vs A–E · strip customers/closed-lost</span>"]
+  B[("Supabase<br/>engagement history")]
+  C["Clay enrichment<br/><span style='font-size:13px;color:#5C5852'>verify ICP + persona role · check stack with A–E</span>"]
+  D{"Engagement scoring<br/>ICP 40 + Signal 40 comment&gt;repost&gt;like + Persona 20<br/>composite stack with A–E"}
+  E1["T1 Hot: commenter OR<br/>composite stack with A–E + ICP<br/><b>cold call + multi-voice email + LinkedIn</b>"]
+  E2["T2 Warm: liker / single touch + ICP<br/><b>peer-voice Smartlead + supporting LinkedIn</b>"]
+  E3["T3 Cool: passive engagement / ICP-only<br/><b>Smartlead nurture batch</b>"]
+  CALL["BetterContact / Nooks phone waterfall<br/><span style='font-size:13px;color:#5C5852'>warm-recognised opener · 'saw you at the session'</span>"]
+  TM["Matched-voice outreach<br/><span style='font-size:13px;color:#5C5852'>Tomáš → CEOs · Omar → Heads of Commercial · FDE → technical · all manual</span>"]
+  SL["Smartlead campaign<br/><span style='font-size:13px;color:#5C5852'>from matched peer voice · Maildoso secondary</span>"]
+  AIC{"Claude classifier<br/><span style='font-size:13px;color:#5C5852'>n8n + Anthropic API · 7-category JSON</span>"}
+  POS["positive_intent<br/>→ tier-aware Slack + calendar-checked draft"]
+  OUT["OOO / objection / unsub / wrong_person<br/>→ requeue · suppress · tag · forward"]
+  MEET["Meeting on calendar<br/><span style='font-size:13px;color:#5C5852'>HubSpot deal + Calendly invite</span>"]
+  HELDQ{"Held?<br/><span style='font-size:13px;color:#5C5852'>Gong/Granola transcript validation</span>"}
+  RECOV["Ghost-recovery agent<br/><span style='font-size:13px;color:#5C5852'>same email thread · 2–3 week chase cadence</span>"]
+  WIN["✅ Booked + held meeting"]
+  COPY["Copy intelligence agent<br/><span style='font-size:13px;color:#5C5852'>weekly batch · pattern library · variant drafts</span>"]
+  GTME["GTME Slack · weekly copy report<br/><span style='font-size:13px;color:#5C5852'>winning patterns + draft variants for next batch</span>"]
+  CRM["HubSpot · outcome SSOT<br/><span style='font-size:13px;color:#5C5852'>Clay native sync · MEDDPICC · stack with A–E</span>"]
+
+  A1 --> N
+  A2 --> N
+  A3 --> N
+  A4 --> N
+  N --> B --> C --> D
+  D --> E1
+  D --> E2
+  D --> E3
+  E1 --> CALL
+  E1 --> TM
+  E2 --> SL
+  E3 --> SL
+  CALL --> AIC
+  TM --> AIC
+  SL --> AIC
+  AIC --> POS
+  AIC --> OUT
+  POS --> MEET --> HELDQ
+  HELDQ -->|held| WIN
+  HELDQ -->|ghosted| RECOV
+  RECOV --> AIC
+  C -.-> CRM
+  POS -.-> CRM
+  OUT -.-> CRM
+  WIN -.-> CRM
+  CRM -.->|aggregated outcomes| COPY
+  SL -.->|sent copy| COPY
+  AIC -.->|reply labels| COPY
+  COPY --> GTME
+  COPY -.->|variant drafts| SL
+
+  classDef src fill:#FDFAF3,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef proc fill:#E8D5CF,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef store fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef out fill:#B8412F,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef gate fill:#FDFAF3,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef tier fill:#EFE9DC,stroke:#1A1A1A,stroke-width:1.5px,color:#1A1A1A
+  classDef tool fill:#E8D5CF,stroke:#B8412F,stroke-width:2px,color:#1A1A1A
+  classDef crm fill:#1A1A1A,stroke:#1A1A1A,stroke-width:1.5px,color:#F6F1E8
+  classDef win fill:#1A6E51,stroke:#1A6E51,stroke-width:2.5px,color:#FDFAF3
+
+  class A1,A2,A3,A4 src
+  class C,N proc
+  class B store
+  class D,AIC,HELDQ gate
+  class E1,E2,E3 tier
+  class TM,SL,CALL,COPY tool
+  class POS,OUT,MEET,RECOV,GTME out
+  class WIN win
+  class CRM crm
+```
+
+*Duvo events + 1st-party engagement · Surfaces 5 + 6 · multi-voice cast (Tomáš / Omar / FDE) · cold-call routing at T1 because the engager already recognises Duvo · stacks with signals A–E*
+
+#### Slack alert · Tier 1 sample (stacked signal)
+
+> ### 07:14 · #signal-f-content · 🔥 TIER 1 – [ACCOUNT NAME]
+>
+> **Engagement:** Commented on Omar's process-mapping post · 21 May webinar attendee · 2nd interaction in 14d
+> **Persona:** [First Last] · [Head of Commercial]
+> **Account:** €[X.X]B · grocery / retail · **stacks with Signal C** (S/4HANA build phase)
+> **Score:** `91 / 100` · own-content commenter + Signal C composite
+>
+> ✏️ **Suggested action: cold call (BetterContact · warm-recognised opener) + follow-up email from Omar (peer-voice)**
+>
+> > "Saw you joined Omar's process-mapping session and commented on the supplier-orchestration piece — and your team is mid-S/4HANA build. That's the exact spot where most programs hand the messy edges back to people. Worth 20 min with Omar?"
+>
+> **Buttons:** 📞 Add to call queue · 📇 Open in HubSpot · 🎥 Webinar replay · 🧩 Stacked-signal view
+
+---
+
 ## Committee-expansion · Tier-1 multithread `Proposed`
 
 *Not a signal — a cross-signal sub-flow. Fires the moment any of Signals A–E pushes an account to Tier 1.*
@@ -560,4 +678,4 @@ flowchart TD
 
 ---
 
-**Together: five signals, one committee-aware motion.** Signals A–B (v1) prove the model; C–E widen the trigger surface across the moments a €500M+ retailer actually *changes* — its SAP core, its margin mandate, its footprint — and the committee sub-flow makes every Hot account an enterprise multithread instead of a single thread. Same `source → score → tier → route → classify → recover` spine throughout. Same stack, denser coverage.
+**Together: six signals, one committee-aware motion.** Signals A–B (v1) prove the model; C–E widen the trigger surface across the moments a €500M+ retailer actually *changes* — its SAP core, its margin mandate, its footprint. **Signal F adds the 1st-party engagement layer** — own-content + events, the highest-conviction signal class per gtm-master — with cold-call routing at T1 because the engager already recognises Duvo, and a multi-voice cast (Tomáš · Omar · FDE) matched to committee role. The committee sub-flow makes every Hot account an enterprise multithread instead of a single thread. Same `source → score → tier → route → classify → recover` spine throughout. Same stack, denser coverage.
