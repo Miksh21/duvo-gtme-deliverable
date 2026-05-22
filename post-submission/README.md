@@ -48,6 +48,19 @@ If asked *"what did Jan submit?"* — answer from the root. If asked *"how does 
 
 Diagrams are standalone `.mmd` files in [`post-submission/diagrams/`](./diagrams), mirrored inline below — same convention and house palette as the v1 `/diagrams/`.
 
+## Maps to the JD's named signals
+
+The JD names its signal universe explicitly — *"hiring posts, ERP migrations, M&A, leadership changes."* With this addendum, every named type has a dedicated, worked pipeline:
+
+| JD-named signal | Pipeline |
+|---|---|
+| Leadership changes | Signal A *(v1)* |
+| Hiring posts | Part 3 LinkedIn hiring-post pipeline *(v1)* + Signal B inputs |
+| **ERP migrations** | **Signal C** *(this addendum)* |
+| **M&A** | **Signal E** *(this addendum)* |
+
+Signal D (margin-pressure / efficiency mandate) isn't a named signal type but targets the JD's named *CFO* buyer. v1 covered two of the four named signals; the addendum completes the set.
+
 ---
 
 ## Signal C · SAP S/4HANA migration window `Proposed`
