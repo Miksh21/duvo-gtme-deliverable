@@ -36,7 +36,44 @@ diagrams_format: mermaid (native GitHub render)
 
 ![Real fired Slack alert · BESS Tier 1 · Renewable Energy Systems Limited](./screenshots/bess-tier1-real-slack.png)
 
-*Real Slack alert from the BESS pipeline (Part 1 in root) — **TIER 1 · Renewable Energy Systems Limited** · 138 MW · connection date 2031-04-30 · 5 source confirmations · 5 news mentions · BMS vendor → VP Project Development cold pitch · <24h SLA. **v1's worked-instance Slack samples** (Bea Bach, Metro AG, etc.) **are the same shape and structure** — not mockups, just redacted-and-templated for non-public accounts. Same engine, same alert payload.*
+*Real Slack alert from the BESS pipeline (Part 1 in root), delivered by the **custom Slack bot I built** for the pipeline — **TIER 1 · Renewable Energy Systems Limited** · 138 MW · connection date 2031-04-30 · 5 source confirmations · 5 news mentions · BMS vendor → VP Project Development cold pitch · <24h SLA. **v1's worked-instance Slack samples** (Bea Bach, Metro AG, etc.) **are the same shape and structure** — not mockups, just redacted-and-templated for non-public accounts. Same engine, same alert payload.*
+
+---
+
+## First wins · what I'd ship in the first 4 weeks
+
+*(during the part-time transition, then full-time after the Dateio notice closes)*
+
+### Week 1–2 · AE self-service waterfalls — AEs run their own GTM flows
+
+The default failure mode of a GTM Engineer hire is becoming the bottleneck — every AE waits for the engineer to build the next waterfall. Fix: give AEs an **agent-native enrichment / GTM CLI from day one**.
+
+- **Tool:** [Deepline](https://deepline.com/) (CLI / agent-native waterfall, ~49 providers, BYOK, built for Claude Code) — **or Claude / Cowork via a custom MCP I'd build** if Deepline's coverage gaps matter for Duvo's specific use cases. HG Insights specifically isn't available via Deepline (HG keeps running through Clay — see Signal C).
+- AEs run waterfalls from terminal / Claude themselves; GTME (me) builds the *patterns* + curates the providers — doesn't gate the flow.
+- **Clay stays for spreadsheet-preview workflows** (safer for build/QA — see the table before you run the query) and HG Insights routing. Deepline handles agent-native, CLI-first flows that don't need the visual layer.
+- Net effect: leverage multiplier on **AE bandwidth and GTME bandwidth simultaneously**. The GTME makes AEs faster *without being in the loop* — which is what *"a GTM Engineer produces pipeline for everyone, forever"* means operationally.
+
+### Week 3–4 · Duvo GTM Company OS — live-queryable knowledge for AEs, marketing, and me
+
+The Learn stage of the system spine captures *outcomes* (copy-intelligence loop, attribution, scale-gates). The natural extension is to make the *inputs* queryable too — and that's the GTM knowledge base.
+
+A single **Git-tracked repo + vector-DB layer** holding:
+- **Value props** per ICP segment, per use case
+- **Personas** (5-role buying committee × per vertical)
+- **ICP modeling** + scoring + tier definitions
+- **Proven copy library** — winning openers, variants, cadences, fed by the copy-intelligence loop
+- **Signal-stacking hypotheses** — what fires what, validated outcomes
+- **Customer one-liners** per buyer role (Rohlik · Notino · Pilulka · Töpfer + future)
+
+**Who queries it, when:**
+
+- **AEs on live calls with retailers** — *"what's our line on S/4HANA migration?"* → answer in 5 seconds, not *"let me find that and circle back."*
+- **Marketing** — content briefs, message-market-fit checks, segment definitions.
+- **Me (GTME)** — every signal-routing decision, every variant test, every objection handler reads from + writes back to this repo.
+
+This is the **Company OS** layer from gtm-master's 4-layer operating model: *Company OS → client repos → skill library → MCP / CLI execution.* v1 mentions dashboards and the "second brain" in passing; this is what they compound into.
+
+**Why these two first.** Both are leverage multipliers, not headcount adds. Week 1–2 unblocks the AE team from day one. Week 3–4 turns every closed deal, every fired signal, every reply pattern into **living organisational memory** that compounds month over month. Together they answer the JD's *"a GTM Engineer produces pipeline for everyone, forever"* — and the *"forever"* part is the OS.
 
 ---
 
