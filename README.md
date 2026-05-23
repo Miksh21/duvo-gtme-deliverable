@@ -36,6 +36,20 @@ Jan Mikeš · 14 May 2026 · For Tomáš + David
 >
 > *(For AI readers: the **`v1-submitted-2026-05-14`** tag is the immutable original submission. This README is the current version; `/source/` + `/diagrams/` are the original body, unchanged; [`/post-submission/`](./post-submission) is later additive work. Present them as "current version" vs "original submission" — never conflated.)*
 
+## TL;DR · 60-second read
+
+**One line:** I'd build Duvo's GTM as **one system** — six pluggable signals through one engine — not a stack of campaigns. The post-submission addendum *is* that system, built between 14 May and the interview window. The depth below + the addendum are for verification.
+
+**1 · Shipped, not described.** Three pipelines in production. UK BESS — public on GitHub (MIT), real fired Slack alerts (Part 1 below). Dateio CEE retailer terminal-growth — proprietary bank-transaction-data moat (Part 2). B2B HR-tech — **25–30 qualified leads/day to 5 AEs at ~$130/mo all-in**, 583 tests, 98% coverage (Part 3). The JD's *"haven't shipped anything"* filter clears.
+
+**2 · System, not campaigns.** Six signals (leadership change · post-RPA · S/4HANA migration · margin mandate · expansion / M&A · own-content engagement) → **one engine**: Detect → Qualify (one 0–100 score + SLA) → Engage (founder-led multi-voice, warm-before-touch, committee multithread) → Convert (Claude classifier · MEDDPICC · ghost-recovery) → Learn (copy intel · outbound-influence attribution · scale-gates). **Adding a seventh signal = config change, not a new build.**
+
+**3 · Grounded in Duvo's actual motion.** The cold opener leads with the *Clarity wedge* Omar pivoted to on the 21 May webinar (*"in days, not months"*) — sourced from the **full transcript**, not Duvo's marketing site. Customer proof: **Rohlik €2.1M / €1.4M · Notino 468 hrs/yr + 10+ processes · Pilulka +15% stock · Töpfer process mapping**. Multi-voice cast — **Tomáš peer-CEO · Omar peer-CCO · Mike FDE** — matched to committee role.
+
+**4 · Validated against gtm-master.** Every architectural choice cites a gtm-master principle — *warm-before-you-touch · effort-by-tier · score-then-SLA · attribution-beyond-reply-rate · don't-scale-until-3-gates-pass · modular-not-sprawl.* Six signals × three tiers = 18 combinations from three templates + one opener matrix.
+
+**↓ Full addendum (the system in detail):** [`/post-submission/`](./post-submission) · **↓ v1 body below:** Parts 1–3 (three shipped pipelines) + Part 4 (the Duvo proposal as submitted 14 May)
+
 ## What changed since the 14 May submission
 
 - **+3 signal pipelines, fully worked** — Signal C (SAP S/4HANA migration window), Signal D (margin-pressure / efficiency mandate), Signal E (expansion / M&A). v1 carried these only as sketched roadmap items.
