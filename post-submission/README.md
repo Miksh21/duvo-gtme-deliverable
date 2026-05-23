@@ -809,7 +809,7 @@ Per gtm-master Principle 6 (Gorgias's 200 → 10 sequence collapse: *segment, do
 
 Channels: email (matched peer-voice via Maildoso) + Tomáš personal LinkedIn DM (manual) + cold call (Signal F variant via BetterContact / Nooks). Replies → classifier → instant Slack ping with paste-ready draft.
 
-Three variants share the **body**; only the **opener swaps per signal** (see matrix below).
+Two variants share the **body**; only the **opener swaps per signal** (see matrix below). *(v1's "Quiet question" Variant C is dropped here — the soft variant drags the average; pattern-recognition + specific-pain carry the response curve.)*
 
 **Variant A · Pattern recognition (Rohlik / Notino comparable)**
 
@@ -822,12 +822,6 @@ Three variants share the **body**; only the **opener swaps per signal** (see mat
 > [SIGNAL-SPECIFIC OPENER]
 >
 > Most [signal-relevant programs] hand the judgment-heavy edges back to people — supplier portals, exception handling, approval chains. That's where the business case quietly leaks. **Clarity maps it in 30 min**; we quantify the leakage before you commit. *(One travel retailer surfaced €1M in 1–2 days.)* Worth 20 min?
-
-**Variant C · Quiet question (soft CTA, no pitch)**
-
-> [SIGNAL-SPECIFIC OPENER, reframed as a question]
->
-> Curious how it's playing on your side. No pitch — just compare notes.
 
 ### Tier 2 · 3-step sequence, peer-voice email
 
