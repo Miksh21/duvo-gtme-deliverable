@@ -53,25 +53,15 @@ The default failure mode of a GTM Engineer hire is becoming the bottleneck — e
 - **Clay stays for spreadsheet-preview workflows** (safer for build/QA — see the table before you run the query) and HG Insights routing. Deepline handles agent-native, CLI-first flows that don't need the visual layer.
 - Net effect: leverage multiplier on **AE bandwidth and GTME bandwidth simultaneously**. The GTME makes AEs faster *without being in the loop* — which is what *"a GTM Engineer produces pipeline for everyone, forever"* means operationally.
 
-### Week 3–4 · Duvo GTM Company OS — live-queryable knowledge for AEs, marketing, and me
+### Week 3–4 · Seed the Duvo GTM Company OS — *direction, not a finished product*
 
-The Learn stage of the system spine captures *outcomes* (copy-intelligence loop, attribution, scale-gates). The natural extension is to make the *inputs* queryable too — and that's the GTM knowledge base.
+This is a **long-game idea, not a 4-week deliverable.** The full Company OS is months of work for a thin v1, years to compound real value. gtm-master's 4-layer operating model (`Company OS → client repos → skill library → MCP / CLI execution`) is the reference; Workflows.io's published [`company-os-starter-kit`](https://github.com/Workflowsio/company-os-starter-kit) is a working pattern to learn from, not copy whole.
 
-A single **Git-tracked repo + vector-DB layer** holding:
-- **Value props** per ICP segment, per use case
-- **Personas** (5-role buying committee × per vertical)
-- **ICP modeling** + scoring + tier definitions
-- **Proven copy library** — winning openers, variants, cadences, fed by the copy-intelligence loop
-- **Signal-stacking hypotheses** — what fires what, validated outcomes
-- **Customer one-liners** per buyer role (Rohlik · Notino · Pilulka · Töpfer + future)
+**What's realistic in week 3–4:** seed the structure + prove the query pattern works on one slice. Port what's already in this addendum (positioning · customer roster · signals A–F · modular copy) into the proposed file tree, wire one query interface (Claude / Cowork on Git + a vector layer), and start the **memory-writes-back-to-itself** loop on the cheapest signal first (winning copy variants).
 
-**Who queries it, when:**
+📁 **The proposed structure + honest scope (week 3–4 vs months vs years):** [`company-os-sketch.md`](./company-os-sketch.md) — directory tree, what seeds first, the self-improvement loop, framing of what's promised vs aspirational.
 
-- **AEs on live calls with retailers** — *"what's our line on S/4HANA migration?"* → answer in 5 seconds, not *"let me find that and circle back."*
-- **Marketing** — content briefs, message-market-fit checks, segment definitions.
-- **Me (GTME)** — every signal-routing decision, every variant test, every objection handler reads from + writes back to this repo.
-
-This is the **Company OS** layer from gtm-master's 4-layer operating model: *Company OS → client repos → skill library → MCP / CLI execution.* v1 mentions dashboards and the "second brain" in passing; this is what they compound into.
+**Why even start in week 3–4?** The moment the pattern is live, every closed deal, every fired signal, every reply starts writing back to it — compounding from day one. By month six AEs query it on live calls; by month twelve marketing briefs, signal-routing decisions, and discovery prep all read from + write back to it. *That's* the **"forever"** part of *"a GTM Engineer produces pipeline for everyone, forever."*
 
 **Why these two first.** Both are leverage multipliers, not headcount adds. Week 1–2 unblocks the AE team from day one. Week 3–4 turns every closed deal, every fired signal, every reply pattern into **living organisational memory** that compounds month over month. Together they answer the JD's *"a GTM Engineer produces pipeline for everyone, forever"* — and the *"forever"* part is the OS.
 
