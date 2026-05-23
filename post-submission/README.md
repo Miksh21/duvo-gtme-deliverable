@@ -66,11 +66,26 @@ Signal D (margin-pressure / efficiency mandate) isn't a named signal type but ta
 
 ---
 
+## Duvo's public customer roster
+
+Four named retail / CPG customers, four different use-cases — the signals below target the moments accounts *like these* enter the buying window.
+
+| Customer | Vertical · use case | Published outcome |
+|---|---|---|
+| **Rohlik Group** | CEE grocery · supplier ops + margin protection | **€2.1M revenue + €1.4M margin protected** |
+| **Notino** | Cosmetics e-com · CX + review-reply ops *(10+ processes live)* | **468 hours / year of specialist capacity returned** |
+| **Pilulka** | CZ pharmacy retail · stock + supply ops | **Stock availability +15% in 2 weeks** |
+| **Töpfer** | DACH baby-food / FMCG · process mapping + transformation | Process mapping + transformation engagement |
+
+The footprint already spans grocery, e-com, pharmacy, and DACH FMCG — and the outcomes are *margin · capacity · availability · process*. Same engine, four shapes. *"Signals are pluggable, the engine is one"* isn't theoretical — Duvo runs it across this mix today.
+
+---
+
 ## One system, not campaigns
 
-The JD draws the line at *"a campaign is a one-time send, not a system."* So here's the system — and why the five signals above are *parts* of it, not five campaigns to run.
+The JD draws the line at *"a campaign is a one-time send, not a system."* Duvo's own product positioning answers the same line — **"reliable execution: every job through a queue, every exception to a human with full context, inside the tools you already use."** The outbound motion has to *be* that, not just sell it.
 
-**One engine. Pluggable signals. Campaigns are its outputs.** A signal is just a detector. The engine is what turns any detected account into a booked, qualified meeting and a clean CRM record — the same way every time. Add a sixth signal and you change a config, not launch a new campaign. That's the whole difference.
+**One engine. Pluggable signals. Campaigns are its outputs.** A signal is just a detector. The engine is what turns any detected account into a booked, qualified meeting and a clean CRM record — the same way every time, with the same audit trail. Add a seventh signal and you change a config, not launch a new campaign.
 
 ```mermaid
 flowchart LR
@@ -80,7 +95,7 @@ flowchart LR
   CV{"④ CONVERT<br/><span style='font-size:13px;color:#5C5852'>classifier · MEDDPICC · ghost-recovery</span>"}
   WIN["✅ booked + held meeting"]
   L["⑤ LEARN<br/><span style='font-size:13px;color:#5C5852'>copy intel · outbound attribution · stress-test + scale-gates</span>"]
-  WARM["warm before you touch<br/><span style='font-size:13px;color:#5C5852'>founder-network intros + ABM ads + events / own content</span>"]
+  WARM["warm before you touch<br/><span style='font-size:13px;color:#5C5852'>founder + partner network intros + ABM ads + events / own content</span>"]
   CRM[("HubSpot · account-level SSOT")]
 
   S --> Q --> R --> CV --> WIN
@@ -114,11 +129,15 @@ flowchart LR
 |---|---|---|
 | **① Detect** | 6 pluggable signals (A–F) across 1st / 2nd / 3rd party | A new signal is a config change, not a new build |
 | **② Qualify** | one 0–100 score (ICP 40 + Signal 40 + Persona 20) → tier + SLA (T1 <1h · T2 <24h · T3 weekly) | "Tier 1" means the same thing across every signal — consistent prioritisation, not per-campaign guesswork |
-| **③ Route & engage** | tier × persona → channel mix; **warm before you touch** (Tomáš's network intros + ABM ads + events/own content) → founder 1:1 → committee multithread → automated nurture | Effort scales by tier automatically (human → smart-auto → reach); cold is never the first impression at T1 |
+| **③ Route & engage** | tier × persona → channel mix; **warm before you touch** (Tomáš's + partner-network intros + ABM ads + events/own content) → founder 1:1 → committee multithread → automated nurture | Effort scales by tier automatically (human → smart-auto → reach); cold is never the first impression at T1 |
 | **④ Convert** | Claude classifier (7-cat) → MEDDPICC auto-fill → ghost-recovery → held meeting | Every reply handled the same way; nothing falls through an inbox |
 | **⑤ Learn** | copy-intelligence loop + outbound-influence attribution (not reply rate) + 8.1/10 stress-test gate + 3 scale-gates before ramping volume | The system improves itself and only scales what's proven |
 
 Each part is backed by a gtm-master principle — *warm-before-you-touch · effort-by-tier · score-then-SLA · attribution-beyond-reply-rate · don't-scale-until-3-gates-pass.* The six signal pipelines below are what flows *through* this engine: interchangeable inputs, one machine.
+
+### Land one process, expand to ten
+
+A signed customer doesn't run *one* agent — they run a fleet. **Duvo runs 10+ processes at Notino**, started with one. The same `Detect → Qualify → Engage → Convert` engine that closes the first deal also surfaces the next process *inside* the account once it's signed: the classifier sees adoption signals in the CRM, MEDDPICC fields show where the next process pain lives, and the GTME hands a pre-qualified expansion play to the FDE. **The system's job doesn't end at "booked meeting" — it ends at "tenth process signed."**
 
 ---
 
@@ -338,7 +357,7 @@ flowchart TD
 >
 > ✏️ **Suggested hook (1:1 manual):**
 >
-> > You've put a number on the efficiency program — [€200M by FY27]. The fastest line to it that doesn't touch headcount is the manual ops work nobody books as cost: supplier reconciliation, exception handling, the SAP busywork. We took ~40% of that out at Rohlik. Worth 20 minutes with whoever owns the cost-out plan?
+> > You've put a number on the efficiency program — [€200M by FY27]. The fastest line to it that doesn't touch headcount is the manual ops work nobody books as cost: supplier reconciliation, exception handling, the SAP busywork. **We protected €2.1M revenue + €1.4M margin at Rohlik, and returned 468 hours/year of specialist capacity at Notino** — same engine, two outcomes. Worth 20 min with whoever owns the cost-out plan?
 >
 > **Buttons:** 📇 Open in HubSpot · 📄 CFO business-case pre-brief · 📈 IR source
 
