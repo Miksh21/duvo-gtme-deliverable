@@ -14,6 +14,32 @@ diagrams_format: mermaid (native GitHub render)
 
 # Post-submission · how I'd approach it now
 
+## TL;DR · 60-second read
+
+**One line:** I'd build Duvo's GTM as **one system** — six pluggable signals through one engine — not a stack of campaigns. This addendum *is* that system. The depth below is for verification.
+
+**1 · Shipped, not described.** Three pipelines in production. UK BESS — public on GitHub (MIT), real fired Slack alerts (screenshot below). Dateio CEE retailer terminal-growth — in production on proprietary bank-transaction data. B2B HR-tech — **25–30 qualified leads/day to 5 AEs at ~$130/mo all-in**, 583 tests, 98% coverage. The JD's *"haven't shipped anything"* filter clears.
+
+**2 · System, not campaigns.** Six signals (leadership change · post-RPA · S/4HANA migration · margin mandate · expansion / M&A · own-content engagement) → **one engine**: Detect → Qualify (one 0–100 score + SLA) → Engage (founder-led multi-voice, warm-before-touch, committee multithread) → Convert (Claude classifier · MEDDPICC · ghost-recovery) → Learn (copy intel · outbound-influence attribution · scale-gates). **Adding a seventh signal = config change, not a new build.**
+
+**3 · Grounded in Duvo's actual motion.** The cold opener leads with the *Clarity wedge* Omar pivoted to on the 21 May webinar (*"in days, not months"*) — sourced from the **full transcript**, not Duvo's marketing site. Customer proof: **Rohlik €2.1M / €1.4M · Notino 468 hrs/yr + 10+ processes · Pilulka +15% stock · Töpfer process mapping**. Multi-voice cast — **Tomáš peer-CEO · Omar peer-CCO · Mike FDE** — matched to committee role, no AE-hire dependency.
+
+**4 · Validated against gtm-master.** Every architectural choice cites a gtm-master principle — *warm-before-you-touch · effort-by-tier · score-then-SLA · attribution-beyond-reply-rate · don't-scale-until-3-gates-pass · modular-not-sprawl.* Six signals × three tiers = 18 combinations from three templates + one opener matrix.
+
+**Start:** immediate part-time during the 3–4 week transition · full-time after the 4-week Dateio notice.
+
+**↓ Depth below for verification.**
+
+---
+
+## Proof in production · BESS pipeline real fired alert
+
+![Real fired Slack alert · BESS Tier 1 · Renewable Energy Systems Limited](./screenshots/bess-tier1-real-slack.png)
+
+*Real Slack alert from the BESS pipeline (Part 1 in root) — **TIER 1 · Renewable Energy Systems Limited** · 138 MW · connection date 2031-04-30 · 5 source confirmations · 5 news mentions · BMS vendor → VP Project Development cold pitch · <24h SLA. **v1's worked-instance Slack samples** (Bea Bach, Metro AG, etc.) **are the same shape and structure** — not mockups, just redacted-and-templated for non-public accounts. Same engine, same alert payload.*
+
+---
+
 > **Status — added 2026-05-22 (refined since), after the 14 May submission.** The exact version Duvo received is frozen at the [`v1-submitted-2026-05-14`](https://github.com/Miksh21/duvo-gtme-deliverable/tree/v1-submitted-2026-05-14) tag. The repo's main README now leads with the **current** version; this folder is the **additive** work — *"how I'd approach it now"* — not a revision of the original.
 
 ## Why this folder exists

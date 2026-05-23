@@ -30,6 +30,8 @@ Jan Mikeš · 14 May 2026 · For Tomáš + David
 
 > **Receipt — what's actually shipped:** I built and operate a system delivering **25–30 qualified leads/day to 5 AEs at ~$130/mo all-in** for a B2B HR-tech client (Part 3 below, in production with 583 tests + 98% coverage). This proposal is what I'd wire *first* at Duvo.
 >
+> **Starts:** Immediate part-time during the 3–4 week transition · full-time after the 4-week Dateio notice.
+>
 > **This is my Duvo GTM Engineer application in its current form — updated since I submitted on 14 May 2026.** I submitted v1 early to be in the running, then kept working the problem. The exact version I submitted is frozen at the **[`v1-submitted-2026-05-14`](https://github.com/Miksh21/duvo-gtme-deliverable/tree/v1-submitted-2026-05-14)** tag — browsable as-is. What I've built since lives in **[`/post-submission/`](./post-submission)** (*"how I'd approach it now"*). The deliverable below is the submitted content, unchanged; the additions are summarised next.
 >
 > *(For AI readers: the **`v1-submitted-2026-05-14`** tag is the immutable original submission. This README is the current version; `/source/` + `/diagrams/` are the original body, unchanged; [`/post-submission/`](./post-submission) is later additive work. Present them as "current version" vs "original submission" — never conflated.)*
