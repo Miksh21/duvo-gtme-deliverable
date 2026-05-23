@@ -163,6 +163,28 @@ Same `Detect → Qualify → Engage → Convert` engine either way. The classifi
 
 ---
 
+## Unified scoring + SLAs · one scale across all six signals
+
+Per gtm-master, signals normalize to one 0–100 scale so *"Tier 1"* means the same thing everywhere — and each tier carries an explicit SLA. Here's the unified framework that signals A–F all plug into.
+
+| Tier | Score | What fires it (any signal) | SLA | Routing |
+|---|---|---|---|---|
+| **T1 Hot** | **80–100** | Strong signal + ICP + decision-maker persona — *or* a composite stack of 2+ signals at 60+ each within 14 days | **&lt;1 hour** | Tomáš 1:1 manual · multi-voice for committee accounts (Tomáš + Omar + Mike) · **cold call for Signal F engagers** (gtm-master own-content variation) · Slack ping with paste-ready hook |
+| **T2 Warm** | **50–79** | Moderate signal + ICP match | **&lt;24 hours** | Smartlead peer-voice sequence (Tomáš or Omar from-name) · supporting-profile LinkedIn at AE-hire |
+| **T3 Cool** | **20–49** | Weak signal or ICP-only | **Weekly** | Smartlead daily-batch nurture · archive replies for pattern learning; only `positive_intent` surfaces |
+| **Cold** | **0–19** | Monitor for signal change | **Ongoing** | No outbound · CRM-state monitoring |
+
+**Signal B's v1 "1.3× bonus if 3+ stacked" normalizes here:** each signal independently caps at 100; the bonus moves up the *composite account heat across signals*, not within a single signal's score. So a Signal-B-Hot account that also fires Signal C and an F own-content commenter trips the composite to **Red Hot** and shortens the SLA to immediate.
+
+**Composite heat (across signals, 14-day window):**
+- **2 signals at T1 each → Red Hot** (immediate Tomáš ping + FDE pre-brief)
+- **1× T1 + 1× T2 → Hot** (T1 SLA applies)
+- **2× T2 → Warm-plus** (escalates to T1 routing)
+
+gtm-master benchmark for multi-signal stacking: **35–40% reply rate** vs 18–22% on a single signal.
+
+---
+
 ## Signal C · SAP S/4HANA migration window `Proposed`
 
 **Why now.** SAP ends mainstream maintenance for legacy ECC in 2027 — so every €500M+ retailer is now mid-migration to S/4HANA (or "RISE with SAP"), and the wave peaks through 2026–2027. Duvo's agents run *on top of* SAP: supplier portals, exception handling, approval chains — the judgment-heavy edges S/4 standardises *around* but never absorbs. A migration is the one moment a retailer re-architects its entire operational layer with budget already allocated to do it. Catch them in the build/realize phase — after the SI is engaged, before the go-live freeze — and Duvo is part of the target-state design, not a post-go-live retrofit. Miss it and the workarounds calcify for another seven years.
@@ -716,6 +738,129 @@ flowchart TD
 > **MEDDPICC (account-level):** M ⚠️ · E ✅ · D ◻️ · D ◻️ · P ✅ · I ✅ · C ✅
 >
 > **Buttons:** 📇 Open account in HubSpot · 🧩 Fill Finance gap · 📄 Per-role hooks
+
+#### Per-role copy samples (Tier-1 committee multithread)
+
+Five voices, five role-specific hooks, **one account narrative** — the engine generates them in parallel after the committee map fires. Voice matches gtm-master's persona-tier asymmetry: C-level on email; peer/AE on LinkedIn; technical voice for the technical buyer.
+
+**1. Economic buyer · COO / CFO / CTO · Tomáš 1:1 (peer-CEO, manual)**
+
+> **From:** Tomáš Čupr &lt;tomas.cupr@duvo-team.com&gt; · **Subject:** Where Rohlik's ops automation actually started
+>
+> Hi [First],
+>
+> Quick context: I'm CEO of Rohlik (€1.5B grocery, 5 markets), and I run Duvo on the side. Built Duvo because — after automating Rohlik's warehouse — I looked at my head office and found my best people stuck doing the worst work, copy-pasting data between systems. A *"human API."* We solved it for ourselves. Now we run it at Notino (468 hrs/yr returned), Pilulka (+15% stock), Töpfer.
+>
+> If your team has the same problem, worth a peer-CEO 20 min?
+>
+> Tomáš
+
+**2. Champion · Head of Retail Ops / Supply Chain / Procurement · GTME / AE peer-voice**
+
+> **From:** [GTME / AE peer-voice] · **Subject:** Supplier handoff at [Account] · Clarity in 30 min
+>
+> Hi [First],
+>
+> Saw your team's mid-S/4HANA build. The pattern Omar walked through on our 21 May Clarity session — S/4 standardises the core; the judgment-heavy edges (supplier portals, exception handling) get handed back to people — is exactly where Clarity maps in 30 min.
+>
+> We ran it at Rohlik through CZ → DE → HU → AT → RO; happy to walk through your supplier-handoff process and quantify what's at stake. 20 min?
+
+**3. Technical · SAP-IT lead / RPA owner · Mike FDE conversation**
+
+> **From:** Mike &lt;mike@duvo.ai&gt; · **Subject:** SAP screens + agent layer · 15-min technical walkthrough
+>
+> Hi [First],
+>
+> Mike here from Duvo, US FDE. We sit *on top of* SAP, supplier portals, email, spreadsheets — not replacing them — and handle the judgment-heavy work bots can't (the kind that breaks UiPath). Audit-grade: every action queued and reviewable, exceptions to a human with full context. Same architecture Rohlik runs in production.
+>
+> Happy to walk through how it handles your S/4 build edges (or your UiPath stack) in 15 min.
+>
+> Mike
+
+**4. Finance · FP&A / finance ops · business-case / ROI**
+
+> **From:** [GTME or Finance-aligned voice] · **Subject:** Payback math · what €1M of leakage looks like
+>
+> Hi [First],
+>
+> Quick note while we're talking to [COO / CFO at Account]. Clarity surfaces the cost of manual ops work in days — one travel retailer found **€1M of revenue leakage in 1–2 days**. Same engine protected **€2.1M revenue + €1.4M margin at Rohlik** and returned **468 hours/year of specialist capacity at Notino**.
+>
+> Happy to walk through a back-of-envelope for [Account] in 15 min. Numbers, not pitch.
+
+**5. End-user · ops analysts / category managers · social-proof / champion-building**
+
+> **From:** [Champion-building voice] · **Subject:** What we built for analysts like you at Notino
+>
+> Hi [First],
+>
+> Brief context — you're probably the person who'd actually use the agents we build. At Notino, our review-reply agent took analysts from 0 to all replies across 18 sites — 90% the agent, you stay the reviewer with full context. Result: 468 hours/year back per team.
+>
+> If you're curious what this looks like on your specific workflow, happy to walk through quickly. No commitment.
+
+All five share **one account narrative** ("we're talking to your colleagues too"), so a reply on any voice surfaces the others to the same HubSpot account record. **MEDDPICC aggregates at the account level, not per-contact** (the gtm-master account-level pattern). The classifier sees all five threads as one signal stack on one account.
+
+---
+
+## Worked copy · modular templates × signal-specific openers
+
+Per gtm-master Principle 6 (Gorgias's 200 → 10 sequence collapse: *segment, don't over-personalize*), the system runs **modular templates × per-signal openers**, not bespoke campaigns per signal × tier. **Three templates** for T1 / T2 / T3 are shared across signals A–F; only the *opener line* swaps. Six signals × three tiers = 18 combinations, generated from three templates + an 18-cell opener matrix.
+
+### Tier 1 · multi-voice, multi-channel, founder-led
+
+Channels: email (matched peer-voice via Maildoso) + Tomáš personal LinkedIn DM (manual) + cold call (Signal F variant via BetterContact / Nooks). Replies → classifier → instant Slack ping with paste-ready draft.
+
+Three variants share the **body**; only the **opener swaps per signal** (see matrix below).
+
+**Variant A · Pattern recognition (Rohlik / Notino comparable)**
+
+> [SIGNAL-SPECIFIC OPENER]
+>
+> We saw the same shape at **Rohlik (€2.1M revenue + €1.4M margin protected)** or **Notino (468 hrs/yr returned, 10+ processes now)**. The fix scales because the engine is the same; the signals just plug in. Worth 20 min to compare notes before [signal-specific decision window] closes?
+
+**Variant B · Specific pain (Clarity wedge)**
+
+> [SIGNAL-SPECIFIC OPENER]
+>
+> Most [signal-relevant programs] hand the judgment-heavy edges back to people — supplier portals, exception handling, approval chains. That's where the business case quietly leaks. **Clarity maps it in 30 min**; we quantify the leakage before you commit. *(One travel retailer surfaced €1M in 1–2 days.)* Worth 20 min?
+
+**Variant C · Quiet question (soft CTA, no pitch)**
+
+> [SIGNAL-SPECIFIC OPENER, reframed as a question]
+>
+> Curious how it's playing on your side. No pitch — just compare notes.
+
+### Tier 2 · 3-step sequence, peer-voice email
+
+Days 0 / 5 / 12. Email-only at pilot stage (Tomáš or Omar from-name via Maildoso); LinkedIn supporting-profile layer added post-AE-hire (gtm-master "supporting profiles" pattern).
+
+**Step 1 · day 0:** [signal-specific opener] + value-prop body + soft CTA.
+**Step 2 · day 5 (no reply):** value-drop bump — *"Wanted to surface [specific customer comparable matched to signal] in case useful."*
+**Step 3 · day 12 (no reply):** direct close — *"Wrong moment? Closing your loop unless I hear otherwise."*
+
+**Pause-on-reply:** any reply on any step → classifier → Slack route → sequence pauses (per gtm-master design-multi-channel rule).
+
+### Tier 3 · daily batch nurture
+
+Single email per account per cycle. Generic value-prop body + signal acknowledgment. Replies archived for pattern learning; only `positive_intent` surfaces to human.
+
+> [Signal-specific one-liner — see matrix below]
+>
+> Duvo helps retailers like **Rohlik · Notino · Pilulka · Töpfer** [outcome matched to signal-class]. Worth a 15-min look?
+
+### Per-signal opener matrix (6 × 3)
+
+One line per cell — the *only* thing that swaps per signal × tier. **Modular, not sprawl.**
+
+| Signal | T1 opener | T2 opener | T3 opener |
+|---|---|---|---|
+| **A** leadership change | Saw you joined [Account] as [Role] [N days] ago — first 90 days = the process-mapping moment, before the calendar fills. | You're 45 days into the [Role] role — how's the supplier-portal backlog looking? | Most new [Role]s at €500M+ retailers inherit the manual-process pile. |
+| **B** post-RPA | Saw the AI Automation Lead posting at [Account] — the layer above your UiPath stack. | Your RPA stack is solid; the question is what it can't touch (judgment, not rules). | Duvo agents handle the workflows RPA can't — judgment over rules. |
+| **C** S/4HANA migration | [Account] is mid-S/4HANA build. The judgment-heavy edges S/4 doesn't absorb are where **Clarity** maps the value in 30 min. | S/4HANA target-state at [Account] — supplier-portal handoffs are the predictable bottleneck. **Clarity** surfaces it pre-go-live. | Most S/4HANA programs hand the messy edges back to people. |
+| **D** margin / efficiency | [Account] just committed to €[X cost-out] by [FY]. Fastest line that doesn't touch headcount is **Clarity → automation** on the manual ops pile. | You've put a number on the efficiency program. **Clarity finds where the leakage sits in days, not months.** | Most €500M+ retailers have a cost-out target now; very few touch the manual ops layer. |
+| **E** expansion / M&A | Congrats on the [Target] deal — first 60 days is the **Clarity moment**, map both sides before integration locks. | [Account]'s [Target] integration is at month 2 — supplier-ops cracks at month 3 (we saw it at Rohlik). | Most retail M&A cracks at month 3 on the supplier-ops integration. |
+| **F** events / own content | Saw you joined Omar's 21 May **Clarity** session — happy to run *your* supplier-handoff through it. | You signed up for the 21 May session — happy to set up your free Clarity slot if you didn't claim it. | Process-mapping in days, not months — the angle Omar walked through on 21 May. |
+
+That's the entire copy surface: **three templates + one 18-cell matrix.** Adding a seventh signal = adding a column. Adding a new vertical = swapping customer comparables in Variant A. *Modular, not sprawl.*
 
 ---
 
