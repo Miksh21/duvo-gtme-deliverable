@@ -66,6 +66,19 @@ Signal D (margin-pressure / efficiency mandate) isn't a named signal type but ta
 
 ---
 
+## What Duvo sells today (Clarity → automation)
+
+The 21 May webinar surfaced something Omar said out loud: *"since we made this pivot towards leading with Clarity, we've unlocked a lot of appetite from the market because people just sort of get it."* So Duvo's current motion isn't *"buy an AI workforce"* — it's two-step:
+
+- **Wedge → Clarity** — Duvo's process-mapping product (BPMN + SWOT + transformation proposal with quantified business case, via async voice / screen-share / phone interviews, multilingual, 15–30 min instead of months of consultants). One travel retailer found **€1M of revenue leakage in 1–2 days** using Clarity.
+- **Expand → Duvo automation** — the agents that close the long-running messy work Clarity just mapped (supplier ops, finance, supply chain, CX). Notino runs 10+ of them; the pattern is land one, expand to ten.
+
+That changes what the *cold opener* should lead with. **The pain is the process-mapping problem Omar named, not the automation outcome.** Tomáš's Rohlik origin tells it: *"Tom built Rohlik to €1.5B, automated the warehouse, then looked at his head office and saw his best people stuck doing the worst work — copy-pasting data between systems. A 'human API.'"* That's the hook. Automation is the after.
+
+The signals below stay the same — they catch retailers at the moments Clarity lands hardest (S/4 mid-flight, margin mandate, new exec, M&A, content engagement). Hooks downstream are tuned to that wedge.
+
+---
+
 ## Duvo's public customer roster
 
 Four named retail / CPG customers, four different use-cases — the signals below target the moments accounts *like these* enter the buying window.
@@ -137,7 +150,12 @@ Each part is backed by a gtm-master principle — *warm-before-you-touch · effo
 
 ### Land one process, expand to ten
 
-A signed customer doesn't run *one* agent — they run a fleet. **Duvo runs 10+ processes at Notino**, started with one. The same `Detect → Qualify → Engage → Convert` engine that closes the first deal also surfaces the next process *inside* the account once it's signed: the classifier sees adoption signals in the CRM, MEDDPICC fields show where the next process pain lives, and the GTME hands a pre-qualified expansion play to the FDE. **The system's job doesn't end at "booked meeting" — it ends at "tenth process signed."**
+A signed customer doesn't run *one* agent — they run a fleet. **Duvo runs 10+ processes at Notino**, started with one. There are two natural wedges into that ten-process expansion, and the system supports both:
+
+- **Clarity-first** — start with a process-mapping engagement (Duvo's current GTM lead per Omar). The map + transformation proposal *becomes the blueprint* for the first automation; the next nine surface from there. The "10 free Clarity sessions" offered to the 21 May attendees is this wedge running live.
+- **Automation-first** — start with one acute pain on a Hot signal account (e.g. S/4HANA mid-build). The agent runs; the next process is the second's MEDDPICC adjacency.
+
+Same `Detect → Qualify → Engage → Convert` engine either way. The classifier sees adoption signals in the CRM; MEDDPICC fields show where the next process pain lives; the GTME hands a pre-qualified expansion play to the FDE. **The system's job doesn't end at "booked meeting" — it ends at "tenth process signed."**
 
 ---
 
@@ -584,7 +602,7 @@ flowchart TD
 >
 > ✏️ **Suggested action: cold call (BetterContact · warm-recognised opener) + follow-up email from Omar (peer-voice)**
 >
-> > "Saw you joined Omar's process-mapping session and commented on the supplier-orchestration piece — and your team is mid-S/4HANA build. That's the exact spot where most programs hand the messy edges back to people. Worth 20 min with Omar?"
+> > "Saw you joined Omar's 21 May Clarity session and commented on the supplier-orchestration piece — and your team is mid-S/4HANA build. The pattern Omar showed (S/4 standardises the core; the judgment-heavy edges get handed back to people — the 'human API' problem) is exactly what Clarity maps. Worth 20 min with Omar to run your supplier-handoff process through it?"
 >
 > **Buttons:** 📞 Add to call queue · 📇 Open in HubSpot · 🎥 Webinar replay · 🧩 Stacked-signal view
 
