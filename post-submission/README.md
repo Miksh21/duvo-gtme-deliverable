@@ -68,6 +68,8 @@ Signal D (margin-pressure / efficiency mandate) isn't a named signal type but ta
 
 ## What Duvo sells today (Clarity → automation)
 
+> **Duvo's own headline for Clarity:** *"Process mapping, optimisation plan, business case. In days, not months."*
+
 The 21 May webinar surfaced something Omar said out loud: *"since we made this pivot towards leading with Clarity, we've unlocked a lot of appetite from the market because people just sort of get it."* So Duvo's current motion isn't *"buy an AI workforce"* — it's two-step:
 
 - **Wedge → Clarity** — Duvo's process-mapping product (BPMN + SWOT + transformation proposal with quantified business case, via async voice / screen-share / phone interviews, multilingual, 15–30 min instead of months of consultants). One travel retailer found **€1M of revenue leakage in 1–2 days** using Clarity.
@@ -76,6 +78,8 @@ The 21 May webinar surfaced something Omar said out loud: *"since we made this p
 That changes what the *cold opener* should lead with. **The pain is the process-mapping problem Omar named, not the automation outcome.** Tomáš's Rohlik origin tells it: *"Tom built Rohlik to €1.5B, automated the warehouse, then looked at his head office and saw his best people stuck doing the worst work — copy-pasting data between systems. A 'human API.'"* That's the hook. Automation is the after.
 
 The signals below stay the same — they catch retailers at the moments Clarity lands hardest (S/4 mid-flight, margin mandate, new exec, M&A, content engagement). Hooks downstream are tuned to that wedge.
+
+**Buyer list extends** to include **Transformation Director / Head of Operational Excellence / Process Excellence** roles — Clarity's direct buyers, the people whose work gets *amplified* (not displaced) by it. Signal A's role list adds these accordingly: the new exec firing Signal A could equally be a Head of Process Excellence as a Head of Supply Chain.
 
 ---
 
@@ -265,7 +269,7 @@ flowchart TD
 >
 > ✏️ **Suggested hook (1:1 manual):**
 >
-> > Most S/4HANA programs standardise the core beautifully, then hand the judgment-heavy edges — supplier portals, exception handling, approval chains — straight back to people. That's where the business case quietly leaks. We kept those edges automated through Rohlik's own SAP work. Worth 20 minutes before your target-state design locks?
+> > Most S/4HANA programs standardise the core beautifully, then hand the judgment-heavy edges — supplier portals, exception handling, approval chains — straight back to people. That's where the business case quietly leaks. We kept those edges automated through Rohlik's own SAP work, and we can run your supplier-handoff through **Clarity in 30 min** to quantify the business case before your target-state design locks — worth 20 min?
 >
 > **Buttons:** 📇 Open in HubSpot · 📄 FDE pre-brief · 🔍 HG Insights migration stage
 
@@ -375,7 +379,7 @@ flowchart TD
 >
 > ✏️ **Suggested hook (1:1 manual):**
 >
-> > You've put a number on the efficiency program — [€200M by FY27]. The fastest line to it that doesn't touch headcount is the manual ops work nobody books as cost: supplier reconciliation, exception handling, the SAP busywork. **We protected €2.1M revenue + €1.4M margin at Rohlik, and returned 468 hours/year of specialist capacity at Notino** — same engine, two outcomes. Worth 20 min with whoever owns the cost-out plan?
+> > You've put a number on the efficiency program — [€200M by FY27]. The fastest line to it that doesn't touch headcount is the manual ops work nobody books as cost: supplier reconciliation, exception handling, the SAP busywork. **We protected €2.1M revenue + €1.4M margin at Rohlik, and returned 468 hours/year of specialist capacity at Notino** — same engine, two outcomes. **Clarity finds where the leakage sits in days, not months** (one travel retailer surfaced €1M in 1–2 days). Worth 20 min with whoever owns the cost-out plan?
 >
 > **Buttons:** 📇 Open in HubSpot · 📄 CFO business-case pre-brief · 📈 IR source
 
@@ -487,7 +491,7 @@ flowchart TD
 >
 > ✏️ **Suggested hook (1:1 manual):**
 >
-> > Congrats on the [Target] deal. We ran the same playbook at Rohlik across five markets — and the supplier-ops integration always cracked around month three, when the acquired entity's processes wouldn't fold into ours. We solved it with an agent layer rather than headcount. Worth comparing notes before your integration plan locks?
+> > Congrats on the [Target] deal. We ran the same playbook at Rohlik across five markets (CZ → DE → HU → AT → RO) — and the supplier-ops integration always cracked around month three, when the acquired entity's processes wouldn't fold into ours. **The first 60 days post-deal is the Clarity moment** — map both sides' processes before integration locks, then we automate the messy edges. Worth comparing notes?
 >
 > **Buttons:** 📇 Open in HubSpot · 📄 FDE pre-brief · 📰 Announcement
 
@@ -495,7 +499,7 @@ flowchart TD
 
 ## Signal F · Duvo events + 1st-party content engagement `Proposed`
 
-**Why now.** Duvo runs LinkedIn webinars and live events as part of GTM — most recently a 45-min **process-mapping** session on **21 May 2026** (Omar · David · a US FDE). Per gtm-master's signal-class hierarchy, *"engagement on YOUR OWN content"* is **Surface 5 of 6** — the highest-conviction signal in this class, because the engager already consumed *your* specific content (not just category-adjacent). Webinar attendance is Surface 5; cross-team LinkedIn activity across Tomáš · Omar · David · the US FDE is **Surface 6** — *"10× signal volume vs founder-only"*. The 21 May attendees are warm *right now* — gtm-master's recency window for engagement signals is 14 days; the system captures them or burns them.
+**Why now.** Duvo runs webinars (LinkedIn-promoted, Zoom-delivered) and live events as part of GTM — most recently a **1-hour process-mapping / Clarity** session on **Thu 21 May 2026, 17:00–18:00 CET** (Omar · David Červinka · a US FDE), with ~130 attendees on the LinkedIn event page. Per gtm-master's signal-class hierarchy, *"engagement on YOUR OWN content"* is **Surface 5 of 6** — the highest-conviction signal in this class, because the engager already consumed *your* specific content (not just category-adjacent). Webinar attendance is Surface 5; cross-team LinkedIn activity across Tomáš · Omar · David · the US FDE is **Surface 6** — *"10× signal volume vs founder-only"*. The 21 May attendees are warm *right now* — gtm-master's recency window for engagement signals is 14 days; the system captures them or burns them.
 
 This signal also unlocks what the v1 framing missed: **the motion isn't founder-only-now-AE-later; it's already multi-voice senior team** — Tomáš (peer-CEO), Omar (peer-of-CCO / Head of Commercial), David (GTM voice), the US FDE (technical demo). Per Surface 6 that's four active LinkedIn surfaces today, no AE-hire dependency. Each voice maps to a committee role.
 
@@ -508,7 +512,7 @@ This signal also unlocks what the v1 framing missed: **the motion isn't founder-
 | **Scoring** | ICP fit (40) + signal strength (40, engagement-weighted **comment > repost > like**) + persona authority (20). **Composite stack:** if a Signal F engager also fires on Signal A/B/C/D/E → jump heat tier (multi-signal compounding). |
 | **Tier-1 routing — the variation** | gtm-master prescribes **cold call at T1** for own-content engagers, *not* email-first — "the engager already recognises you; the call interrupts in a warm way." So T1 = **cold call (BetterContact / Nooks AI dialer) + email + LinkedIn from the matched senior voice** — Tomáš to CEOs, Omar to Heads of Commercial, FDE to technical buyers. v1 doesn't use cold-call anywhere; Signal F brings the right channel for the right signal. |
 | **Filter discipline** | Commenters > likers; last 14 days; strip existing customers + closed-lost (HubSpot lookup); dedupe against signals A–E (stack-on, don't re-route). |
-| **Immediate pilot** | Activate the **21 May** process-mapping webinar attendee list now — concrete proof the system runs end-to-end, two days fresh. |
+| **Immediate pilot** | Activate the **21 May** Clarity-webinar attendee list (~130 attendees per the LinkedIn event) now — concrete proof the system runs end-to-end, two days fresh. Composite-stack the 10-free-Clarity-session opt-ins with signals A–E for the Hot tier. |
 
 ```mermaid
 flowchart TD
