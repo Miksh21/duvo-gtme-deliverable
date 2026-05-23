@@ -66,7 +66,7 @@ Full detail + diagrams → **[`/post-submission/`](./post-submission)**.
 
 [→ Open in Loom](https://www.loom.com/share/6229b7c2f5e44a72af3861ee1ce0af93)
 
-*90-second face-cam walkthrough. The document below is the deep dive.*
+*90-second face-cam walkthrough · **recorded 14 May for the original submission** (not re-recorded for the addendum). The document below + [`/post-submission/`](./post-submission) are the deep dive.*
 
 ## What's in this document
 
