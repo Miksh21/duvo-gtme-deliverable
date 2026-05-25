@@ -56,7 +56,7 @@ Jan Mikeš · 14 May 2026 · For Tomáš + David
 - **+ committee-expansion Tier-1 multithread** — fans a Hot account out to its 6–10-person buying committee, with a CRM-state gate so outreach never collides with an in-flight deal. v1 single-threaded on the trigger contact.
 - **Tooling refinement** — HG Insights repositioned as *via Clay* (usage-based, ~4–8 credits/row, run conditionally) instead of a ~$50k direct contract — reconciling v1's cost-driven cut.
 - **JD signal-coverage map** — all four JD-named signals (leadership changes · hiring posts · ERP migrations · M&A) now each have a dedicated pipeline.
-- **Honesty note on v1 numbers.** v1's Signal A *"~3× cold"* reply-rate baseline for leadership-change signals is *directional / illustrative* — not from a specific published study. The intent was *"meaningfully higher than cold,"* not a precise multiplier. Customer outcomes (Rohlik · Notino · Pilulka · Töpfer) and gtm-master benchmarks elsewhere are cited inline.
+- **v1's "~3× cold" swapped for cited benchmarks.** v1's Signal A used *"~3× cold"* as a directional placeholder. The cited equivalents from **workflows.io 2026** (via gtm-master): single-signal outreach **18–22% reply rate** · 3+ stacked signals **35–40%** · multi-signal aggregate **2–10× cold** · ABM multi-channel **36% meeting rate vs 10% non-ABM**. Same ballpark, sourced. Customer outcomes (Rohlik · Notino · Pilulka · Töpfer) still carry the proof.
 
 Full detail + diagrams → **[`/post-submission/`](./post-submission)**.
 
